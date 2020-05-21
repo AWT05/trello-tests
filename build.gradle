@@ -2,6 +2,9 @@ plugins {
     id 'java'
 }
 
+apply plugin: 'checkstyle'
+apply plugin: 'pmd'
+
 group 'org.fundacionjala.trello'
 version '1.0-SNAPSHOT'
 sourceCompatibility = 1.11
@@ -28,5 +31,22 @@ dependencies {
 configurations {
     cucumberRuntime {
         extendsFrom testImplementation
+    }
+}
+
+checkstyle {
+    toolVersion = '8.23'
+    configFile = file("${rootProject.rootDir}/config/checkstyle/checkstyle.xml")
+}
+
+pmd {
+    toolVersion = '6.0.0'
+}
+
+tasks.withType(Pmd) {
+    ruleSets = ["java-basic", "java-braces", "java-unnecessary", "java-unusedcode", "java-strictexception"]
+    reports {
+        xml.enabled = false
+        html.enabled = true
     }
 }
