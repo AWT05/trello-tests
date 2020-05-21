@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'org.fundacionjala.trello'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.28'
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '4.3.0'
+    implementation group: 'io.rest-assured', name: 'json-schema-validator', version: '4.3.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-java', version: '5.6.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-testng', version: '5.6.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '5.6.0'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}

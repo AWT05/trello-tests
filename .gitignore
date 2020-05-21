@@ -1,0 +1,17 @@
+# Generated files
+.idea
+### Gradle ###
+.gradle
+/build/
+
+### Allure ###
+/.allure
+/allure-results/
+
+### Json ###
+config.json
+
+/out/
+/java/
+/logs/
+*.iml
