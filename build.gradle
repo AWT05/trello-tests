@@ -11,6 +11,8 @@ repositories {
 }
 
 dependencies {
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.0.0'
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.28'
     implementation group: 'io.rest-assured', name: 'rest-assured', version: '4.3.0'
     implementation group: 'io.rest-assured', name: 'json-schema-validator', version: '4.3.0'
