@@ -1,21 +1,23 @@
-{
-    "name": "GUI",
-    "uiBaseUrl": "https://trello.com",
-    "apiBaseUri": "https://api.trello.com/1",
-    "accounts": [
-      {
-        "user": "user1",
-        "userName": "",
-        "password": "",
-        "apiKey": "",
-        "apiToken": ""
-      },
-      {
-        "user": "user2",
-        "userName": "",
-        "password": "",
-        "apiKey": "",
-        "apiToken": ""
-      }
-    ]
-}
+[
+    {
+        "name": "GUI",
+        "uiBaseUrl": "https://trello.com",
+        "apiBaseUri": "https://api.trello.com/1",
+        "accounts": [
+          {
+            "user": "user1",
+            "userName": "",
+            "password": "",
+            "apiKey": "",
+            "apiToken": ""
+          },
+          {
+            "user": "user2",
+            "userName": "",
+            "password": "",
+            "apiKey": "",
+            "apiToken": ""
+          }
+        ]
+    }
+]
