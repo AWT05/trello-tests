@@ -25,7 +25,7 @@ public final class Environment {
     private static final String API_BASE_URI = "apiBaseUri";
     private static final String UI_BASE_URL = "uiBaseUrl";
     private static final String ACCOUNTS = "accounts";
-    private static final String USER_NAME = "user";
+    private static final String USER = "user";
     private static final String ROOT_PATH = ".";
     private static final String IMPLICIT_TIME_WAIT = "implicitTimeWait";
     private static final String EXPLICIT_TIME_WAIT = "explicitTimeWait";
@@ -109,13 +109,13 @@ public final class Environment {
     /**
      * Gets account from environment config.
      *
-     * @param username account username.
+     * @param user account user.
      * @return account json path object.
      */
     @SuppressWarnings("unchecked")
-    public Map<String, String> getAccount(final String username) {
+    public Map<String, String> getAccount(final String user) {
         List<Map<String, String>> accounts = (List<Map<String, String>>) envConfig.get(ACCOUNTS);
-        return accounts.stream().filter(account -> account.get(USER_NAME).equals(username))
+        return accounts.stream().filter(account -> account.get(USER).equals(user))
                 .findFirst().orElse(new HashMap<>());
     }
 
