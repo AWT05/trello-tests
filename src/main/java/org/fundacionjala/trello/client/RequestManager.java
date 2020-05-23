@@ -13,6 +13,9 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
+/**
+ * Provides options available to sending a request.
+ */
 public final class RequestManager {
 
     private Context context;

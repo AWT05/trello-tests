@@ -33,8 +33,8 @@ public final class CreateBoardTest {
         data.put("name", "Test GUI");
         String endpoint = "/boards";
         Response response = requestManager.init(context)
-                                          .queryParams(data)
-                                          .post(endpoint);
+                .queryParams(data)
+                .post(endpoint);
         String id = response.jsonPath().getString("id");
         context.saveIds(BOARD, id);
         assertEquals(response.getStatusCode(), STATUS_CODE);
@@ -43,9 +43,7 @@ public final class CreateBoardTest {
     @AfterMethod
     public void deleteBoard() {
         context.getIdsByKey(BOARD)
-                .forEach(id -> {
-                    requestManager.init(context)
-                                  .delete("/boards/".concat(id));
-                });
+                .forEach(id -> requestManager.init(context)
+                        .delete("/boards/".concat(id)));
     }
 }

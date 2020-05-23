@@ -30,11 +30,11 @@ public class Context {
     /**
      * Saves response according to key.
      *
-     * @param key      key identifier.
+     * @param keyword  key identifier.
      * @param response response object.
      */
-    public void saveResponse(final String key, final Response response) {
-        responses.put(key, response);
+    public void saveResponse(final String keyword, final Response response) {
+        responses.put(keyword, response);
     }
 
     /**
@@ -45,7 +45,6 @@ public class Context {
     public Map<String, Response> getResponses() {
         return responses;
     }
-
 
     /**
      * Saves id in a map.

@@ -48,9 +48,7 @@ public final class GetBoardTest {
     @AfterMethod
     public void deleteBoard() {
         context.getIdsByKey(BOARD)
-                .forEach(id -> {
-                    requestManager.init(context)
-                                  .delete("/boards/".concat(id));
-                });
+                .forEach(id -> requestManager.init(context)
+                        .delete("/boards/".concat(id)));
     }
 }

@@ -11,7 +11,6 @@ public final class RequestSpecUtils {
 
     private static final String KEY = "key";
     private static final String TOKEN = "token";
-    private static final String BASE_URI = "https://api.trello.com/1";
 
     /**
      * A private constructor for RequestSpecUtils utility class.
@@ -28,7 +27,6 @@ public final class RequestSpecUtils {
     public static RequestSpecification build() {
         String baseUri = Environment.getInstance().getApiBaseUri();
         return new RequestSpecBuilder().setBaseUri(baseUri).build();
-
     }
 
     /**
@@ -38,9 +36,8 @@ public final class RequestSpecUtils {
      * @return base request specification.
      */
     public static RequestSpecification buildAuth(final String user) {
-         String baseUri = Environment.getInstance().getApiBaseUri();
-         Map<String, String> userAccount = Environment.getInstance().getAccount(user);
-
+        String baseUri = Environment.getInstance().getApiBaseUri();
+        Map<String, String> userAccount = Environment.getInstance().getAccount(user);
         return new RequestSpecBuilder().setBaseUri(baseUri)
                 .setContentType(ContentType.JSON)
                 .addQueryParam(KEY, userAccount.get(KEY))
