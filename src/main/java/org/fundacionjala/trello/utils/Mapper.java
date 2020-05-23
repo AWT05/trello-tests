@@ -1,6 +1,7 @@
 package org.fundacionjala.trello.utils;
 
 import io.restassured.response.Response;
+import org.fundacionjala.trello.config.Environment;
 
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -70,8 +71,12 @@ public final class Mapper {
             return EMPTY_STRING;
         }
         String[] values = value.split(DOT_REGEX, SPLIT_LIMIT);
-        Response response = responses.get(values[0]);
-        String jsonPath = values[1];
-        return response.jsonPath().getString(jsonPath);
+        Map<String, String> account = Environment.getInstance().getAccount(values[0]);
+        if (account.isEmpty()) {
+            Response response = responses.get(values[0]);
+            String jsonPath = values[1];
+            return response.jsonPath().getString(jsonPath);
+        }
+        return account.get(values[1]);
     }
 }

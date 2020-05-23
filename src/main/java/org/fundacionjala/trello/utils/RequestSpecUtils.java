@@ -3,11 +3,14 @@ package org.fundacionjala.trello.utils;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import org.fundacionjala.trello.config.Environment;
+
+import java.util.Map;
 
 public final class RequestSpecUtils {
 
-    private static final String AUTHORIZATION_KEY = "key";
-    private static final String AUTHORIZATION_TOKEN = "token";
+    private static final String KEY = "key";
+    private static final String TOKEN = "token";
     private static final String BASE_URI = "https://api.trello.com/1";
 
     /**
@@ -23,9 +26,8 @@ public final class RequestSpecUtils {
      * @return base request specification.
      */
     public static RequestSpecification build() {
-        // To do
-        // String baseUri = Environment.getInstance().getBaseUri();
-        return new RequestSpecBuilder().setBaseUri(BASE_URI).build();
+        String baseUri = Environment.getInstance().getApiBaseUri();
+        return new RequestSpecBuilder().setBaseUri(baseUri).build();
 
     }
 
@@ -36,13 +38,12 @@ public final class RequestSpecUtils {
      * @return base request specification.
      */
     public static RequestSpecification buildAuth(final String user) {
-        // To do
-        // String baseUri = Environment.getInstance().getBaseUri();
-        // Map<String, String> account = Environment.getInstance().getAccount(username);
+         String baseUri = Environment.getInstance().getApiBaseUri();
+         Map<String, String> userAccount = Environment.getInstance().getAccount(user);
 
-        return new RequestSpecBuilder().setBaseUri(BASE_URI)
+        return new RequestSpecBuilder().setBaseUri(baseUri)
                 .setContentType(ContentType.JSON)
-                .addQueryParam(AUTHORIZATION_KEY, "f373c0717998475ae74cec4d89b3d5ad")
-                .addQueryParam(AUTHORIZATION_TOKEN, "302b974c98dd284f68254b50e220be73577311491d8eb46c9829959b5611f0f8").build();
+                .addQueryParam(KEY, userAccount.get(KEY))
+                .addQueryParam(TOKEN, userAccount.get(TOKEN)).build();
     }
 }
