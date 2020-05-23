@@ -6,17 +6,17 @@
     "accounts": [
       {
         "user": "user1",
-        "userName": "",
+        "username": "",
         "password": "",
-        "apiKey": "",
-        "apiToken": ""
+        "key": "",
+        "token": ""
       },
       {
         "user": "user2",
-        "userName": "",
+        "username": "",
         "password": "",
-        "apiKey": "",
-        "apiToken": ""
+        "key": "",
+        "token": ""
       }
     ]
   }
