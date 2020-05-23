@@ -23,7 +23,7 @@ public final class GetBoardTest {
     public void setAuthentication() {
         context = new Context();
         requestManager = new RequestManager();
-        requestManager.authenticate("user1");
+        requestManager.setApiCredentials("user1");
         RequestManager.displayFiltersData();
 
         Map<String, String> data = new HashMap<>();

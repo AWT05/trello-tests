@@ -46,7 +46,7 @@ public final class RequestManager {
      *
      * @param user identifier to get user account.
      */
-    public void authenticate(final String user) {
+    public void setApiCredentials(final String user) {
         requestSpecInit = RequestSpecUtils.buildAuth(user);
     }
 
