@@ -22,6 +22,9 @@ public final class RequestManager {
     private RequestSpecification requestSpec;
     private RequestSpecification requestSpecInit;
 
+    /**
+     * Sets the base request specification without authentication.
+     */
     public RequestManager() {
         requestSpecInit = RequestSpecUtils.build();
     }
