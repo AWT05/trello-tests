@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.TDD;
+package org.fundacionjala.trello.TDD.board;
 
 import io.restassured.response.Response;
 import org.fundacionjala.trello.client.RequestManager;
@@ -13,10 +13,11 @@ import java.util.Map;
 import static org.fundacionjala.trello.context.KeywordsEnum.BOARD;
 import static org.testng.Assert.assertEquals;
 
-public class CreateBoardTest {
+public final class EditBoardTest {
 
-    RequestManager requestManager;
-    Context context;
+    private static final int STATUS_CODE = 200;
+    private RequestManager requestManager;
+    private Context context;
 
     @BeforeMethod
     public void setAuthentication() {
@@ -24,19 +25,28 @@ public class CreateBoardTest {
         requestManager = new RequestManager();
         requestManager.authenticate("user1");
         RequestManager.displayFiltersData();
+
+        Map<String, String> data = new HashMap<>();
+        data.put("name", "Test GUI");
+        data.put("desc", "My desc");
+        String endpoint = "/boards";
+        Response response = requestManager.init(context)
+                .queryParams(data)
+                .post(endpoint);
+        String id = response.jsonPath().getString("id");
+        context.saveIds(BOARD, id);
+        context.saveResponse("board", response);
     }
 
     @Test
     public void createPersonalBoardByApiTest() {
         Map<String, String> data = new HashMap<>();
-        data.put("name", "Test GUI");
-        String uri = "/boards";
+        data.put("desc", "{user1.username}");
+        String endpoint = "/boards/{board.id}";
         Response response = requestManager.init(context)
-                                          .queryParams(data)
-                                          .post(uri);
-        String id = response.jsonPath().getString("id");
-        context.saveIds(BOARD, id);
-        assertEquals(response.getStatusCode(), 200);
+                .queryParams(data)
+                .put(endpoint);
+        assertEquals(response.getStatusCode(), STATUS_CODE);
     }
 
     @AfterMethod
