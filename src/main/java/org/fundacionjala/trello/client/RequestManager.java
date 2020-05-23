@@ -38,6 +38,11 @@ public final class RequestManager {
         return this;
     }
 
+    /**
+     * Sets authentication header to base request specification.
+     *
+     * @param user identifier to get user account.
+     */
     public void authenticate(final String user) {
         requestSpecInit = RequestSpecUtils.buildAuth(user);
     }
