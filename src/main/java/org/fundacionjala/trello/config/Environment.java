@@ -109,7 +109,7 @@ public final class Environment {
     /**
      * Gets account from environment config.
      *
-     * @param user account user.
+     * @param user account to get user data.
      * @return account json path object.
      */
     @SuppressWarnings("unchecked")
