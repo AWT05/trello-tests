@@ -4,7 +4,7 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
-public class RequestSpecUtils {
+public final class RequestSpecUtils {
 
     private static final String AUTHORIZATION_KEY = "key";
     private static final String AUTHORIZATION_TOKEN = "token";
@@ -32,10 +32,10 @@ public class RequestSpecUtils {
     /**
      * Builds base request specification using API key and token.
      *
+     * @param user identifier to get user account.
      * @return base request specification.
-     * @param user
      */
-    public static RequestSpecification buildAuth(String user) {
+    public static RequestSpecification buildAuth(final String user) {
         // To do
         // String baseUri = Environment.getInstance().getBaseUri();
         // Map<String, String> account = Environment.getInstance().getAccount(username);

@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class Mapper {
+public final class Mapper {
 
     private static final String STORED_VALUE_PATTERN = "\\{[0-9a-zA-Z._\\-\\[\\]]+}";
     private static final String EMPTY_KEY = "empty";

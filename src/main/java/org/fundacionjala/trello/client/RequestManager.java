@@ -35,7 +35,7 @@ public final class RequestManager {
         return this;
     }
 
-    public void authenticate(String user) {
+    public void authenticate(final String user) {
         requestSpecInit = RequestSpecUtils.buildAuth(user);
     }
 
@@ -45,7 +45,7 @@ public final class RequestManager {
      * @param data contains the parameter keys and their values to send with the request.
      * @return the request manager object.
      */
-    public RequestManager queryParams(Map<String, String> data) {
+    public RequestManager queryParams(final Map<String, String> data) {
         requestSpec = given(requestSpec).queryParams(mapOut(data));
         return this;
     }
@@ -77,7 +77,7 @@ public final class RequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    public Response delete(String endpoint) {
+    public Response delete(final String endpoint) {
         return given(requestSpec).when().delete(mapOut(endpoint));
     }
 
@@ -87,7 +87,7 @@ public final class RequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    public Response post(String endpoint) {
+    public Response post(final String endpoint) {
         return given(requestSpec).when().post(mapOut(endpoint));
     }
 
@@ -109,11 +109,11 @@ public final class RequestManager {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
-    private String mapOut(String endpoint) {
+    private String mapOut(final String endpoint) {
         return Mapper.replaceData(endpoint, context.getResponses());
     }
 
-    private Map<String, String> mapOut(Map<String, String> data) {
+    private Map<String, String> mapOut(final Map<String, String> data) {
         return Mapper.replaceData(data, context.getResponses());
     }
 }
