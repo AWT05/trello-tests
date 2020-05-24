@@ -26,7 +26,7 @@ public class ApiRequestSteps {
     /**
      * Initializes an instance of RequestSteps class.
      *
-     * @param context        scenario context.
+     * @param context scenario context.
      * @param requestManager helper to sending requests.
      */
     public ApiRequestSteps(final Context context, final RequestManager requestManager) {
