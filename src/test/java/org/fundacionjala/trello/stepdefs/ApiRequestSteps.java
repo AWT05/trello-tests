@@ -47,7 +47,7 @@ public class ApiRequestSteps {
     /**
      * Sends POST request for required item.
      *
-     * @param entity the specific for endPointEnum.
+     * @param entity specific for endPointEnum.
      * @param params request parameters.
      */
     @And("I create (a)(an) {string} with:")
