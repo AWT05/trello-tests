@@ -10,7 +10,7 @@ import java.util.Map;
 public class Context {
 
     private Map<String, Response> responses;
-    private Map<KeywordsEnum, List<String>> mapIds;
+    private Map<EndPointsEnum, List<String>> mapIds;
 
     /**
      * Initializes an instance of Context class.
@@ -52,7 +52,7 @@ public class Context {
      * @param keyword map key.
      * @param id      project id.
      */
-    public void saveIds(final KeywordsEnum keyword, final String id) {
+    public void saveIds(final EndPointsEnum keyword, final String id) {
         if (!mapIds.containsKey(keyword)) {
             mapIds.put(keyword, new ArrayList<>());
         }
@@ -65,7 +65,7 @@ public class Context {
      * @param keyword map key.
      * @return id values.
      */
-    public List<String> getIdsByKey(final KeywordsEnum keyword) {
+    public List<String> getIdsByKey(final EndPointsEnum keyword) {
         return mapIds.getOrDefault(keyword, new ArrayList<>());
     }
 }
