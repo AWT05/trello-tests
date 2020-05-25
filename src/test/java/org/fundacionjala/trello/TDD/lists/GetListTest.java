@@ -22,7 +22,7 @@ public class GetListTest {
     private Response response;
 
     @BeforeMethod
-    public void setAuthenticationAndBackGround(){
+    public void setAuthenticationAndBackGround() {
         context = new Context();
         requestManager = new RequestManager();
         requestManager.setApiCredentials("user1");
@@ -41,14 +41,14 @@ public class GetListTest {
     }
 
     @Test
-    public void readAListApiTest(){
+    public void readAListApiTest() {
         String endPoint = LIST.getEndPoint().concat("/{list.id}");//same as /lists/list{id}
         response = requestManager.init(context).get(endPoint);
         assertEquals(response.getStatusCode(), STATUS_CODE);
     }
 
     @AfterMethod
-    public void deleteBoard(){
+    public void deleteBoard() {
         context.getIdsByKey(BOARD)
                 .forEach(id -> requestManager.init(context).delete("/boards/".concat(id)));
     }

@@ -21,7 +21,7 @@ public class UpdateListTest {
     private Response response;
 
     @BeforeMethod
-    public void setAuthenticationAndBackGround(){
+    public void setAuthenticationAndBackGround() {
         context = new Context();
         requestManager = new RequestManager();
         requestManager.setApiCredentials("user1");
@@ -40,7 +40,7 @@ public class UpdateListTest {
     }
 
     @Test
-    public void updateAListApiTest(){
+    public void updateAListApiTest() {
         String endPoint = LIST.getEndPoint().concat("/{list.id}");
         Map<String, String> updateList = new HashMap<>();
         updateList.put("name", "New list Updated");
@@ -49,7 +49,7 @@ public class UpdateListTest {
     }
 
     @AfterMethod
-    public void deleteBoard(){
+    public void deleteBoard() {
         context.getIdsByKey(BOARD)
                 .forEach(id -> requestManager.init(context).delete("/boards/".concat(id)));
     }
