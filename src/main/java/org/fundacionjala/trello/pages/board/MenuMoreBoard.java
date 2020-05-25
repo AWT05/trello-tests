@@ -22,7 +22,6 @@ public final class MenuMoreBoard extends PageObject {
 
     @Override
     public boolean isDisplayed() {
-        //To do
         return false;
     }
 

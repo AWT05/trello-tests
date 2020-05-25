@@ -1,6 +1,6 @@
 package org.fundacionjala.trello.pages.login;
 
-import org.fundacionjala.trello.home.BoardsPage;
+import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.fundacionjala.trello.pages.trello.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

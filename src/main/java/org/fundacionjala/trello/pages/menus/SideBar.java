@@ -18,7 +18,6 @@ public final class SideBar extends PageObject {
 
     @Override
     public boolean isDisplayed() {
-        // To do
         return false;
     }
 }

@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.home;
+package org.fundacionjala.trello.pages.home;
 
 import org.openqa.selenium.WebDriver;
 
@@ -9,7 +9,6 @@ public final class BoardsPage extends HomeTrelloPage {
 
     @Override
     public boolean isDisplayed() {
-        // To do
         return false;
     }
 }

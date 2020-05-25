@@ -11,7 +11,7 @@ public final class DriverFactory {
     private static WebDriver driver;
 
     private DriverFactory() {
-        // prevent instantiations
+
     }
 
     /**

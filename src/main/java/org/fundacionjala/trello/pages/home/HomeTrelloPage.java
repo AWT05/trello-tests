@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.home;
+package org.fundacionjala.trello.pages.home;
 
 import org.fundacionjala.trello.pages.menus.SideBar;
 import org.fundacionjala.trello.pages.trello.TrelloPage;
