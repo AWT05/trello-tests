@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.fundacionjala.trello.context.KeywordsEnum.BOARD;
+import static org.fundacionjala.trello.context.EndPointsEnum.BOARD;
 import static org.testng.Assert.assertEquals;
 
 public final class GetBoardTest {
