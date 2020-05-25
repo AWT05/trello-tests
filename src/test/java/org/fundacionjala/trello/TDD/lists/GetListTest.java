@@ -14,7 +14,7 @@ import static org.fundacionjala.trello.context.EndPointsEnum.BOARD;
 import static org.fundacionjala.trello.context.EndPointsEnum.LIST;
 import static org.testng.Assert.assertEquals;
 
-public class GetListTest {
+public final class GetListTest {
 
     private static final int STATUS_CODE = 200;
     private RequestManager requestManager;
@@ -42,7 +42,7 @@ public class GetListTest {
 
     @Test
     public void readAListApiTest() {
-        String endPoint = LIST.getEndPoint().concat("/{list.id}");//same as /lists/list{id}
+        String endPoint = LIST.getEndPoint().concat("/{list.id}");
         response = requestManager.init(context).get(endPoint);
         assertEquals(response.getStatusCode(), STATUS_CODE);
     }

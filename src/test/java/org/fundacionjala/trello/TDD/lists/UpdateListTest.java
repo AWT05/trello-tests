@@ -14,7 +14,7 @@ import static org.fundacionjala.trello.context.EndPointsEnum.BOARD;
 import static org.fundacionjala.trello.context.EndPointsEnum.LIST;
 import static org.testng.Assert.assertEquals;
 
-public class UpdateListTest {
+public final class UpdateListTest {
     private static final int STATUS_CODE = 200;
     private RequestManager requestManager;
     private Context context;
