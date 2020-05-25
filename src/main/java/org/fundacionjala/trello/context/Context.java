@@ -1,14 +1,16 @@
 package org.fundacionjala.trello.context;
 
 import io.restassured.response.Response;
+import org.fundacionjala.trello.pages.trello.TrelloPage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Context {
+public final class Context {
 
+    private TrelloPage trelloPage;
     private Map<String, Response> responses;
     private Map<KeywordsEnum, List<String>> mapIds;
 
@@ -25,6 +27,7 @@ public class Context {
     public void initializeValues() {
         responses = new HashMap<>();
         mapIds = new HashMap<>();
+        trelloPage = null;
     }
 
     /**
@@ -67,5 +70,13 @@ public class Context {
      */
     public List<String> getIdsByKey(final KeywordsEnum keyword) {
         return mapIds.getOrDefault(keyword, new ArrayList<>());
+    }
+
+    public void saveActualPage(final TrelloPage page) {
+        trelloPage = page;
+    }
+
+    public TrelloPage getActualPage() {
+        return trelloPage;
     }
 }
