@@ -12,7 +12,7 @@ public final class Context {
 
     private TrelloPage trelloPage;
     private Map<String, Response> responses;
-    private Map<KeywordsEnum, List<String>> mapIds;
+    private Map<EndPointsEnum, List<String>> mapIds;
 
     /**
      * Initializes an instance of Context class.
@@ -55,7 +55,7 @@ public final class Context {
      * @param keyword map key.
      * @param id      project id.
      */
-    public void saveIds(final KeywordsEnum keyword, final String id) {
+    public void saveIds(final EndPointsEnum keyword, final String id) {
         if (!mapIds.containsKey(keyword)) {
             mapIds.put(keyword, new ArrayList<>());
         }
@@ -68,7 +68,7 @@ public final class Context {
      * @param keyword map key.
      * @return id values.
      */
-    public List<String> getIdsByKey(final KeywordsEnum keyword) {
+    public List<String> getIdsByKey(final EndPointsEnum keyword) {
         return mapIds.getOrDefault(keyword, new ArrayList<>());
     }
 
