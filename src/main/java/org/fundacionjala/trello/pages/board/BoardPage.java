@@ -19,7 +19,7 @@ public final class BoardPage extends TrelloPage {
     private WebElement boardHeader;
 
     @FindBy(css = BOARD_CANVAS)
-    public WebElement board;
+    private WebElement board;
 
     @FindBy(css = DELETE_CONTAINER)
     private WebElement deleteContainer;

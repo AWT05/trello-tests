@@ -4,13 +4,13 @@ import org.fundacionjala.trello.config.Environment;
 
 import java.util.Map;
 
-public class User {
+public final class User {
 
     private static final String EMAIL = "email";
     private static final String PASSWORD = "password";
     private final Map<String, String> user;
 
-    public User(String userAccount) {
+    public User(final String userAccount) {
         this.user = Environment.getInstance().getAccount(userAccount);
     }
 

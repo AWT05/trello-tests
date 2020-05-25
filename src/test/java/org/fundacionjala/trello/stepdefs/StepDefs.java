@@ -12,12 +12,12 @@ public final class StepDefs {
 
     private Context context;
 
-    public StepDefs(Context context) {
+    public StepDefs(final Context context) {
         this.context = context;
     }
 
     @Given("I am logged with my valid credentials as {string}")
-    public void loginValidCredentials(String userAccount) {
+    public void loginValidCredentials(final String userAccount) {
         User user = new User(userAccount);
         LoginPage page = new LoginPage(getChromeDriver());
         BoardsPage actualPage = page.loginWithAtlassian(user.getEmail())

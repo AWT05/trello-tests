@@ -12,7 +12,7 @@ public final class CommonHooks {
     private static final int INIT_CONTEXT_ORDER_VALUE = 0;
 
     @Before(order = INIT_CONTEXT_ORDER_VALUE)
-    public void openAndResizeWindow () {
+    public void openAndResizeWindow() {
         DriverFactory.lightScreen();
     }
 
