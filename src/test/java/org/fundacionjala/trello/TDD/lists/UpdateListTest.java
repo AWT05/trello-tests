@@ -25,13 +25,13 @@ public final class UpdateListTest {
         context = new Context();
         requestManager = new RequestManager();
         requestManager.setApiCredentials("user1");
-        //all steps to create a board
+
         Map<String, String> board = new HashMap<>();
         board.put("name", "new Board to test a list");
         response = requestManager.init(context).queryParams(board).post(BOARD.getEndPoint());
         context.saveResponse(BOARD.name().toLowerCase(), response);
         context.saveIds(BOARD, response.jsonPath().getString("id"));
-        //all steps to create a list
+
         Map<String, String> list = new HashMap<>();
         list.put("name", "New list test api");
         list.put("idBoard", "{board.id}");

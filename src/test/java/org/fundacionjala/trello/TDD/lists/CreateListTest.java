@@ -26,7 +26,7 @@ public final class CreateListTest {
         context = new Context();
         requestManager = new RequestManager();
         requestManager.setApiCredentials("user1");
-        //all steps to create a new board
+
         Map<String, String> board = new HashMap<>();
         board.put("name", "new Board to test a list");
         response = requestManager.init(context).queryParams(board).post(BOARD.getEndPoint());
