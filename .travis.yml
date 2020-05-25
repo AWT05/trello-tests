@@ -1,17 +1,15 @@
-#sudo: required
-
 language: java
 jdk:
   - openjdk11
 
+# TO DO:
 #addons:
 #  sonarcloud:
 #    organization: awt-05
 #    token: "${SONAR_TOKEN}"
 
-script:
-#  - chmod +x gradlew
-  - ./gradlew check
+#script:
+#  - ./gradlew check
 #  - sonar-scanner/piKey=$API_KEY -PapiToken=$API_TOKEN -PfilterTags=@functional
 
 notifications:
