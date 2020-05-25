@@ -46,7 +46,7 @@ public class ApiRequestSteps {
      * @param entity specific for endPointEnum.
      * @param params request parameters.
      */
-    @And("I create (a)(an) {string} with:")
+    @Given("I create (a)(an) {string} with:")
     public void iCreateAItemWith(final String entity, final Map<String, String> params) {
         EndPointsEnum endPointsEnum = CommonValidations.verifyEndPointEnum(entity);
         response = requestManager.init(context).queryParams(params).post(endPointsEnum.getEndPoint());
