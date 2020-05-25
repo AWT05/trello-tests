@@ -18,6 +18,11 @@ public abstract class PageObject {
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, SECONDS), this);
     }
 
+    /**
+     * Indicates if the actual page is displayed.
+     *
+     * @return true if actual page is displayed, else false.
+     */
     public abstract boolean isDisplayed();
 
     /**

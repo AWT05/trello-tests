@@ -13,6 +13,11 @@ public abstract class FormPage<T> extends PageObject {
         formFields = getFields();
     }
 
+    /**
+     * Provides all the fields that the form have.
+     *
+     * @return fields to be filled.
+     */
     protected abstract Map<FormFieldsEnum, IFillerField> getFields();
 
     /**
@@ -33,5 +38,10 @@ public abstract class FormPage<T> extends PageObject {
         }
     }
 
+    /**
+     * Submits all information in the form.
+     *
+     * @return next page object.
+     */
     public abstract T submit();
 }

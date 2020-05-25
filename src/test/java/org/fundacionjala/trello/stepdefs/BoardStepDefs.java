@@ -18,8 +18,13 @@ public final class BoardStepDefs {
         this.context = context;
     }
 
-    @Then("I should have a {string} created with the following data")
-    public void validateCreationWithData(final String entity, final Map<String, String> actualData) {
+    /**
+     * Validates the creation of the board with the given data.
+     *
+     * @param actualData expected data to validate the creation.
+     */
+    @Then("I should have a board created with the following data")
+    public void validateCreationWithData(final Map<String, String> actualData) {
         board = new BoardPage(getChromeDriver());
         assertEquals(actualData.get("title"), board.getTitle());
     }

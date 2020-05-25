@@ -16,8 +16,13 @@ public final class StepDefs {
         this.context = context;
     }
 
-    @Given("I am logged with my valid credentials as {string}")
-    public void loginValidCredentials(final String userAccount) {
+    /**
+     * Logins in trello with Atlassian account.
+     *
+     * @param userAccount keyword to get an user.
+     */
+    @Given("I am logged with my Atlassian account as {string}")
+    public void loginAtlassianAccount(final String userAccount) {
         User user = new User(userAccount);
         LoginPage page = new LoginPage(getChromeDriver());
         BoardsPage actualPage = page.loginWithAtlassian(user.getEmail())

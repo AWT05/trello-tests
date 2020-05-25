@@ -38,36 +38,18 @@ public final class LoginPage extends PageObject {
         return button.isDisplayed();
     }
 
-    /**
-     * Sets credentials values to the form.
-     *
-     * @param username account username.
-     * @param password security password.
-     * @return this Login page.
-     */
     public LoginPage setCredentials(final String username, final String password) {
         this.username.sendKeys(username);
         this.password.sendKeys(password);
         return this;
     }
 
-    /**
-     * Sets Atlassian credential.
-     *
-     * @param email account username.
-     * @return a new LoginPassword page.
-     */
     public LoginAtlassianPage loginWithAtlassian(final String email) {
         username.sendKeys(email);
         click(initWithAtlassian);
         return new LoginAtlassianPage(driver);
     }
 
-    /**
-     * Submits the form in conventional way.
-     *
-     * @return a new HomeMenus page.
-     */
     public BoardsPage submit() {
         click(button);
         return new BoardsPage(driver);
