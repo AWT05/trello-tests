@@ -9,9 +9,9 @@ public enum EndPointsEnum {
     private final String endPoint;
 
     /**
-     * Set Keywords with specific data.
+     * Set EndPointsEnum with specific data.
      *
-     * @param endPoint for each KeywordEnum.
+     * @param endPoint for each enum.
      */
     EndPointsEnum(final String endPoint) {
         this.endPoint = endPoint;
