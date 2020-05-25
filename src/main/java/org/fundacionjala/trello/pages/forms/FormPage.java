@@ -27,15 +27,10 @@ public abstract class FormPage<T> extends PageObject {
                 IFillerField field = formFields.get(fieldKey);
                 field.fill(entry.getValue());
             } catch (IllegalArgumentException ex) {
-                // To do throw a custom exception
                 String message = String.format("Error: <%s> is not a valid field. ", entry.getKey());
                 throw new IllegalArgumentException(message.concat(ex.getMessage()));
             }
         }
-    }
-
-    public void clearForm() {
-        // To do
     }
 
     public abstract T submit();
