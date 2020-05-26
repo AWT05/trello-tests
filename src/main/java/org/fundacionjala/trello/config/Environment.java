@@ -29,6 +29,8 @@ public final class Environment {
     private static final String ROOT_PATH = ".";
     private static final String IMPLICIT_TIME_WAIT = "implicitTimeWait";
     private static final String EXPLICIT_TIME_WAIT = "explicitTimeWait";
+    private static final String BROWSER_WIDTH = "browserWidth";
+    private static final String BROWSER_HEIGHT = "browserHeight";
     private static Environment instance;
 
     private final Properties properties;
@@ -135,5 +137,23 @@ public final class Environment {
      */
     public int getExplicitTimeWait() {
         return Integer.parseInt(getEnvProperty(EXPLICIT_TIME_WAIT));
+    }
+
+    /**
+     * Gets the width of the browser window.
+     *
+     * @return the window width.
+     */
+    public int getBrowserWidth() {
+        return Integer.parseInt(getEnvProperty(BROWSER_WIDTH));
+    }
+
+    /**
+     * Gets the height of the browser window.
+     *
+     * @return the window height.
+     */
+    public int getBrowserHeight() {
+        return Integer.parseInt(getEnvProperty(BROWSER_HEIGHT));
     }
 }

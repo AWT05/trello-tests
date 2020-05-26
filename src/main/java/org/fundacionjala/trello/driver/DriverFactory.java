@@ -6,8 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public final class DriverFactory {
-    private static final int WIDTH = 414;
-    private static final int HEIGHT = 736;
+
     private static WebDriver driver;
 
     private DriverFactory() {
@@ -26,10 +25,13 @@ public final class DriverFactory {
     }
 
     /**
-     * Resizes the window to 414 x 736 px.
+     * Resize the browser window.
+     *
+     * @param width Width of the browser window in px.
+     * @param height Height of the browser window in px.
      */
-    public static void lightScreen() {
-        getChromeDriver();
-        driver.manage().window().setSize(new Dimension(WIDTH, HEIGHT));
+    public static void resizeScreen(final int width, final int height) {
+        driver = getChromeDriver();
+        driver.manage().window().setSize(new Dimension(width, height));
     }
 }
