@@ -1,11 +1,11 @@
 package org.fundacionjala.trello.pages.menus;
 
-import org.fundacionjala.trello.pages.trello.PageObject;
+import org.fundacionjala.trello.pages.core.WebObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public final class SideBar extends PageObject {
+public final class SideBar extends WebObject {
 
     private static final String CREATE_TEAM_BUTTON = "button[data-test-id=home-navigation-create-team-button]";
 

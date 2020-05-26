@@ -1,11 +1,11 @@
 package org.fundacionjala.trello.pages.board;
 
-import org.fundacionjala.trello.pages.trello.TrelloPage;
+import org.fundacionjala.trello.pages.core.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public final class BoardPage extends TrelloPage {
+public final class BoardPage extends PageObject {
 
     private static final String TITLE_TEXT = "div.mod-board-name > span";
     private static final String TITLE_INPUT = "div.mod-board-name > input";

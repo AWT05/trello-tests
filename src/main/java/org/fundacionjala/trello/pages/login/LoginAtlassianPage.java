@@ -1,13 +1,13 @@
 package org.fundacionjala.trello.pages.login;
 
+import org.fundacionjala.trello.pages.core.WebObject;
 import org.fundacionjala.trello.pages.home.BoardsPage;
-import org.fundacionjala.trello.pages.trello.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public final class LoginAtlassianPage extends PageObject {
+public final class LoginAtlassianPage extends WebObject {
     public static final String PASSWORD = "#password";
     public static final String LOGIN_SUBMIT = "#login-submit";
 

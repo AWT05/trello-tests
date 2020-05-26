@@ -1,11 +1,11 @@
-package org.fundacionjala.trello.pages.trello;
+package org.fundacionjala.trello.pages.core;
 
 import org.fundacionjala.trello.pages.menus.Header;
 import org.openqa.selenium.WebDriver;
 
-public abstract class TrelloPage extends PageObject {
+public abstract class PageObject extends WebObject {
 
-    public TrelloPage(final WebDriver driver) {
+    public PageObject(final WebDriver driver) {
         super(driver);
     }
 

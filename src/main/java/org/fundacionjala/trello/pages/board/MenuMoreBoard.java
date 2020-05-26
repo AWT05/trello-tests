@@ -1,11 +1,11 @@
 package org.fundacionjala.trello.pages.board;
 
-import org.fundacionjala.trello.pages.trello.PageObject;
+import org.fundacionjala.trello.pages.core.WebObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public final class MenuMoreBoard extends PageObject {
+public final class MenuMoreBoard extends WebObject {
 
     private static final String LINK_CLOSE_BOARD = "a.board-menu-navigation-item-link.js-close-board";
     private static final String CONFIRM_CLOSE = "div.pop-over input[value=\"Close\"]";

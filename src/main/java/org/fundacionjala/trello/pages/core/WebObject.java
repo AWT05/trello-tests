@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.pages.trello;
+package org.fundacionjala.trello.pages.core;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,12 +7,16 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class PageObject {
+/**
+ * Bases object that represent a web element.
+ */
+public abstract class WebObject {
+
     private static final int SECONDS = 20;
     protected final WebDriverWait wait;
     protected final WebDriver driver;
 
-    public PageObject(final WebDriver driver) {
+    public WebObject(final WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, SECONDS);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, SECONDS), this);

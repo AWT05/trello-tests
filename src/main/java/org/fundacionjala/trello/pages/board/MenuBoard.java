@@ -1,11 +1,11 @@
 package org.fundacionjala.trello.pages.board;
 
-import org.fundacionjala.trello.pages.trello.PageObject;
+import org.fundacionjala.trello.pages.core.WebObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public final class MenuBoard extends PageObject {
+public final class MenuBoard extends WebObject {
 
     private static final String OPEN_MORE = "li a.js-open-more";
 

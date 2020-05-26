@@ -1,15 +1,15 @@
 package org.fundacionjala.trello.pages.login;
 
 import org.fundacionjala.trello.config.Environment;
+import org.fundacionjala.trello.pages.core.WebObject;
 import org.fundacionjala.trello.pages.home.BoardsPage;
-import org.fundacionjala.trello.pages.trello.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public final class LoginPage extends PageObject {
+public final class LoginPage extends WebObject {
 
-    private static final String ENDPOINT = "/login";
+    private static final String URI = "/login";
     private static final String USER_ID = "#user";
     private static final String PASSWORD_ID = "#password";
     private static final String LOGIN = "input.account-button";
@@ -30,7 +30,7 @@ public final class LoginPage extends PageObject {
     public LoginPage(final WebDriver driver) {
         super(driver);
         String url = Environment.getInstance().getUiBaseUrl();
-        driver.get(url.concat(ENDPOINT));
+        driver.get(url.concat(URI));
     }
 
     @Override

@@ -1,11 +1,11 @@
 package org.fundacionjala.trello.pages.forms;
 
-import org.fundacionjala.trello.pages.trello.PageObject;
+import org.fundacionjala.trello.pages.core.WebObject;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 
-public abstract class FormPage<T> extends PageObject {
+public abstract class FormPage<T> extends WebObject {
     protected final Map<FormFieldsEnum, IFillerField> formFields;
 
     public FormPage(final WebDriver driver) {
