@@ -5,7 +5,7 @@ jdk:
   # TO DO:
 #addons:
 #  sonarcloud:
-#    organization: awt-05
+#    organization: AWT05
 #    token: "${SONAR_TOKEN}"
 
 script:
