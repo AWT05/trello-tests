@@ -21,7 +21,6 @@ public final class CommonHooks {
         DriverFactory.resizeScreen(env.getBrowserWidth(), env.getBrowserHeight());
     }
 
-
     /**
      * Close browser and quit driver.
      */
