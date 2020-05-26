@@ -10,6 +10,9 @@ public final class BoardHooks {
 
     private static final int CLEAN_CONTEXT_ORDER_VALUE_BOARD = 20;
 
+    /**
+     * Delete a Board if it was created.
+     */
     @After(value = "@deleteBoard", order = CLEAN_CONTEXT_ORDER_VALUE_BOARD)
     public void deleteBoard() {
         BoardPage board = new BoardPage(getChromeDriver());

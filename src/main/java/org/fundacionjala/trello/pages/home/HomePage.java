@@ -4,8 +4,11 @@ import org.fundacionjala.trello.pages.core.PageObject;
 import org.fundacionjala.trello.pages.menus.SideBar;
 import org.openqa.selenium.WebDriver;
 
-public abstract class HomeTrelloPage extends PageObject {
-    public HomeTrelloPage(final WebDriver driver) {
+/**
+ * Home page base.
+ */
+public abstract class HomePage extends PageObject {
+    public HomePage(final WebDriver driver) {
         super(driver);
     }
 

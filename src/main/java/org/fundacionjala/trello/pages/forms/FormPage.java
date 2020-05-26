@@ -5,7 +5,13 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.Map;
 
+/**
+ * Dynamic form.
+ *
+ * @param <T> Page object that appears after submitting the form.
+ */
 public abstract class FormPage<T> extends WebObject {
+
     protected final Map<FormFieldsEnum, IFillerField> formFields;
 
     public FormPage(final WebDriver driver) {
