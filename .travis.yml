@@ -2,7 +2,7 @@ language: java
 jdk:
   - openjdk11
 
-# TO DO:
+  # TO DO:
 #addons:
 #  sonarcloud:
 #    organization: awt-05
@@ -10,8 +10,8 @@ jdk:
 
 script:
   - ./gradlew clean check -x test
-#  - ./gradlew check
+  # TO DO:
 #  - sonar-scanner/piKey=$API_KEY -PapiToken=$API_TOKEN -PfilterTags=@functional
 
 notifications:
-  email: false
+  email: true
