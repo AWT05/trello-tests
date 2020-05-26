@@ -15,7 +15,4 @@ jdk:
 notifications:
   email: false
 
-
-
-
 # Triggering travis
