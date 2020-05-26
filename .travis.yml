@@ -8,11 +8,10 @@ jdk:
 #    organization: awt-05
 #    token: "${SONAR_TOKEN}"
 
-#script:
+script:
+  - ./gradlew clean check -x test
 #  - ./gradlew check
 #  - sonar-scanner/piKey=$API_KEY -PapiToken=$API_TOKEN -PfilterTags=@functional
 
 notifications:
   email: false
-
-# Triggering travis
