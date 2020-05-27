@@ -21,7 +21,7 @@ public final class StepDefs {
      *
      * @param userAccount keyword to get an user.
      */
-    @Given("I am logged with my Atlassian account as {string}")
+    @Given("I log in Trello with my Atlassian account as {string}")
     public void loginAtlassianAccount(final String userAccount) {
         User user = new User(userAccount);
         LoginPage page = new LoginPage(getChromeDriver());
