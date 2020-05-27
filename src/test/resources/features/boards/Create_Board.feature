@@ -2,7 +2,7 @@
 Feature: Board context.
 
   Background: Login in the page
-    Given I log in Trello with my Atlassian account as "user2"
+    Given I log in with my Atlassian account as "user2"
 
   Scenario: Create a personal simple board from header.
     In order have a personal container of tasks
