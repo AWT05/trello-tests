@@ -1,0 +1,12 @@
+language: java
+jdk:
+  - openjdk11
+
+# TO DO: addons: sonarcloud
+
+script:
+  - ./gradlew clean check -x test
+# TO DO: sonar-scanner
+
+notifications:
+  email: true
