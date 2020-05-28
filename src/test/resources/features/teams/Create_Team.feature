@@ -1,11 +1,13 @@
-@deleteTeam
+@quitDriver
 Feature: Team manipulation
 
   Background: Login to trello.
-    Given "user1" logs in with
+    Given I log in with my Trello account as "user1"
 
   Scenario: User is able to create a team
-    When "user1" creates a team with the following data:
-      | name | My Jedi Team |
-      | type | Education    |
-    Then verifies the team is created
+    When I create a "team" from header with the following data
+      | name | Sith Empire |
+      | type | Education   |
+    Then I skip inviting members
+    And I should have a team created with the following data
+      | url | sithempire5 |

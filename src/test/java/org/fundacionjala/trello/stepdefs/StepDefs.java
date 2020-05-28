@@ -2,11 +2,10 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Given;
 import org.fundacionjala.trello.context.Context;
+import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 import org.fundacionjala.trello.entities.User;
 import org.fundacionjala.trello.pages.core.PageObject;
 import org.fundacionjala.trello.pages.login.LoginPage;
-
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 
 public final class StepDefs {
 
@@ -27,6 +26,15 @@ public final class StepDefs {
         LoginPage page = new LoginPage(getChromeDriver());
         PageObject actualPage = page.loginWithAtlassian(user.getEmail())
                 .setPassword(user.getPassword())
+                .submit();
+        context.saveActualPage(actualPage);
+    }
+
+    @Given("I log in with my Trello account as {string}")
+    public void iLogInWithMyTrelloAccountAs(String userAccount) {
+        User user = new User(userAccount);
+        LoginPage page = new LoginPage(getChromeDriver());
+        PageObject actualPage = page.setCredentials(user.getEmail(), user.getPassword())
                 .submit();
         context.saveActualPage(actualPage);
     }
