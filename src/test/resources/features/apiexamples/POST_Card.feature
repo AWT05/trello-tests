@@ -1,7 +1,7 @@
 Feature: Card Controller
 
   Background: Set the authentication
-    Given I set authentication using "user1"
+    Given I set the authentication using "user1"
     And I create a "board" with:
       | name | Hello New Board! |
     And I create a "list" with:

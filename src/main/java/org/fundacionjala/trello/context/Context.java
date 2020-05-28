@@ -1,6 +1,7 @@
 package org.fundacionjala.trello.context;
 
 import io.restassured.response.Response;
+import org.fundacionjala.trello.pages.WebPage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.Map;
 
 public class Context {
 
+    private WebPage webPage;
     private Map<String, Response> responses;
     private Map<EndPointsEnum, List<String>> mapIds;
 
@@ -67,5 +69,13 @@ public class Context {
      */
     public List<String> getIdsByKey(final EndPointsEnum keyword) {
         return mapIds.getOrDefault(keyword, new ArrayList<>());
+    }
+
+    public void saveActualPage(final WebPage page) {
+        webPage = page;
+    }
+
+    public WebPage getActualPage() {
+        return webPage;
     }
 }
