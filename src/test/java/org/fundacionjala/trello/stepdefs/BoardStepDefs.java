@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.stepdefs;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.pages.board.BoardPage;
@@ -27,5 +28,15 @@ public final class BoardStepDefs {
     public void validateCreationWithData(final Map<String, String> actualData) {
         board = new BoardPage(getChromeDriver());
         assertEquals(actualData.get("title"), board.getTitle());
+    }
+
+    @And("I navigate to boards page")
+    public void iNavigateToBoardsPage() {
+
+    }
+
+    @And("I open the {string} board")
+    public void iOpenTheBoard(String boardName) {
+        context.getActualPage().getHeader();
     }
 }

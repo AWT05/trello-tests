@@ -3,6 +3,7 @@ package org.fundacionjala.trello.pages.menus;
 import org.fundacionjala.trello.pages.board.BoardForm;
 import org.fundacionjala.trello.pages.forms.FormPage;
 import org.fundacionjala.trello.pages.core.WebObject;
+import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -40,5 +41,10 @@ public final class Header extends WebObject {
             default:
                 throw new IllegalArgumentException(String.format("Invalid entity: <%s>", entity));
         }
+    }
+
+    public BoardsPage getMenuBoards() {
+        click(headerMenuBoards);
+        return new BoardsPage(driver);
     }
 }
