@@ -35,5 +35,4 @@ public final class HeaderStepDefs {
     public void iNavigateToBoardsPage() {
         context.getActualPage().getHeader().getMenuBoards();
     }
-
 }

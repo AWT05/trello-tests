@@ -15,7 +15,6 @@ public final class LoginPage extends WebObject {
     private static final String LOGIN = "input.account-button";
     public static final String LOGIN_ATLASSIAN = "input#login";
 
-
     @FindBy(css = USER_ID)
     private WebElement username;
 
