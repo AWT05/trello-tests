@@ -11,9 +11,3 @@ Feature: Home context
     And I navigate to "member" section
     When I select "Cookie" board
     Then "Cookie" board page should be visible
-
-  Scenario: Open a team's board from boards page body
-    Given I log in with my Atlassian account as "user2"
-    And I navigate to "yo" team section
-    When I select "Cookie" board
-    Then "Cookie" board page should be visible

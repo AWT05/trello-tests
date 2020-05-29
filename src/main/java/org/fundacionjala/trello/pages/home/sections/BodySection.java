@@ -18,42 +18,54 @@ public abstract class BodySection extends Section {
     protected String createBoardSelector;
 
 
-    public BodySection(WebDriver driver, String section) {
+    public BodySection(final WebDriver driver, final String section) {
         super(driver);
         initialize(section);
     }
 
+    /**
+     * Sets values in xpath format for special selectors:
+     * <ul>
+     * <li><code>baseSelector</code>: Allows identifier the section. {@link #isDisplayed()}</li>
+     * <li><code>sectionNameSelector</code>: Locates the section name. {@link #getName()}</li>
+     * <li><code>listBoardsSelector</code>: Locates the list of boards in the section. {@link #getBoards()}</li>
+     * <li><code>boardSelector</code>: Locates a specific board in the section. {@link #getBoard(String)}</li>
+     * <li><code>createBoardSelector</code>: Locate the Create Board button in the section. {@link #createBoard()}</li>
+     * </ul>
+     *
+     * @param section Section identifier.
+     */
     protected abstract void initialize(String section);
 
     @Override
-    public String getName() {
+    public final String getName() {
         By sectionName = By.xpath(sectionNameSelector);
         WebElement name = driver.findElement(sectionName);
         return name.getText();
     }
 
     @Override
-    public List<WebElement> getBoards() {
+    public final List<WebElement> getBoards() {
         By boardsXpath = By.xpath(listBoardsSelector);
         return driver.findElements(boardsXpath);
     }
 
     @Override
-    public BoardPage getBoard(String title) {
+    public final BoardPage getBoard(final String title) {
         By boardXpath = By.xpath(String.format(boardSelector, title));
         click(driver.findElement(boardXpath));
         return new BoardPage(driver);
     }
 
     @Override
-    public boolean isDisplayed() {
+    public final boolean isDisplayed() {
         By iconSelector = By.xpath(baseSelector);
         WebElement icon = driver.findElement(iconSelector);
         return icon.isDisplayed();
     }
 
     @Override
-    public BoardForm createBoard() {
+    public final BoardForm createBoard() {
         By buttonLocation = By.xpath(createBoardSelector);
         wait.until(ExpectedConditions.presenceOfElementLocated(buttonLocation));
         WebElement button = driver.findElement(buttonLocation);
