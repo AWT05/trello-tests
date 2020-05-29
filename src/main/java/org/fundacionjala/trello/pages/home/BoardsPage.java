@@ -14,10 +14,4 @@ public final class BoardsPage extends HomePage {
     public boolean isDisplayed() {
         return false;
     }
-
-    public BoardPage getBoard(String boardName) {
-        WebElement boardElement = driver.findElement(By.cssSelector("div[title=".concat(boardName).concat("]")));
-        click(boardElement);
-        return new BoardPage(driver);
-    }
 }

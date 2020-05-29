@@ -4,6 +4,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.pages.board.BoardPage;
+import org.fundacionjala.trello.pages.board.MenuBoard;
+import org.fundacionjala.trello.pages.home.BoardsPage;
+import org.fundacionjala.trello.pages.menus.MenuBoards;
 
 import java.util.Map;
 
@@ -12,6 +15,7 @@ import static org.testng.Assert.assertEquals;
 
 public final class BoardStepDefs {
 
+    private MenuBoards menuBoards;
     private BoardPage board;
     private final Context context;
 
@@ -30,13 +34,14 @@ public final class BoardStepDefs {
         assertEquals(actualData.get("title"), board.getTitle());
     }
 
-    @And("I navigate to boards page")
-    public void iNavigateToBoardsPage() {
-
-    }
-
+    /**
+     * Opens a board inside personal boards
+     *
+     * @param boardName to open a specified board
+     */
     @And("I open the {string} board")
     public void iOpenTheBoard(String boardName) {
-        context.getActualPage().getHeader();
+        menuBoards = new MenuBoards(getChromeDriver());
+        menuBoards.goToBoardOnPersonalBoards(boardName);
     }
 }

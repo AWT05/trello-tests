@@ -43,8 +43,8 @@ public final class Header extends WebObject {
         }
     }
 
-    public BoardsPage getMenuBoards() {
+    public MenuBoards getMenuBoards() {
         click(headerMenuBoards);
-        return new BoardsPage(driver);
+        return new MenuBoards(driver);
     }
 }

@@ -53,8 +53,4 @@ public class ApiRequestStepDef {
         context.saveResponse(entity, response);
         context.saveIds(endPointsEnum, response.jsonPath().getString("id"));
     }
-
-    @And("I invite {string} as member with:")
-    public void iInviteAsMemberWith(String user) {
-    }
 }

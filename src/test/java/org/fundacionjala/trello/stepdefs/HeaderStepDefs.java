@@ -1,8 +1,11 @@
 package org.fundacionjala.trello.stepdefs;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.forms.FormPage;
+import org.fundacionjala.trello.pages.menus.MenuBoards;
 
 import java.util.Map;
 
@@ -27,4 +30,13 @@ public final class HeaderStepDefs {
         form.fillForm(data);
         form.submit();
     }
+
+    /**
+     * Navigates to boards menu in the header
+     */
+    @And("I navigate to boards menu from header")
+    public void iNavigateToBoardsPage() {
+        context.getActualPage().getHeader().getMenuBoards();
+    }
+
 }

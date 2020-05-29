@@ -7,6 +7,8 @@ import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.openqa.selenium.Keys.ENTER;
+
 /**
  * Bases object that represent a web element.
  */
@@ -48,5 +50,16 @@ public abstract class WebObject {
         wait.until(ExpectedConditions.visibilityOf(webElement));
         webElement.clear();
         webElement.sendKeys(content);
+    }
+
+    /**
+     * Gets the text on a specific webElement.
+     *
+     * @param webElement  web element.
+     * @return a string with the element text.
+     */
+    public String getElementText(WebElement webElement){
+        wait.until(ExpectedConditions.attributeToBeNotEmpty(webElement,"innerText"));
+        return webElement.getText();
     }
 }

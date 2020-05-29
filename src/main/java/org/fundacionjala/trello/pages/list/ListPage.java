@@ -5,12 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ListPage extends PageObject {
 
-    private static final String ADD_LIST = "div.js-add-list span.icon-add";
+    private static final String NAME_LISTS = "h2.list-header-name-assist";
 
-    @FindBy(css = ADD_LIST)
-    WebElement addListIcon;
+    @FindBy(css = NAME_LISTS)
+    private List<WebElement> listNames;
 
     public ListPage(WebDriver driver) {
         super(driver);
@@ -23,11 +27,17 @@ public class ListPage extends PageObject {
      */
     @Override
     public boolean isDisplayed() {
-        return false;
+        return true;
     }
 
-    /*public ListPage AddNewList(String name) {
-        action.setInputField(addListIcon, name);
-        return new ListPage(driver);
-    }*/
+    public List<String> getAllListsNames() {
+        List<String> names = new ArrayList<>();
+        for (WebElement element: listNames){
+            names.add(getElementText(element));
+        }
+        return names;
+        //return listNames.stream().map(WebElement::getText).collect(Collectors.toList());
+    }
+
 }
+

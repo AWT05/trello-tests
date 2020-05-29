@@ -8,9 +8,13 @@ import org.openqa.selenium.support.FindBy;
 public final class MenuBoard extends WebObject {
 
     private static final String OPEN_MORE = "li a.js-open-more";
+    private static final String CLOSE_MENU = "a.board-menu-header-close-button";
 
     @FindBy(css = OPEN_MORE)
     private WebElement moreButton;
+
+    @FindBy(css = CLOSE_MENU)
+    private WebElement closeMenuButton;
 
     public MenuBoard(final WebDriver driver) {
         super(driver);
@@ -24,5 +28,10 @@ public final class MenuBoard extends WebObject {
     public MenuMoreBoard moreMenuOptions() {
         click(moreButton);
         return new MenuMoreBoard(driver);
+    }
+
+    public BoardPage closeMenuOptions() {
+        click(closeMenuButton);
+        return new BoardPage(driver);
     }
 }

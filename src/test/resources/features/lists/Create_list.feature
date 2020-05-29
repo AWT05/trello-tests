@@ -6,10 +6,10 @@ Feature: List
     And I create a "board" with:
       | name | New test board |
 
-  @deleteBoard
+#  @deleteBoard
   Scenario: Create a list
-    Given I log in as "user1"
-    And I navigate to boards page
+    Given I log in with my Trello account as "user1"
+    And I navigate to boards menu from header
     And I open the "New test board" board
     When I create a List with:
       | name | test ui list |

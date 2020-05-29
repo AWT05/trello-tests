@@ -1,6 +1,8 @@
 package org.fundacionjala.trello.pages.board;
 
 import org.fundacionjala.trello.pages.core.PageObject;
+import org.fundacionjala.trello.pages.forms.FormPage;
+import org.fundacionjala.trello.pages.list.ListForm;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +16,7 @@ public final class BoardPage extends PageObject {
     private static final String SHOW_MENU = "a.mod-show-menu";
     private static final String BOARD_HEADER = "div.board-header";
     private static final String BOARD_CANVAS = "#board";
+    private static final String ADD_LIST = "div.js-add-list span.icon-add";
 
     @FindBy(css = BOARD_HEADER)
     private WebElement boardHeader;
@@ -35,6 +38,9 @@ public final class BoardPage extends PageObject {
 
     @FindBy(css = SHOW_MENU)
     private WebElement showMenuButton;
+
+    @FindBy(css = ADD_LIST)
+    WebElement addListIcon;
 
     public BoardPage(final WebDriver driver) {
         super(driver);
@@ -60,5 +66,10 @@ public final class BoardPage extends PageObject {
     public void permanentlyDelete() {
         click(deleteContainer);
         click(deleteConfirm);
+    }
+
+    public FormPage<?> createNewList() {
+        click(addListIcon);
+        return new ListForm(driver);
     }
 }

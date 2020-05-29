@@ -25,12 +25,4 @@ public final class SideBar extends WebObject {
         return false;
     }
 
-    /**
-     * Gets Trello boards component.
-     *
-     * @return Trello boards component.
-     */
-    public BoardsPage getBoards() {
-        return new BoardsPage(driver);
-    }
 }
