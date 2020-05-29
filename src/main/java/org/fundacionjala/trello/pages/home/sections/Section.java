@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.pages.home.sections;
 
+import org.fundacionjala.trello.pages.board.BoardForm;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.core.WebObject;
 import org.openqa.selenium.WebDriver;
@@ -18,4 +19,6 @@ public abstract class Section extends WebObject {
     public abstract List<WebElement> getBoards();
 
     public abstract BoardPage getBoard(String name);
+
+    public abstract BoardForm createBoard();
 }

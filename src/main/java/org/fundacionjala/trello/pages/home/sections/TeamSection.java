@@ -1,33 +1,20 @@
 package org.fundacionjala.trello.pages.home.sections;
 
-import org.fundacionjala.trello.pages.board.BoardPage;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
-public class TeamSection extends Section{
+public class TeamSection extends BodySection {
     public TeamSection(WebDriver driver, String name) {
-        super(driver);
+        super(driver, name);
     }
 
     @Override
-    public String getName() {
-        return null;
-    }
+    protected void initialize(String section) {
+        baseSelector = String.format("//h3[contains(text(),'%s')]", section);
+        sectionNameSelector = baseSelector;
 
-    @Override
-    public List<WebElement> getBoards() {
-        return null;
-    }
-
-    @Override
-    public BoardPage getBoard(String name) {
-        return null;
-    }
-
-    @Override
-    public boolean isDisplayed() {
-        return false;
+        String xpathBaseBoard = baseSelector + "/parent::div/following-sibling::div";
+        listBoardsSelector = xpathBaseBoard + "/ul/li//a";
+        boardSelector = xpathBaseBoard + "//div[@title='%s']//ancestor::a";
+        createBoardSelector = xpathBaseBoard + "//div[@class='board-tile mod-add']";
     }
 }

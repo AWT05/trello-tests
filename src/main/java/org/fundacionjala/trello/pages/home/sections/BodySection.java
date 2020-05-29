@@ -1,45 +1,46 @@
 package org.fundacionjala.trello.pages.home.sections;
 
+import org.fundacionjala.trello.pages.board.BoardForm;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
-public class BodySection extends Section {
+public abstract class BodySection extends Section {
 
-    private String baseSelector;
-    private String baseBoardSelector;
+    protected String baseSelector;
+    protected String sectionNameSelector;
+    protected String listBoardsSelector;
+    protected String boardSelector;
+    protected String createBoardSelector;
 
 
-    public BodySection(WebDriver driver, String name) {
+    public BodySection(WebDriver driver, String section) {
         super(driver);
-        this.baseSelector = String.format("//span[contains(@class,'icon-%s')]", name);
-        this.baseBoardSelector = this.baseSelector.concat(
-                "/parent::div/parent::div/following-sibling::div/ul/li");
+        initialize(section);
     }
+
+    protected abstract void initialize(String section);
 
     @Override
     public String getName() {
-        String nameSelector = baseSelector.concat("/parent::div/following-sibling::h3");
-        By sectionName = By.xpath(nameSelector);
+        By sectionName = By.xpath(sectionNameSelector);
         WebElement name = driver.findElement(sectionName);
         return name.getText();
     }
 
     @Override
     public List<WebElement> getBoards() {
-        String boardsSelector = baseBoardSelector.concat("//a");
-        By boardsXpath = By.xpath(boardsSelector);
+        By boardsXpath = By.xpath(listBoardsSelector);
         return driver.findElements(boardsXpath);
     }
 
     @Override
     public BoardPage getBoard(String title) {
-        String boardSelector = baseBoardSelector.concat(
-                String.format("/a/div//div[@title='%s']", title));
-        By boardXpath = By.xpath(boardSelector);
+        By boardXpath = By.xpath(String.format(boardSelector, title));
         click(driver.findElement(boardXpath));
         return new BoardPage(driver);
     }
@@ -49,5 +50,14 @@ public class BodySection extends Section {
         By iconSelector = By.xpath(baseSelector);
         WebElement icon = driver.findElement(iconSelector);
         return icon.isDisplayed();
+    }
+
+    @Override
+    public BoardForm createBoard() {
+        By buttonLocation = By.xpath(createBoardSelector);
+        wait.until(ExpectedConditions.presenceOfElementLocated(buttonLocation));
+        WebElement button = driver.findElement(buttonLocation);
+        click(button);
+        return new BoardForm(driver);
     }
 }

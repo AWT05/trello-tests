@@ -13,5 +13,4 @@ Feature: Board context.
 
     When I create a "board" from header with the following data
       | title | GUI Testing |
-    Then I should have a board created with the following data
-      | title | GUI Testing |
+    Then "GUI Testing" board page should be visible
