@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MenuBoards extends WebObject {
+public final class MenuBoards extends WebObject {
 
     private static final String FIND_BOARDS = "input[data-test-id='header-boards-menu-search']";
     private static final String CREATE_BOARD = "button[data-test-id='header-boards-menu-create-board']";
@@ -25,7 +25,7 @@ public class MenuBoards extends WebObject {
     @FindBy(css = CLOSED_BOARDS)
     private WebElement closedBoardsButton;
 
-    public MenuBoards(WebDriver driver) {
+    public MenuBoards(final WebDriver driver) {
         super(driver);
     }
 
@@ -39,29 +39,29 @@ public class MenuBoards extends WebObject {
         return findBoards.isDisplayed();
     }
 
-    public BoardPage goToBoardOnPersonalBoards(String boardName) {
+    public BoardPage goToBoardOnPersonalBoards(final String boardName) {
         WebElement boardElement = driver.findElement(By
-                .xpath("//span[@name='board']/parent::span/parent::div/following-sibling::div//" +
-                        "div[contains(text(), '".concat(boardName).concat("')]")));
+                .xpath("//span[@name='board']/parent::span/parent::div/following-sibling::div//"
+                        + "div[contains(text(), '".concat(boardName).concat("')]")));
         boardElement.click();
         return new BoardPage(driver);
     }
 
-    public BoardPage goToBoardOnTeamBoards(String teamName, String boardName) {
+    public BoardPage goToBoardOnTeamBoards(final String teamName, final String boardName) {
         WebElement boardElement = driver.findElement(By
-                .xpath("//span[text()='".concat(teamName).concat("']/ancestor::a/parent::div/" +
-                        "following-sibling::div//div[contains(text(), '".concat(boardName).concat("')]"))));
+                .xpath("//span[text()='".concat(teamName).concat("']/ancestor::a/parent::div/"
+                        + "following-sibling::div//div[contains(text(), '".concat(boardName).concat("')]"))));
         boardElement.click();
         return new BoardPage(driver);
     }
 
     public FormPage<?> createBoard() {
-        click(createBoardButton);
+        action.click(createBoardButton);
         return new BoardForm(driver);
     }
 
-    public BoardClosed goToClosedBoards(){
-        click(closedBoardsButton);
+    public BoardClosed goToClosedBoards() {
+        action.click(closedBoardsButton);
         return new BoardClosed(driver);
     }
 }

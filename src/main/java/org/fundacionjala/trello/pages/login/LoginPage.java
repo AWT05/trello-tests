@@ -40,19 +40,19 @@ public final class LoginPage extends WebObject {
     }
 
     public LoginPage setCredentials(final String username, final String password) {
-        setInputField(this.username, username);
-        setInputField(this.password, password);
+        action.setInputField(this.username, username);
+        action.setInputField(this.password, password);
         return this;
     }
 
     public LoginAtlassianPage loginWithAtlassian(final String email) {
         username.sendKeys(email);
-        click(initWithAtlassian);
+        action.click(initWithAtlassian);
         return new LoginAtlassianPage(driver);
     }
 
     public BoardsPage submit() {
-        click(button);
+        action.click(button);
         return new BoardsPage(driver);
     }
 }

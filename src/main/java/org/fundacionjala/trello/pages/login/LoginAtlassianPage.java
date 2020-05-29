@@ -33,7 +33,7 @@ public final class LoginAtlassianPage extends WebObject {
     }
 
     public BoardsPage submit() {
-        click(submitButton);
+        action.click(submitButton);
         return new BoardsPage(driver);
     }
 }

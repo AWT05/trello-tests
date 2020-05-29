@@ -3,9 +3,7 @@ package org.fundacionjala.trello.stepdefs;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.Context;
-import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.forms.FormPage;
-import org.fundacionjala.trello.pages.menus.MenuBoards;
 
 import java.util.Map;
 
@@ -22,7 +20,7 @@ public final class HeaderStepDefs {
      * Creates an object from header.
      *
      * @param entity Element to be created.
-     * @param data Elements values.
+     * @param data   Elements values.
      */
     @When("I create a {string} from header with the following data")
     public void createEntityWithData(final String entity, final Map<String, String> data) {
@@ -32,7 +30,7 @@ public final class HeaderStepDefs {
     }
 
     /**
-     * Navigates to boards menu in the header
+     * Navigates to boards menu in the header.
      */
     @And("I navigate to boards menu from header")
     public void iNavigateToBoardsPage() {

@@ -1,13 +1,9 @@
 package org.fundacionjala.trello.pages.menus;
 
 import org.fundacionjala.trello.pages.core.WebObject;
-import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public final class SideBar extends WebObject {
 
@@ -24,5 +20,4 @@ public final class SideBar extends WebObject {
     public boolean isDisplayed() {
         return false;
     }
-
 }

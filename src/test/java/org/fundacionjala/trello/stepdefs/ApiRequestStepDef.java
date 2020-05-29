@@ -1,6 +1,5 @@
 package org.fundacionjala.trello.stepdefs;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.restassured.response.Response;
 import org.fundacionjala.trello.client.RequestManager;

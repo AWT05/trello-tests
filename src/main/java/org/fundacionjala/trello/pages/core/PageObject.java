@@ -1,7 +1,5 @@
 package org.fundacionjala.trello.pages.core;
 
-import org.fundacionjala.trello.pages.home.BoardsPage;
-import org.fundacionjala.trello.pages.home.HomePage;
 import org.fundacionjala.trello.pages.menus.Header;
 import org.openqa.selenium.WebDriver;
 
@@ -22,7 +20,4 @@ public abstract class PageObject extends WebObject {
     public Header getHeader() {
         return new Header(driver);
     }
-
-
-
 }

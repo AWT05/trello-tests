@@ -8,10 +8,11 @@ import org.fundacionjala.trello.pages.board.MenuBoard;
 import org.fundacionjala.trello.pages.forms.FormPage;
 import org.fundacionjala.trello.pages.list.ListPage;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class ListStepDef {
 
@@ -21,15 +22,20 @@ public class ListStepDef {
     private ListPage listPage;
     private FormPage<?> form;
 
-    public ListStepDef(final Context context){
+    public ListStepDef(final Context context) {
         this.context = context;
-    }
-
-
-    @When("I create a List with:")
-    public void iCreateAListWith(final Map<String, String> data) {
         boardPage = new BoardPage(getChromeDriver());
         menuBoard = new MenuBoard(getChromeDriver());
+        listPage = new ListPage(getChromeDriver());
+    }
+
+    /**
+     * Creates a list with specific data.
+     *
+     * @param data expected list data.
+     */
+    @When("I create a List with:")
+    public void iCreateAListWith(final Map<String, String> data) {
         if (menuBoard.isDisplayed()) {
             menuBoard.closeMenuOptions();
         }
@@ -38,10 +44,14 @@ public class ListStepDef {
         form.submit();
     }
 
+    /**
+     * Validates the list creation.
+     *
+     * @param expectedData expected data to validate the creation.
+     */
     @Then("I should have a list created with:")
     public void iShouldHaveAListCreatedWith(final Map<String, String> expectedData) {
-        listPage = new ListPage(getChromeDriver());
-        listPage.getAllListsNames().forEach(System.out::println);
-        //assertEquals(expectedData.get("name"), listPage.);
+        List<String> stringListNames = listPage.getAllListsNames();
+        assertTrue(stringListNames.contains(expectedData.get("name")));
     }
 }

@@ -18,12 +18,12 @@ public final class ListForm extends FormPage<ListPage> {
     private static final String ADD_LIST_BUTTON = "input.primary.mod-list-add-button";
 
     @FindBy(css = LIST_NAME)
-    WebElement lisNameInput;
+    private WebElement lisNameInput;
 
     @FindBy(css = ADD_LIST_BUTTON)
-    WebElement addListButton;
+    private WebElement addListButton;
 
-    public ListForm(WebDriver driver) {
+    public ListForm(final WebDriver driver) {
         super(driver);
     }
 
@@ -40,13 +40,13 @@ public final class ListForm extends FormPage<ListPage> {
     }
 
     public ListForm setName(final String listName) {
-        setInputField(lisNameInput, listName);
+        action.setInputField(lisNameInput, listName);
         return this;
     }
 
     @Override
     public ListPage submit() {
-        click(addListButton);
+        action.click(addListButton);
         return new ListPage(driver);
     }
 }

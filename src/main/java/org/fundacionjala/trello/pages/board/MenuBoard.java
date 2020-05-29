@@ -26,12 +26,12 @@ public final class MenuBoard extends WebObject {
     }
 
     public MenuMoreBoard moreMenuOptions() {
-        click(moreButton);
+        action.click(moreButton);
         return new MenuMoreBoard(driver);
     }
 
     public BoardPage closeMenuOptions() {
-        click(closeMenuButton);
+        action.click(closeMenuButton);
         return new BoardPage(driver);
     }
 }

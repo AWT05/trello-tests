@@ -4,7 +4,7 @@ import org.fundacionjala.trello.pages.core.PageObject;
 import org.openqa.selenium.WebDriver;
 
 public class BoardClosed extends PageObject {
-    public BoardClosed(WebDriver driver) {
+    public BoardClosed(final WebDriver driver) {
         super(driver);
     }
 

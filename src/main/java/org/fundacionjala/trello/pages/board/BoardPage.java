@@ -40,7 +40,7 @@ public final class BoardPage extends PageObject {
     private WebElement showMenuButton;
 
     @FindBy(css = ADD_LIST)
-    WebElement addListIcon;
+    private WebElement addListIcon;
 
     public BoardPage(final WebDriver driver) {
         super(driver);
@@ -59,17 +59,17 @@ public final class BoardPage extends PageObject {
     }
 
     public MenuBoard displayMenu() {
-        click(showMenuButton);
+        action.click(showMenuButton);
         return new MenuBoard(driver);
     }
 
     public void permanentlyDelete() {
-        click(deleteContainer);
-        click(deleteConfirm);
+        action.click(deleteContainer);
+        action.click(deleteConfirm);
     }
 
     public FormPage<?> createNewList() {
-        click(addListIcon);
+        action.click(addListIcon);
         return new ListForm(driver);
     }
 }
