@@ -1,4 +1,4 @@
-@deleteBoard
+@deleteBoard @deleteTeam
 Feature: Home context
 
   Background: Log in and created a board in a team
