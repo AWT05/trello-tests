@@ -9,7 +9,7 @@ import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 
 public final class CommonHooks {
 
-    private static final int CLEAN_CONTEXT_ORDER_VALUE = 10;
+    private static final int CLEAN_CONTEXT_ORDER_VALUE = 5;
     private static final int INIT_CONTEXT_ORDER_VALUE = 10;
 
     /**
