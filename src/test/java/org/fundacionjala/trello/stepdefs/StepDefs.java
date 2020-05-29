@@ -36,7 +36,7 @@ public final class StepDefs {
      * @param userAccount keyword to get a user.
      */
     @Given("I log in with my Trello account as {string}")
-    public void iLogInWithMyTrelloAccountAs(String userAccount) {
+    public void iLogInWithMyTrelloAccountAs(final String userAccount) {
         User user = new User(userAccount);
         LoginPage page = new LoginPage(getChromeDriver());
         PageObject actualPage = page.setCredentials(user.getEmail(), user.getPassword()).submit();

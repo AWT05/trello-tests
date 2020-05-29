@@ -7,7 +7,7 @@ import org.fundacionjala.trello.pages.team.TeamSettings;
 
 public class TeamHooks {
 
-    private static final int CLEAN_CONTEXT_ORDER_VALUE_BOARD = 20;
+    private static final int CLEAN_CONTEXT_ORDER_VALUE_BOARD = 15;
 
     /**
      * Delete a Team if it was created.

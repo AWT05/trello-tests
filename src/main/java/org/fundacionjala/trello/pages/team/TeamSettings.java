@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class TeamSettings extends PageObject {
+public final class TeamSettings extends PageObject {
 
     private static final String DELETE_TEAM_BUTTON = "a.quiet-button";
     private static final String CONFIRM_DELETE_BUTTON = "input[class=\"js-confirm full negate\"]";
@@ -26,6 +26,10 @@ public class TeamSettings extends PageObject {
         return deleteTeamButton.isDisplayed();
     }
 
+    /**
+     * Deletes a team permanently.
+     *
+     */
     public void deleteTeam() {
         click(deleteTeamButton);
         click(confirmDeleteButton);

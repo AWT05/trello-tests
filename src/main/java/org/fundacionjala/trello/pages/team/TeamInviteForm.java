@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.Map;
 
-public class TeamInviteForm extends FormPage<TeamPage> {
+public final class TeamInviteForm extends FormPage<TeamPage> {
 
 
     private static final String INVITE_LATER_BUTTON = "a[data-test-id=\"show-later-button\"]";
@@ -34,6 +34,9 @@ public class TeamInviteForm extends FormPage<TeamPage> {
         return null;
     }
 
+    /**
+     * Skips the step for inviting members to a team.
+     */
     public void skipInvite() {
         inviteLaterButton.click();
     }

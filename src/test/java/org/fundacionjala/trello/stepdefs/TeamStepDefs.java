@@ -1,6 +1,7 @@
 package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.Context;
 import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 import org.fundacionjala.trello.pages.team.TeamInviteForm;
@@ -9,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 
 import java.util.Map;
 
-public class TeamStepDefs {
+public final class TeamStepDefs {
     private TeamPage teamPage;
     private final Context context;
 
@@ -28,7 +29,10 @@ public class TeamStepDefs {
         assertEquals(teamPage.getTeamName(), expectedData.get("name"));
     }
 
-    @Then("I skip inviting members")
+    /**
+     * Skips the step of inviting members.
+     */
+    @When("I skip inviting members")
     public void iSkipInvitingMembers() {
         TeamInviteForm teamInviteForm = new TeamInviteForm(getChromeDriver());
         teamInviteForm.skipInvite();

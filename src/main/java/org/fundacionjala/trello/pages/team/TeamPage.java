@@ -26,11 +26,8 @@ public final class TeamPage extends PageObject {
         return teamName.isDisplayed() && teamSettings.isDisplayed();
     }
 
-    public String getUrl() {
-        return driver.getCurrentUrl();
-    }
-
     public String getTeamName() {
+        waitUntilLoad(teamName);
         if (isDisplayed()) {
             return teamName.getText();
         } else {
@@ -38,6 +35,11 @@ public final class TeamPage extends PageObject {
         }
     }
 
+    /**
+     * Navigates to settings tab and opens the new page.
+     *
+     * @return A team settings object.
+     */
     public TeamSettings goToSettings() {
         click(teamSettings);
         return new TeamSettings(getChromeDriver());

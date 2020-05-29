@@ -38,4 +38,13 @@ public abstract class WebObject {
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
+
+    /**
+     * Waits for an element to be fully loaded and visible.
+     *
+     * @param element web element.
+     */
+    public void waitUntilLoad(final WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
 }

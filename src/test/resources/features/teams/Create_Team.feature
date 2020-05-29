@@ -9,6 +9,6 @@ Feature: Team manipulation
     When I create a "team" from header with the following data
       | name | Sith Empire |
       | type | Education   |
-    Then I skip inviting members
-    And I should have a team created with the following data
+    And I skip inviting members
+    Then I should have a team created with the following data
       | name | Sith Empire |
