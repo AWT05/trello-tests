@@ -1,7 +1,6 @@
 package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.entities.User;
 import org.fundacionjala.trello.pages.core.PageObject;
