@@ -30,12 +30,16 @@ public final class StepDefs {
         context.saveActualPage(actualPage);
     }
 
+    /**
+     * Logs in trello.
+     *
+     * @param userAccount keyword to get a user.
+     */
     @Given("I log in with my Trello account as {string}")
     public void iLogInWithMyTrelloAccountAs(String userAccount) {
         User user = new User(userAccount);
         LoginPage page = new LoginPage(getChromeDriver());
-        PageObject actualPage = page.setCredentials(user.getEmail(), user.getPassword())
-                .submit();
+        PageObject actualPage = page.setCredentials(user.getEmail(), user.getPassword()).submit();
         context.saveActualPage(actualPage);
     }
 }

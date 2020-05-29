@@ -5,7 +5,7 @@ import org.fundacionjala.trello.context.Context;
 import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 import org.fundacionjala.trello.pages.team.TeamInviteForm;
 import org.fundacionjala.trello.pages.team.TeamPage;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
 
 import java.util.Map;
 
@@ -20,12 +20,12 @@ public class TeamStepDefs {
     /**
      * Validates the creation of the team with the given data.
      *
-     * @param actualData expected data to validate the creation.
+     * @param expectedData expected data to validate the creation.
      */
     @Then("I should have a team created with the following data")
-    public void validateCreationWithData(final Map<String, String> actualData) {
+    public void validateCreationWithData(final Map<String, String> expectedData) {
         teamPage = new TeamPage(getChromeDriver());
-        assertTrue(teamPage.getUrl().contains(actualData.get("url")));
+        assertEquals(teamPage.getTeamName(), expectedData.get("name"));
     }
 
     @Then("I skip inviting members")

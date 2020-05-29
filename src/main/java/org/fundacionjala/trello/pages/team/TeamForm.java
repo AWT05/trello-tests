@@ -55,10 +55,10 @@ public final class TeamForm extends FormPage<TeamPage> {
     }
 
     public TeamForm setType(final String type) {
-        teamTypeDisplay.click();
+        click(teamTypeDisplay);
         for (WebElement typeElement : teamTypeList) {
             if (typeElement.getAttribute("data-test-id").contains(type.toLowerCase())) {
-                typeElement.click();
+                click(typeElement);
                 break;
             }
         }

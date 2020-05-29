@@ -34,9 +34,8 @@ public class TeamInviteForm extends FormPage<TeamPage> {
         return null;
     }
 
-    public TeamInviteForm skipInvite() {
+    public void skipInvite() {
         inviteLaterButton.click();
-        return this;
     }
 
     @Override

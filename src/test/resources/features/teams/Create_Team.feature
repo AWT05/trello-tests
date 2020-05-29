@@ -1,4 +1,4 @@
-@quitDriver
+@quitDriver @deleteTeam
 Feature: Team manipulation
 
   Background: Login to trello.
@@ -10,4 +10,4 @@ Feature: Team manipulation
       | type | Education   |
     Then I skip inviting members
     And I should have a team created with the following data
-      | url | sithempire5 |
+      | name | Sith Empire |
