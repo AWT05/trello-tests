@@ -12,7 +12,6 @@ public final class BoardSection extends BodySection {
     protected void initialize(final String section) {
         baseSelector = String.format("//span[contains(@class,'icon-%s')]", section);
         sectionNameSelector = baseSelector.concat("/parent::div/following-sibling::h3");
-
         String xpathBaseBoard = baseSelector.concat("/parent::div/parent::div/following-sibling::div/ul/li");
         listBoardsSelector = xpathBaseBoard.concat("//a");
         boardSelector = xpathBaseBoard.concat("/a/div//div[@title='%s']");

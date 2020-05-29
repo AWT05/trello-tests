@@ -12,7 +12,6 @@ public final class TeamSection extends BodySection {
     protected void initialize(final String section) {
         baseSelector = String.format("//h3[contains(text(),'%s')]", section);
         sectionNameSelector = baseSelector;
-
         String xpathBaseBoard = baseSelector + "/parent::div/following-sibling::div";
         listBoardsSelector = xpathBaseBoard + "/ul/li//a";
         boardSelector = xpathBaseBoard + "//div[@title='%s']//ancestor::a";

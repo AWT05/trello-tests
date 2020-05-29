@@ -17,7 +17,6 @@ public abstract class BodySection extends Section {
     protected String boardSelector;
     protected String createBoardSelector;
 
-
     public BodySection(final WebDriver driver, final String section) {
         super(driver);
         initialize(section);
