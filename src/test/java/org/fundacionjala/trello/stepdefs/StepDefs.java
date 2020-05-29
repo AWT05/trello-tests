@@ -38,7 +38,7 @@ public final class StepDefs {
      *
      * @param userAccount keyword to get an user.
      */
-    @When("I log in with my Trello account as {string}")
+    @Given("I log in with my Trello account as {string}")
     public void iAmLogInUsingTheUiAs(final String userAccount) {
         User user = new User(userAccount);
         PageObject actualPage = loginPage.setCredentials(user.getEmail(), user.getPassword()).submit();

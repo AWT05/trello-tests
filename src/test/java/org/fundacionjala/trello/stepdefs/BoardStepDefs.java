@@ -2,6 +2,7 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.menus.MenuBoards;
@@ -38,7 +39,7 @@ public final class BoardStepDefs {
      *
      * @param boardName to open a specified board.
      */
-    @And("I open the {string} board")
+    @When("I open the {string} board")
     public void iOpenTheBoard(final String boardName) {
         menuBoards.goToBoardOnPersonalBoards(boardName);
     }

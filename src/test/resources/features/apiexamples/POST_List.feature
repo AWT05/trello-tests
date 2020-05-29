@@ -1,7 +1,7 @@
 Feature: List Controller
 
   Background: Set the authentication
-    Given I set the authentication using "user1"
+    Given I authenticate as "user1"
     And I create a "board" with:
       | name | Hello New Board! |
 

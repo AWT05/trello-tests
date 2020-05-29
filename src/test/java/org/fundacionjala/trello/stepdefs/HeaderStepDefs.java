@@ -32,7 +32,7 @@ public final class HeaderStepDefs {
     /**
      * Navigates to boards menu in the header.
      */
-    @And("I navigate to boards menu from header")
+    @When("I navigate to boards menu from header")
     public void iNavigateToBoardsPage() {
         context.getActualPage().getHeader().getMenuBoards();
     }

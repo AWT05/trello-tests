@@ -1,7 +1,7 @@
 Feature: Board Controller
 
   Background: Set the authentication
-    Given I set the authentication using "user1"
+    Given I authenticate as "user1"
 
   @deleteBoard
   Scenario: Create a board as a background example
