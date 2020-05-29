@@ -64,8 +64,12 @@ public abstract class BodySection extends Section {
         return icon.isDisplayed();
     }
 
-    @Override
-    public final BoardForm createBoard() {
+    /**
+     * Opens the form page to create a board.
+     *
+     * @return Board form page.
+     */
+    public BoardForm createBoard() {
         By buttonLocation = By.xpath(createBoardSelector);
         wait.until(ExpectedConditions.presenceOfElementLocated(buttonLocation));
         WebElement button = driver.findElement(buttonLocation);
