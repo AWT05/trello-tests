@@ -8,6 +8,7 @@ import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public final class BoardStepDefs {
 
@@ -27,5 +28,12 @@ public final class BoardStepDefs {
     public void validateCreationWithData(final Map<String, String> actualData) {
         board = new BoardPage(getChromeDriver());
         assertEquals(actualData.get("title"), board.getTitle());
+    }
+
+    @Then("{string} board page should be visible")
+    public void boardPageShouldBeVisible(String title) {
+        board = new BoardPage(getChromeDriver());
+        assertTrue(board.isDisplayed());
+        assertEquals(board.getTitle(), title);
     }
 }
