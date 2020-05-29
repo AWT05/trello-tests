@@ -8,7 +8,7 @@ import static org.fundacionjala.trello.context.EndPointsEnum.TEAM;
 
 public class TeamHooks {
 
-    private static final int CLEAN_CONTEXT_ORDER_VALUE_TEAM = 10;
+    private static final int CLEAN_CONTEXT_ORDER_TEAM_API = 11;
     private final Context context;
     private final RequestManager requestManager;
 
@@ -20,12 +20,8 @@ public class TeamHooks {
     /**
      * Delete a team if it was created.
      */
-    @After(value = "@deleteTeam", order = CLEAN_CONTEXT_ORDER_VALUE_TEAM)
-    public void deleteTeam() {
-        deleteByApi();
-    }
-
-    private void deleteByApi() {
+    @After(value = "@deleteTeamApi", order = CLEAN_CONTEXT_ORDER_TEAM_API)
+    public void deleteTeamByApi() {
         context.getIdsByKey(TEAM)
                 .forEach(id -> requestManager.init(context).delete(TEAM.getEndPoint().concat(id)));
     }

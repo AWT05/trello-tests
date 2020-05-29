@@ -11,7 +11,8 @@ import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 
 public final class BoardHooks {
 
-    private static final int CLEAN_CONTEXT_ORDER_VALUE_BOARD = 20;
+    private static final int CLEAN_CONTEXT_ORDER_BOARD_UI = 20;
+    private static final int CLEAN_CONTEXT_ORDER_BOARD_API = 21;
     private final Context context;
     private final RequestManager requestManager;
 
@@ -21,15 +22,10 @@ public final class BoardHooks {
     }
 
     /**
-     * Delete a Board if it was created.
+     * Delete a Board if it was created by UI.
      */
-    @After(value = "@deleteBoard", order = CLEAN_CONTEXT_ORDER_VALUE_BOARD)
-    public void deleteBoard() {
-        deleteByApi();
-        deleteByUI();
-    }
-
-    private void deleteByUI() {
+    @After(value = "@deleteBoardUi", order = CLEAN_CONTEXT_ORDER_BOARD_UI)
+    public void deleteBoardByUI() {
         BoardPage board = new BoardPage(getChromeDriver());
         MenuBoard menuBoard = new MenuBoard(getChromeDriver());
         if (!board.isDisplayed()) {
@@ -41,7 +37,11 @@ public final class BoardHooks {
         menuBoard.moreMenuOptions().closeBoard().permanentlyDelete();
     }
 
-    private void deleteByApi() {
+    /**
+     * Delete a Board if it was created by API.
+     */
+    @After(value = "@deleteBoardApi", order = CLEAN_CONTEXT_ORDER_BOARD_API)
+    public void deleteBoardByApi() {
         context.getIdsByKey(BOARD)
                 .forEach(id -> requestManager.init(context).delete(BOARD.getEndPoint().concat(id)));
     }
