@@ -1,8 +1,8 @@
 package org.fundacionjala.trello.pages.menus;
 
 import org.fundacionjala.trello.pages.board.BoardForm;
-import org.fundacionjala.trello.pages.forms.FormPage;
 import org.fundacionjala.trello.pages.core.WebObject;
+import org.fundacionjala.trello.pages.forms.FormPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,13 +32,18 @@ public final class Header extends WebObject {
     }
 
     public FormPage<?> createElement(final String entity) {
-        click(creationButton);
+        action.click(creationButton);
         switch (entity) {
             case "board":
-                click(createBoardButton);
+                action.click(createBoardButton);
                 return new BoardForm(driver);
             default:
                 throw new IllegalArgumentException(String.format("Invalid entity: <%s>", entity));
         }
+    }
+
+    public MenuBoards getMenuBoards() {
+        action.click(headerMenuBoards);
+        return new MenuBoards(driver);
     }
 }
