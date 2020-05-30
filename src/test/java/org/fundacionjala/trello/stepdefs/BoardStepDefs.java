@@ -43,6 +43,7 @@ public class BoardStepDefs {
     @Then("I should have a board created with the following data")
     public void validateCreationWithData(final Map<String, String> actualData) {
         assertEquals(actualData.get("title"), board.getTitle());
+        context.saveIds(BOARD, board.getIdentifier());
     }
 
     /**
@@ -54,7 +55,6 @@ public class BoardStepDefs {
     public void boardPageShouldBeVisible(final String title) {
         assertTrue(board.isDisplayed());
         assertEquals(board.getTitle(), title);
-
         context.saveIds(BOARD, board.getIdentifier());
     }
 }
