@@ -7,6 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
+
 public final class BoardPage extends PageObject {
 
     private static final String TITLE_TEXT = "div.mod-board-name > span";
@@ -71,5 +75,16 @@ public final class BoardPage extends PageObject {
     public FormPage<?> createNewList() {
         action.click(addListIcon);
         return new ListForm(driver);
+    }
+
+    public String getIdentifier() {
+        String identifier = "";
+        try {
+            String currentUri = new URI(driver.getCurrentUrl()).getPath();
+             identifier = Paths.get(currentUri).getName(1).toString();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return identifier;
     }
 }

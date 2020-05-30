@@ -8,6 +8,7 @@ import org.fundacionjala.trello.pages.menus.MenuBoards;
 
 import java.util.Map;
 
+import static org.fundacionjala.trello.context.EndPointsEnum.BOARD;
 import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -53,5 +54,7 @@ public class BoardStepDefs {
     public void boardPageShouldBeVisible(final String title) {
         assertTrue(board.isDisplayed());
         assertEquals(board.getTitle(), title);
+
+        context.saveIds(BOARD, board.getIdentifier());
     }
 }
