@@ -21,6 +21,7 @@ public final class BoardPage extends PageObject {
     private static final String BOARD_HEADER = "div.board-header";
     private static final String BOARD_CANVAS = "#board";
     private static final String ADD_LIST = "div.js-add-list span.icon-add";
+    private static final int ID_INDEX = 1;
 
     @FindBy(css = BOARD_HEADER)
     private WebElement boardHeader;
@@ -81,7 +82,7 @@ public final class BoardPage extends PageObject {
         String identifier = "";
         try {
             String currentUri = new URI(driver.getCurrentUrl()).getPath();
-             identifier = Paths.get(currentUri).getName(1).toString();
+            identifier = Paths.get(currentUri).getName(ID_INDEX).toString();
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

@@ -15,7 +15,7 @@ public final class StepDefs {
     private RequestManager requestManager;
     private LoginPage loginPage;
 
-    public StepDefs(final Context context, RequestManager requestManager) {
+    public StepDefs(final Context context, final RequestManager requestManager) {
         this.context = context;
         this.requestManager = requestManager;
         loginPage = new LoginPage(getChromeDriver());
