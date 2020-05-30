@@ -42,6 +42,7 @@ public final class BoardHooks {
      */
     @After(value = "@deleteBoard", order = CLEAN_CONTEXT_ORDER_BOARD)
     public void deleteBoardByApi() {
+        RequestManager.displayFiltersData();
         context.getIdsByKey(BOARD)
                 .forEach(id -> requestManager.init(context).delete(BOARD.getEndPoint().concat(id)));
     }
