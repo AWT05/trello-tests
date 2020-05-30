@@ -2,7 +2,7 @@
 Feature: Home context
 
   Background: Log in and created a board in a team
-    Given I set authentication using "user2"
+    Given I authenticate as "user2"
     And I create a "team" with:
       | displayName | Team Cookie |
     And I create a "board" with:

@@ -2,7 +2,7 @@
 Feature: Home context
 
   Background: Log in and created a board
-    Given I set authentication using "user2"
+    Given I authenticate as "user2"
     And I create a "board" with:
       | name | Cookie |
 

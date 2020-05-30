@@ -52,7 +52,7 @@ public abstract class BodySection extends Section {
     @Override
     public final BoardPage getBoard(final String title) {
         By boardXpath = By.xpath(String.format(boardSelector, title));
-        click(driver.findElement(boardXpath));
+        action.click(driver.findElement(boardXpath));
         return new BoardPage(driver);
     }
 
@@ -72,7 +72,7 @@ public abstract class BodySection extends Section {
         By buttonLocation = By.xpath(createBoardSelector);
         wait.until(ExpectedConditions.presenceOfElementLocated(buttonLocation));
         WebElement button = driver.findElement(buttonLocation);
-        click(button);
+        action.click(button);
         return new BoardForm(driver);
     }
 }
