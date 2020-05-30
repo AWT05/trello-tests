@@ -1,4 +1,4 @@
-@deleteBoardApi
+@deleteBoard
 Feature: Home context
 
   Background: Log in and created a board
