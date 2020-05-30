@@ -15,6 +15,10 @@ public final class MenuBoards extends WebObject {
     private static final String FIND_BOARDS = "input[data-test-id='header-boards-menu-search']";
     private static final String CREATE_BOARD = "button[data-test-id='header-boards-menu-create-board']";
     private static final String CLOSED_BOARDS = "button[data-test-id='header-boards-menu-open-closed']";
+    private static final String PERSONAL_BOARD = "//span[@name='board']/parent::span/parent::div/"
+            + "following-sibling::div//div[contains(text(), '%s')]";
+    private static final String TEAM_BOARDS = "//span[text()='%s']/ancestor::a/parent::div/"
+            + "following-sibling::div//div[contains(text(), '%s')]";
 
     @FindBy(css = FIND_BOARDS)
     private WebElement findBoards;
@@ -39,18 +43,16 @@ public final class MenuBoards extends WebObject {
         return findBoards.isDisplayed();
     }
 
-    public BoardPage goToBoardOnPersonalBoards(final String boardName) {
-        WebElement boardElement = driver.findElement(By
-                .xpath("//span[@name='board']/parent::span/parent::div/following-sibling::div//"
-                        + "div[contains(text(), '".concat(boardName).concat("')]")));
+    public BoardPage openPersonalBoard(final String boardName) {
+        String personalBoard = String.format(PERSONAL_BOARD, boardName);
+        WebElement boardElement = driver.findElement(By.xpath(personalBoard));
         boardElement.click();
         return new BoardPage(driver);
     }
 
-    public BoardPage goToBoardOnTeamBoards(final String teamName, final String boardName) {
-        WebElement boardElement = driver.findElement(By
-                .xpath("//span[text()='".concat(teamName).concat("']/ancestor::a/parent::div/"
-                        + "following-sibling::div//div[contains(text(), '".concat(boardName).concat("')]"))));
+    public BoardPage openTeamBoard(final String teamName, final String boardName) {
+        String teamBoard = String.format(TEAM_BOARDS, teamName, boardName);
+        WebElement boardElement = driver.findElement(By.xpath(teamBoard));
         boardElement.click();
         return new BoardPage(driver);
     }

@@ -40,6 +40,6 @@ public final class BoardStepDefs {
      */
     @When("I open the {string} board")
     public void iOpenTheBoard(final String boardName) {
-        menuBoards.goToBoardOnPersonalBoards(boardName);
+        menuBoards.openPersonalBoard(boardName);
     }
 }
