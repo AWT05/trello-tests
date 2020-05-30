@@ -1,8 +1,10 @@
 package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.pages.board.BoardPage;
+import org.fundacionjala.trello.pages.menus.MenuBoards;
 
 import java.util.Map;
 
@@ -12,11 +14,24 @@ import static org.testng.Assert.assertTrue;
 
 public class BoardStepDefs {
 
+    private MenuBoards menuBoards;
     private BoardPage board;
     private final Context context;
 
     public BoardStepDefs(final Context context) {
         this.context = context;
+        board = new BoardPage(getChromeDriver());
+        menuBoards = new MenuBoards(getChromeDriver());
+    }
+
+    /**
+     * Opens a board inside personal boards.
+     *
+     * @param boardName to open a specified board.
+     */
+    @When("I open the {string} board")
+    public void iOpenTheBoard(final String boardName) {
+        menuBoards.openPersonalBoard(boardName);
     }
 
     /**
@@ -26,7 +41,6 @@ public class BoardStepDefs {
      */
     @Then("I should have a board created with the following data")
     public void validateCreationWithData(final Map<String, String> actualData) {
-        board = new BoardPage(getChromeDriver());
         assertEquals(actualData.get("title"), board.getTitle());
     }
 
@@ -37,7 +51,6 @@ public class BoardStepDefs {
      */
     @Then("{string} board page should be visible")
     public void boardPageShouldBeVisible(final String title) {
-        board = new BoardPage(getChromeDriver());
         assertTrue(board.isDisplayed());
         assertEquals(board.getTitle(), title);
     }
