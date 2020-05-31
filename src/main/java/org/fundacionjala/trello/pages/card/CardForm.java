@@ -16,20 +16,19 @@ import static org.fundacionjala.trello.pages.forms.FormFieldsEnum.NAME;
 
 public class CardForm extends FormPage<ListPage> {
 
-    private static final String ADD_NEW_CARD_BUTTON = "span.js-add-a-card";
+
     private static final String NEW_CARD_NAME = "textarea.list-card-composer-textarea";
     private static final String ADD_CARD_SUBMIT_BUTTON = "span.js-add-a-card";
 //    private static final String LIST_LOCATOR = "list-header-name-assist[text()=new]";
     public static final String LIST_LOCATOR = "//h2[text()=\"%s\"]";
 
-
 //    h2.list-header-name-assist[text()="new"]
-
-    @FindBy(css = ADD_CARD_SUBMIT_BUTTON)
-    private WebElement addCardSubmitButton;
 
     @FindBy(css = NEW_CARD_NAME)
     private WebElement cardNameInput;
+
+    @FindBy(css = ADD_CARD_SUBMIT_BUTTON)
+    private WebElement addCardSubmitButton;
 
     public CardForm(WebDriver driver) {
         super(driver);
