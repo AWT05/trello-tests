@@ -10,7 +10,7 @@ Feature: Home context
       | idOrganization | {team.id} |
 
   Scenario: Open a team's board from boards page body
-    Given I log in with my Atlassian account as "user2"
+    Given I log in with my Trello account as "user2"
     And I navigate to "Team Cookie" section
     When I select "Cookie" board
     Then "Cookie" board page should be visible

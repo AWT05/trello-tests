@@ -19,20 +19,6 @@ public final class StepDefs {
     }
 
     /**
-     * Logins in trello with Atlassian account.
-     *
-     * @param userAccount keyword to get an user.
-     */
-    @Given("I log in with my Atlassian account as {string}")
-    public void loginAtlassianAccount(final String userAccount) {
-        User user = new User(userAccount);
-        PageObject actualPage = loginPage.loginWithAtlassian(user.getEmail())
-                .setPassword(user.getPassword())
-                .submit();
-        context.saveActualPage(actualPage);
-    }
-
-    /**
      * Logins in trello page.
      *
      * @param userAccount keyword to get an user.
