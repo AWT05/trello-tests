@@ -1,10 +1,10 @@
 package org.fundacionjala.trello.context;
 
 public enum EndPointsEnum {
-    BOARD("/boards"),
-    CARD("/cards"),
-    LIST("/lists"),
-    TEAM("/organizations");
+    BOARD("/boards/"),
+    CARD("/cards/"),
+    LIST("/lists/"),
+    TEAM("/organizations/");
 
     private final String endPoint;
 
