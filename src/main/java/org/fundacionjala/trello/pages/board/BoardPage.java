@@ -19,7 +19,8 @@ public final class BoardPage extends PageObject {
     private static final String BOARD_HEADER = "div.board-header";
     private static final String BOARD_CANVAS = "#board";
     private static final String ADD_LIST = "div.js-add-list span.icon-add";
-    private static final String GET_LIST = "//textarea[contains(text(), '%s')]/parent::div[contains(@class,'list-header')]";
+    private static final String GET_LIST = "//textarea[contains(text(), '%s')]/parent::"
+            + "div[contains(@class,'list-header')]";
 
     @FindBy(css = BOARD_HEADER)
     private WebElement boardHeader;
