@@ -7,7 +7,7 @@ Feature: Home context
       | name | Cookie |
 
   Scenario: Open a board from boards page body
-    Given I log in with my Atlassian account as "user2"
+    Given I log in with my Trello account as "user2"
     And I navigate to "member" section
     When I select "Cookie" board
     Then "Cookie" board page should be visible
