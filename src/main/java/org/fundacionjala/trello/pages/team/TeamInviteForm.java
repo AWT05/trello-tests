@@ -38,12 +38,12 @@ public final class TeamInviteForm extends FormPage<TeamPage> {
      * Skips the step for inviting members to a team.
      */
     public void skipInvite() {
-        inviteLaterButton.click();
+        action.click(inviteLaterButton);
     }
 
     @Override
     public TeamPage submit() {
-        click(inviteTeam);
+        action.click(inviteTeam);
         return new TeamPage(driver);
     }
 

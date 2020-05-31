@@ -27,7 +27,7 @@ public final class TeamPage extends PageObject {
     }
 
     public String getTeamName() {
-        waitUntilLoad(teamName);
+        action.waitUntilLoad(teamName);
         if (isDisplayed()) {
             return teamName.getText();
         } else {
@@ -41,7 +41,7 @@ public final class TeamPage extends PageObject {
      * @return A team settings object.
      */
     public TeamSettings goToSettings() {
-        click(teamSettings);
+        action.click(teamSettings);
         return new TeamSettings(getChromeDriver());
     }
 }

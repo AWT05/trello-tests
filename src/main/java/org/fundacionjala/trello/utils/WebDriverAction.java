@@ -47,4 +47,13 @@ public class WebDriverAction {
         wait.until(ExpectedConditions.attributeToBeNotEmpty(webElement, "innerText"));
         return webElement.getText();
     }
+
+    /**
+     * Waits for an element to be fully loaded and visible.
+     *
+     * @param element web element.
+     */
+    public void waitUntilLoad(final WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
 }

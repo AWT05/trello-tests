@@ -31,8 +31,8 @@ public final class TeamSettings extends PageObject {
      *
      */
     public void deleteTeam() {
-        click(deleteTeamButton);
-        click(confirmDeleteButton);
+        action.click(deleteTeamButton);
+        action.click(confirmDeleteButton);
         new TeamsPage(driver);
     }
 

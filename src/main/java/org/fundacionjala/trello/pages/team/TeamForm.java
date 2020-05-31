@@ -50,15 +50,15 @@ public final class TeamForm extends FormPage<TeamPage> {
     }
 
     public TeamForm setName(final String name) {
-        inputName.sendKeys(name);
+        action.setInputField(inputName, name);
         return this;
     }
 
     public TeamForm setType(final String type) {
-        click(teamTypeDisplay);
+        action.click(teamTypeDisplay);
         for (WebElement typeElement : teamTypeList) {
             if (typeElement.getAttribute("data-test-id").contains(type.toLowerCase())) {
-                click(typeElement);
+                action.click(typeElement);
                 break;
             }
         }
@@ -67,7 +67,7 @@ public final class TeamForm extends FormPage<TeamPage> {
 
     @Override
     public TeamPage submit() {
-        click(createButton);
+        action.click(createButton);
         return new TeamPage(driver);
     }
 }
