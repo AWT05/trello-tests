@@ -39,7 +39,6 @@ public class CreateTeamTest {
         LoginPage page = new LoginPage(getChromeDriver());
         PageObject actualPage = page.setCredentials(user.getEmail(), user.getPassword())
                 .submit();
-//        context.saveActualPage(actualPage);
         form = actualPage.getHeader().createElement("team");
         form.fillForm(data);
         form.submit();

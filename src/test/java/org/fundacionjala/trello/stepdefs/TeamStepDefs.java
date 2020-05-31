@@ -12,10 +12,13 @@ import java.util.Map;
 
 public final class TeamStepDefs {
     private TeamPage teamPage;
-    private final Context context;
+    private Context context;
+    private TeamInviteForm teamInviteForm;
 
     public TeamStepDefs(final Context context) {
         this.context = context;
+        this.teamPage = new TeamPage(getChromeDriver());
+        this.teamInviteForm = new TeamInviteForm(getChromeDriver());
     }
 
     /**
@@ -25,7 +28,6 @@ public final class TeamStepDefs {
      */
     @Then("I should have a team created with the following data")
     public void validateCreationWithData(final Map<String, String> expectedData) {
-        teamPage = new TeamPage(getChromeDriver());
         assertEquals(teamPage.getTeamName(), expectedData.get("name"));
     }
 
@@ -34,7 +36,6 @@ public final class TeamStepDefs {
      */
     @When("I skip inviting members")
     public void iSkipInvitingMembers() {
-        TeamInviteForm teamInviteForm = new TeamInviteForm(getChromeDriver());
         teamInviteForm.skipInvite();
     }
 }
