@@ -49,9 +49,25 @@ public class ListStepDef {
      *
      * @param expectedData expected data to validate the creation.
      */
-    @Then("I should have a list created with:")
-    public void iShouldHaveAListCreatedWith(final Map<String, String> expectedData) {
+    @Then("I should have a list (created)(updated) with:")
+    public void shouldHaveAListCreatedUpdated(final Map<String, String> expectedData) {
         List<String> stringListNames = listPage.getAllListsNames();
         assertTrue(stringListNames.contains(expectedData.get("name")));
+    }
+
+    /**
+     * Updates a list with specific data.
+     *
+     * @param listName to set the list name.
+     * @param data     expected list data.
+     */
+    @When("I update the {string} List with:")
+    public void updateTheList(final String listName, final Map<String, String> data) {
+        if (menuBoard.isDisplayed()) {
+            menuBoard.closeMenuOptions();
+        }
+        form = boardPage.updateList(listName);
+        form.fillForm(data);
+        form.submit();
     }
 }
