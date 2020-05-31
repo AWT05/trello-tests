@@ -3,9 +3,11 @@ package org.fundacionjala.trello.pages.login;
 import org.fundacionjala.trello.config.Environment;
 import org.fundacionjala.trello.pages.core.WebObject;
 import org.fundacionjala.trello.pages.home.BoardsPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public final class LoginPage extends WebObject {
 
@@ -13,7 +15,8 @@ public final class LoginPage extends WebObject {
     private static final String USER_ID = "#user";
     private static final String PASSWORD_ID = "#password";
     private static final String LOGIN = "input.account-button";
-    public static final String LOGIN_ATLASSIAN = "input#login";
+    private static final String LOGIN_ATLASSIAN = "input#login";
+    private static final String LOGIN_SUBMIT_ATLASSIAN = "#login-submit";
 
     @FindBy(css = USER_ID)
     private WebElement username;
@@ -25,7 +28,10 @@ public final class LoginPage extends WebObject {
     private WebElement button;
 
     @FindBy(css = LOGIN_ATLASSIAN)
-    private WebElement initWithAtlassian;
+    private WebElement initAtlassianButton;
+
+    @FindBy(css = LOGIN_SUBMIT_ATLASSIAN)
+    private WebElement submitAtlassianButton;
 
     public LoginPage(final WebDriver driver) {
         super(driver);
@@ -39,19 +45,25 @@ public final class LoginPage extends WebObject {
     }
 
     public LoginPage setCredentials(final String username, final String password) {
-        this.username.sendKeys(username);
-        this.password.sendKeys(password);
+        action.setInputField(this.username, username);
+        if (initAtlassianButton.isDisplayed()) {
+            loginWithAtlassian();
+        }
+        action.setInputField(this.password, password);
         return this;
     }
 
-    public LoginAtlassianPage loginWithAtlassian(final String email) {
-        username.sendKeys(email);
-        click(initWithAtlassian);
-        return new LoginAtlassianPage(driver);
+    public void loginWithAtlassian() {
+        action.click(initAtlassianButton);
+        By loginAtlassian = By.cssSelector(LOGIN_SUBMIT_ATLASSIAN);
+        wait.until(ExpectedConditions.elementToBeClickable(loginAtlassian));
     }
 
     public BoardsPage submit() {
-        click(button);
+        if (submitAtlassianButton.isDisplayed()) {
+            button = submitAtlassianButton;
+        }
+        action.click(button);
         return new BoardsPage(driver);
     }
 }

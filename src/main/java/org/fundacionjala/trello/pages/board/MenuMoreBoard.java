@@ -26,8 +26,8 @@ public final class MenuMoreBoard extends WebObject {
     }
 
     public BoardPage closeBoard() {
-        click(closeBoard);
-        click(confirmClose);
+        action.click(closeBoard);
+        action.click(confirmClose);
         return new BoardPage(driver);
     }
 }

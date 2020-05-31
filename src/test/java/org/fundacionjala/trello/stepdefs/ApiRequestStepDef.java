@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Groups request step definitions.
  */
-public class ApiRequestSteps {
+public class ApiRequestStepDef {
 
     private final Context context;
     private final RequestManager requestManager;
@@ -24,7 +24,7 @@ public class ApiRequestSteps {
      * @param context        scenario context.
      * @param requestManager helper to sending requests.
      */
-    public ApiRequestSteps(final Context context, final RequestManager requestManager) {
+    public ApiRequestStepDef(final Context context, final RequestManager requestManager) {
         this.context = context;
         this.requestManager = requestManager;
     }
@@ -34,7 +34,7 @@ public class ApiRequestSteps {
      *
      * @param user to set the authentication.
      */
-    @Given("I set authentication using {string}")
+    @Given("I authenticate as {string}")
     public void setAuthentication(final String user) {
         requestManager.setApiCredentials(user);
     }

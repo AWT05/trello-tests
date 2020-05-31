@@ -46,7 +46,7 @@ public final class BoardForm extends FormPage<BoardPage> {
 
     @Override
     public BoardPage submit() {
-        click(createButton);
+        action.click(createButton);
         return new BoardPage(driver);
     }
 }

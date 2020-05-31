@@ -10,23 +10,22 @@ import org.fundacionjala.trello.pages.login.LoginPage;
 public final class StepDefs {
 
     private Context context;
+    private LoginPage loginPage;
 
     public StepDefs(final Context context) {
         this.context = context;
+        loginPage = new LoginPage(getChromeDriver());
     }
 
     /**
-     * Logins in trello with Atlassian account.
+     * Logins in trello page.
      *
      * @param userAccount keyword to get an user.
      */
-    @Given("I log in with my Atlassian account as {string}")
-    public void loginAtlassianAccount(final String userAccount) {
+    @Given("I log in with my Trello account as {string}")
+    public void iLogInWithTrelloAccountAs(final String userAccount) {
         User user = new User(userAccount);
-        LoginPage page = new LoginPage(getChromeDriver());
-        PageObject actualPage = page.loginWithAtlassian(user.getEmail())
-                .setPassword(user.getPassword())
-                .submit();
+        PageObject actualPage = loginPage.setCredentials(user.getEmail(), user.getPassword()).submit();
         context.saveActualPage(actualPage);
     }
 

@@ -1,10 +1,9 @@
 package org.fundacionjala.trello.pages.core;
 
+import org.fundacionjala.trello.utils.WebDriverAction;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
@@ -15,10 +14,12 @@ public abstract class WebObject {
     private static final int SECONDS = 20;
     protected final WebDriverWait wait;
     protected final WebDriver driver;
+    protected WebDriverAction action;
 
     public WebObject(final WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, SECONDS);
+        action = new WebDriverAction(driver, wait);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, SECONDS), this);
     }
 
@@ -28,23 +29,4 @@ public abstract class WebObject {
      * @return true if actual page is displayed, else false.
      */
     public abstract boolean isDisplayed();
-
-    /**
-     * Makes click in the web element.
-     *
-     * @param element web element.
-     */
-    public void click(final WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
-    }
-
-    /**
-     * Waits for an element to be fully loaded and visible.
-     *
-     * @param element web element.
-     */
-    public void waitUntilLoad(final WebElement element) {
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
 }

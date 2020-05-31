@@ -37,16 +37,21 @@ public final class Header extends WebObject {
     }
 
     public FormPage<?> createElement(final String entity) {
-        click(creationButton);
+        action.click(creationButton);
         switch (entity) {
             case "board":
-                click(createBoardButton);
+                action.click(createBoardButton);
                 return new BoardForm(driver);
             case "team":
-                click(createTeamButton);
+                action.click(createTeamButton);
                 return new TeamForm(driver);
             default:
                 throw new IllegalArgumentException(String.format("Invalid entity: <%s>", entity));
         }
+    }
+
+    public MenuBoards getMenuBoards() {
+        action.click(headerMenuBoards);
+        return new MenuBoards(driver);
     }
 }
