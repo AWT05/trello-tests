@@ -24,7 +24,7 @@ public class CardForm extends FormPage<CardPage> {
     @FindBy(css = ADD_CARD_SUBMIT_BUTTON)
     private WebElement addCardSubmitButton;
 
-    public CardForm(WebDriver driver) {
+    public CardForm(final WebDriver driver) {
         super(driver);
     }
 
