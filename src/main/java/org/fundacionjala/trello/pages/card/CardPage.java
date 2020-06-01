@@ -34,7 +34,7 @@ public class CardPage extends PageObject {
         return true;
     }
 
-    public List<String> getAllCardNames(String listName) {
+    public List<String> getAllCardNames(final String listName) {
         String getCardsList = String.format(CARD_NAMES_LIST, listName);
         List<WebElement> test = driver.findElements(By.cssSelector(AUX_LIST));
         wait.until(ExpectedConditions.visibilityOfAllElements(test));
