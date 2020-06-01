@@ -26,7 +26,6 @@ public class CardStepDefs {
 
     public CardStepDefs(final Context context) {
         this.context = context;
-        boardPage = new BoardPage(getChromeDriver());
         menuBoard = new MenuBoard(getChromeDriver());
         listPage = new ListPage(getChromeDriver());
         cardPage = new CardPage(getChromeDriver());
