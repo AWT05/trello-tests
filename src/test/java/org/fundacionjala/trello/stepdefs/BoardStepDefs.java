@@ -2,13 +2,12 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.menus.MenuBoards;
 
 import java.util.Map;
 
-import static org.fundacionjala.trello.context.EndPointsEnum.BOARD;
 import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -17,9 +16,9 @@ public class BoardStepDefs {
 
     private MenuBoards menuBoards;
     private BoardPage board;
-    private final Context context;
+    private final ContextTrello context;
 
-    public BoardStepDefs(final Context context) {
+    public BoardStepDefs(final ContextTrello context) {
         this.context = context;
         board = new BoardPage(getChromeDriver());
         menuBoards = new MenuBoards(getChromeDriver());
@@ -43,7 +42,6 @@ public class BoardStepDefs {
     @Then("I should have a board created with the following data")
     public void validateCreationWithData(final Map<String, String> actualData) {
         assertEquals(actualData.get("title"), board.getTitle());
-        context.saveIds(BOARD, board.getIdentifier());
     }
 
     /**
@@ -55,6 +53,5 @@ public class BoardStepDefs {
     public void boardPageShouldBeVisible(final String title) {
         assertTrue(board.isDisplayed());
         assertEquals(board.getTitle(), title);
-        context.saveIds(BOARD, board.getIdentifier());
     }
 }

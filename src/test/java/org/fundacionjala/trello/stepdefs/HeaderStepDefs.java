@@ -1,17 +1,20 @@
 package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.When;
-import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.trello.context.ContextTrello;
+import org.fundacionjala.trello.pages.IIdentifier;
 import org.fundacionjala.trello.pages.forms.FormPage;
 
 import java.util.Map;
 
+import static org.fundacionjala.trello.context.EndPointsEnum.BOARD;
+
 public final class HeaderStepDefs {
 
-    private final Context context;
+    private final ContextTrello context;
     private FormPage<?> form;
 
-    public HeaderStepDefs(final Context context) {
+    public HeaderStepDefs(final ContextTrello context) {
         this.context = context;
     }
 
@@ -25,7 +28,12 @@ public final class HeaderStepDefs {
     public void createEntityWithData(final String entity, final Map<String, String> data) {
         form = context.getActualPage().getHeader().createElement(entity);
         form.fillForm(data);
-        form.submit();
+        Object webObject = form.submit();
+        if (webObject instanceof IIdentifier) {
+            IIdentifier item = (IIdentifier) webObject;
+            context.getUser(context.currentUserKey())
+                    .saveIds(BOARD, item.getIdentifier());
+        }
     }
 
     /**

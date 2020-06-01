@@ -2,7 +2,7 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.board.MenuBoard;
 import org.fundacionjala.trello.pages.forms.FormPage;
@@ -16,13 +16,13 @@ import static org.testng.Assert.assertTrue;
 
 public class ListStepDef {
 
-    private final Context context;
+    private final ContextTrello context;
     private BoardPage boardPage;
     private MenuBoard menuBoard;
     private ListPage listPage;
     private FormPage<?> form;
 
-    public ListStepDef(final Context context) {
+    public ListStepDef(final ContextTrello context) {
         this.context = context;
         boardPage = new BoardPage(getChromeDriver());
         menuBoard = new MenuBoard(getChromeDriver());

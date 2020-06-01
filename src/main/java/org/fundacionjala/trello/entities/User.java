@@ -7,11 +7,11 @@ import java.util.Map;
 /**
  * Converts the user data in an object.
  */
-public final class User {
+public class User {
 
     private static final String EMAIL = "email";
     private static final String PASSWORD = "password";
-    private final Map<String, String> user;
+    protected final Map<String, String> user;
 
     public User(final String userAccount) {
         this.user = Environment.getInstance().getAccount(userAccount);

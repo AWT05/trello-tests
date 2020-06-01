@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.pages.board;
 
+import org.fundacionjala.trello.pages.IIdentifier;
 import org.fundacionjala.trello.pages.core.PageObject;
 import org.fundacionjala.trello.pages.forms.FormPage;
 import org.fundacionjala.trello.pages.list.ListForm;
@@ -11,7 +12,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
-public final class BoardPage extends PageObject {
+public final class BoardPage extends PageObject implements IIdentifier {
 
     private static final String TITLE_TEXT = "div.mod-board-name > span";
     private static final String TITLE_INPUT = "div.mod-board-name > input";
@@ -78,7 +79,9 @@ public final class BoardPage extends PageObject {
         return new ListForm(driver);
     }
 
+    @Override
     public String getIdentifier() {
+        isDisplayed();
         String identifier = "";
         try {
             String currentUri = new URI(driver.getCurrentUrl()).getPath();

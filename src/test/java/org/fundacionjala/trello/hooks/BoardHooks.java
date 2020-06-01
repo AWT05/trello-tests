@@ -2,7 +2,7 @@ package org.fundacionjala.trello.hooks;
 
 import io.cucumber.java.After;
 import org.fundacionjala.trello.client.RequestManager;
-import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.board.MenuBoard;
 
@@ -13,10 +13,10 @@ public final class BoardHooks {
 
     private static final int CLEAN_CONTEXT_ORDER_BOARD_UI = 20;
     private static final int CLEAN_CONTEXT_ORDER_BOARD = 21;
-    private final Context context;
+    private final ContextTrello context;
     private final RequestManager requestManager;
 
-    public BoardHooks(final Context context, final RequestManager requestManager) {
+    public BoardHooks(final ContextTrello context, final RequestManager requestManager) {
         this.context = context;
         this.requestManager = requestManager;
     }
@@ -42,7 +42,11 @@ public final class BoardHooks {
      */
     @After(value = "@deleteBoard", order = CLEAN_CONTEXT_ORDER_BOARD)
     public void deleteBoardByApi() {
-        context.getIdsByKey(BOARD)
-                .forEach(id -> requestManager.init(context).delete(BOARD.getEndPoint().concat(id)));
+        context.getUsers().forEach(user -> {
+            requestManager.setApiCredentials(user.getKeyword());
+            user.getIdsByKey(BOARD).forEach(id -> requestManager
+                    .init(context)
+                    .delete(BOARD.getEndPoint().concat(id)));
+        });
     }
 }
