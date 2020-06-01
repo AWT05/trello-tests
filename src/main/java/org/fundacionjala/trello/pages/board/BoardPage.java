@@ -4,6 +4,8 @@ import org.fundacionjala.trello.pages.IIdentifier;
 import org.fundacionjala.trello.pages.core.PageObject;
 import org.fundacionjala.trello.pages.forms.FormPage;
 import org.fundacionjala.trello.pages.list.ListForm;
+import org.fundacionjala.trello.pages.list.ListUpdateForm;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,6 +24,8 @@ public final class BoardPage extends PageObject implements IIdentifier {
     private static final String BOARD_HEADER = "div.board-header";
     private static final String BOARD_CANVAS = "#board";
     private static final String ADD_LIST = "div.js-add-list span.icon-add";
+    private static final String GET_LIST = "//textarea[contains(text(), '%s')]/parent::"
+            + "div[contains(@class,'list-header')]";
     private static final int ID_INDEX = 1;
 
     @FindBy(css = BOARD_HEADER)
@@ -77,6 +81,13 @@ public final class BoardPage extends PageObject implements IIdentifier {
     public FormPage<?> createNewList() {
         action.click(addListIcon);
         return new ListForm(driver);
+    }
+
+    public FormPage<?> updateList(final String listName) {
+        String getList = String.format(GET_LIST, listName);
+        WebElement actualList = driver.findElement(By.xpath(getList));
+        action.click(actualList);
+        return new ListUpdateForm(driver);
     }
 
     @Override

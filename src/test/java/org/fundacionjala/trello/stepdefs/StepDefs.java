@@ -1,7 +1,6 @@
 package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Given;
-import org.fundacionjala.trello.client.RequestManager;
 import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.context.UserTrello;
 import org.fundacionjala.trello.pages.core.PageObject;
@@ -12,12 +11,10 @@ import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 public final class StepDefs {
 
     private ContextTrello context;
-    private RequestManager requestManager;
     private LoginPage loginPage;
 
-    public StepDefs(final ContextTrello context, final RequestManager requestManager) {
+    public StepDefs(final ContextTrello context) {
         this.context = context;
-        this.requestManager = requestManager;
         loginPage = new LoginPage(getChromeDriver());
     }
 
@@ -28,7 +25,6 @@ public final class StepDefs {
      */
     @Given("I log in with my Trello account as {string}")
     public void iLogInWithTrelloAccountAs(final String userAccount) {
-        requestManager.setApiCredentials(userAccount);
         UserTrello user = new UserTrello(userAccount);
         PageObject actualPage = loginPage.setCredentials(user.getEmail(), user.getPassword()).submit();
         context.saveActualPage(actualPage);

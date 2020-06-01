@@ -1,0 +1,20 @@
+@acceptance
+Feature: List
+
+  Background: Set the authentication and crate a list
+    Given I authenticate as "user2"
+    And I create a "board" with:
+      | name | theBestApp |
+    And I create a "list" with:
+      | name    | testing    |
+      | idBoard | {board.id} |
+
+  @deleteBoard
+  Scenario: Update a list name
+    Given I log in with my Trello account as "user2"
+    And I navigate to boards menu from header
+    And I open the "theBestApp" board
+    When I update the "testing" List with:
+      | name | reviewed |
+    Then I should have a list updated with:
+      | name | reviewed |
