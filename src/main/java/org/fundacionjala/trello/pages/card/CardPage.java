@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class CardPage extends PageObject {
     private static final String CARD_NAMES_LIST = "//textarea[contains(text(), '%s')]/parent::div/" +
             "parent::div//span[@class='list-card-title js-card-name']";

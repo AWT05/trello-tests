@@ -6,7 +6,7 @@ Feature: Card
     And I create a "board" with:
       | name | New board |
     And I create a "list" with:
-      | name    | Jacoco   |
+      | name    | Jacoco     |
       | idBoard | {board.id} |
 
   @deleteBoard
