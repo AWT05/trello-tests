@@ -13,7 +13,7 @@ import java.util.Map;
 
 import static org.fundacionjala.trello.pages.forms.FormFieldsEnum.NAME;
 
-public class CardForm extends FormPage<CardPage> {
+public final class CardForm extends FormPage<CardPage> {
 
     private static final String NEW_CARD_NAME = "textarea.list-card-composer-textarea";
     private static final String ADD_CARD_SUBMIT_BUTTON = "input.js-add-card";

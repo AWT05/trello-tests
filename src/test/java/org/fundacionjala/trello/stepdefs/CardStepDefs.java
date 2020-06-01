@@ -35,10 +35,11 @@ public class CardStepDefs {
     /**
      * Creates a card with specific data.
      *
+     * @param listName expected name of the list where card will be created.
      * @param data expected card data.
      */
     @When("In the {string} list I create a Card with:")
-    public void iCreateCardWith(String listName, final Map<String, String> data) {
+    public void iCreateCardWith(final String listName, final Map<String, String> data) {
         if (menuBoard.isDisplayed()) {
             menuBoard.closeMenuOptions();
         }
@@ -50,10 +51,11 @@ public class CardStepDefs {
     /**
      * Validates the card creation.
      *
+     * @param listName expected list name where to find the card.
      * @param expectedData expected data to validate the creation.
      */
     @Then("In the {string} I should have a card with:")
-    public void iShouldHaveACardWith(String listName, final Map<String, String> expectedData) {
+    public void iShouldHaveACardWith(final String listName, final Map<String, String> expectedData) {
         List<String> cardNamesList = cardPage.getAllCardNames(listName);
         assertTrue(cardNamesList.contains(expectedData.get("name")));
     }
