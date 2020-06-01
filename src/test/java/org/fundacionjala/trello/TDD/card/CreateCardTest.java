@@ -15,7 +15,7 @@ import static org.fundacionjala.trello.context.EndPointsEnum.CARD;
 import static org.fundacionjala.trello.context.EndPointsEnum.LIST;
 import static org.testng.Assert.assertEquals;
 
-public class CreateCardTest {
+public final class CreateCardTest {
 
     private static final int STATUS_CODE = 200;
     private RequestManager requestManager;
