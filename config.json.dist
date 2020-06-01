@@ -6,6 +6,7 @@
     "accounts": [
       {
         "user": "user1",
+        "username": "",
         "email": "",
         "password": "",
         "key": "",
@@ -13,6 +14,7 @@
       },
       {
         "user": "user2",
+        "username": "",
         "email": "",
         "password": "",
         "key": "",

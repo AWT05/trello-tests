@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public final class CardPage extends PageObject {
     private static final String CARD_NAMES_LIST = "//textarea[contains(text(), '%s')]/parent::div/"
             + "parent::div//span[@class='list-card-title js-card-name']";
@@ -19,6 +18,9 @@ public final class CardPage extends PageObject {
 
     @FindBy(css = ADD_NEW_CARD_BUTTON)
     private WebElement addNewCardButton;
+
+    @FindBy(css = ALL_CARDS_LIST)
+    private List<WebElement> test;
 
     public CardPage(final WebDriver driver) {
         super(driver);
@@ -36,7 +38,7 @@ public final class CardPage extends PageObject {
 
     public List<String> getAllCardNames(final String listName) {
         String getCardsList = String.format(CARD_NAMES_LIST, listName);
-        List<WebElement> test = driver.findElements(By.cssSelector(ALL_CARDS_LIST));
+//        List<WebElement> test = driver.findElements(By.cssSelector(ALL_CARDS_LIST));
         wait.until(ExpectedConditions.visibilityOfAllElements(test));
         List<WebElement> getCards = driver.findElements(By.xpath(getCardsList));
         List<String> list = new ArrayList<>();

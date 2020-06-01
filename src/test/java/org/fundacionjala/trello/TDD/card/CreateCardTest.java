@@ -39,7 +39,6 @@ public final class CreateCardTest {
         list.put("idBoard", "{board.id}");
         response = requestManager.init(context).queryParams(list).post(LIST.getEndPoint());
         context.saveResponse(LIST.name().toLowerCase(), response);
-        context.saveIds(LIST, response.jsonPath().getString("id"));
     }
 
     @AfterMethod
