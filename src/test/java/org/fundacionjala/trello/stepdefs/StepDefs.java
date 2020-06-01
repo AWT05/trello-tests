@@ -2,11 +2,10 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Given;
 import org.fundacionjala.trello.context.Context;
+import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 import org.fundacionjala.trello.entities.User;
 import org.fundacionjala.trello.pages.core.PageObject;
 import org.fundacionjala.trello.pages.login.LoginPage;
-
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 
 public final class StepDefs {
 
