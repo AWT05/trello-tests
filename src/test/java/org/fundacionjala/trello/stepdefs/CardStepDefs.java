@@ -32,11 +32,10 @@ public class CardStepDefs {
         cardPage = new CardPage(getChromeDriver());
     }
 
-
     /**
      * Creates a card with specific data.
      *
-     * @param data expected list data.
+     * @param data expected card data.
      */
     @When("In the {string} list I create a Card with:")
     public void iCreateCardWith(String listName, final Map<String, String> data) {
@@ -46,11 +45,10 @@ public class CardStepDefs {
         form = listPage.createNewCard(listName);
         form.fillForm(data);
         form.submit();
-
     }
 
     /**
-     * Validates the list creation.
+     * Validates the card creation.
      *
      * @param expectedData expected data to validate the creation.
      */
@@ -59,6 +57,4 @@ public class CardStepDefs {
         List<String> cardNamesList = cardPage.getAllCardNames(listName);
         assertTrue(cardNamesList.contains(expectedData.get("name")));
     }
-
-
 }
