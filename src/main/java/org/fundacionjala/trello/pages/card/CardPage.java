@@ -15,7 +15,7 @@ public final class CardPage extends PageObject {
     private static final String CARD_NAMES_LIST = "//textarea[contains(text(), '%s')]/parent::div/"
             + "parent::div//span[@class='list-card-title js-card-name']";
     private static final String ADD_NEW_CARD_BUTTON = "span.js-add-a-card";
-    private static final String AUX_LIST = "a.list-card";
+    private static final String ALL_CARDS_LIST = "a.list-card";
 
     @FindBy(css = ADD_NEW_CARD_BUTTON)
     private WebElement addNewCardButton;
@@ -36,7 +36,7 @@ public final class CardPage extends PageObject {
 
     public List<String> getAllCardNames(final String listName) {
         String getCardsList = String.format(CARD_NAMES_LIST, listName);
-        List<WebElement> test = driver.findElements(By.cssSelector(AUX_LIST));
+        List<WebElement> test = driver.findElements(By.cssSelector(ALL_CARDS_LIST));
         wait.until(ExpectedConditions.visibilityOfAllElements(test));
         List<WebElement> getCards = driver.findElements(By.xpath(getCardsList));
         List<String> list = new ArrayList<>();
