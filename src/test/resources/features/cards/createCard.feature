@@ -6,7 +6,7 @@ Feature: Card
     And I create a "board" with:
       | name | New board |
     And I create a "list" with:
-      | name    | New list   |
+      | name    | Jacoco   |
       | idBoard | {board.id} |
 
   @deleteBoard
@@ -14,9 +14,7 @@ Feature: Card
     Given I log in with my Trello account as "user1"
     And I navigate to boards menu from header
     And I open the "New board" board
-#    And I navigate to "New list" list
-    When I create a Card with:
-      | name | Card 1 |
-    Then I should have a card with:
-      | name | Card 1 |
-
+    When In the "Jacoco" list I create a Card with:
+      | name | Task 1 |
+    Then In the "Jacoco" I should have a card with:
+      | name | Task 1 |

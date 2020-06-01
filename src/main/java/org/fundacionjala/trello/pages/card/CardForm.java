@@ -14,14 +14,14 @@ import java.util.Map;
 
 import static org.fundacionjala.trello.pages.forms.FormFieldsEnum.NAME;
 
-public class CardForm extends FormPage<ListPage> {
+public class CardForm extends FormPage<CardPage> {
 
 
     private static final String NEW_CARD_NAME = "textarea.list-card-composer-textarea";
-    private static final String ADD_CARD_SUBMIT_BUTTON = "span.js-add-a-card";
+    private static final String ADD_CARD_SUBMIT_BUTTON = "input.js-add-card";
 //    private static final String LIST_LOCATOR = "list-header-name-assist[text()=new]";
-    public static final String LIST_LOCATOR = "//h2[text()=\"%s\"]";
 
+    //textarea[contains(text(), 'two')]/parent::div/parent::div/div[contains(@class, 'card-composer-container')]//span[@class= 'icon-sm icon-add']
 //    h2.list-header-name-assist[text()="new"]
 
     @FindBy(css = NEW_CARD_NAME)
@@ -46,9 +46,9 @@ public class CardForm extends FormPage<ListPage> {
     }
 
     @Override
-    public ListPage submit() {
+    public CardPage submit() {
         action.click(addCardSubmitButton);
-        return new ListPage(driver);
+        return new CardPage(driver);
     }
 
     @Override
@@ -56,7 +56,4 @@ public class CardForm extends FormPage<ListPage> {
         return true;
     }
 
-    private WebElement search(String listName){
-        return driver.findElement(By.xpath(String.format(LIST_LOCATOR,listName)));
-    }
 }
