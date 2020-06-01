@@ -1,4 +1,4 @@
-@quitDriver @deleteTeamUi
+@deleteTeamUi
 Feature: Team manipulation
 
   Background: Login to trello.
