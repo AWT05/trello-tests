@@ -35,5 +35,4 @@ public final class TeamSettings extends PageObject {
         action.click(confirmDeleteButton);
         new TeamsPage(driver);
     }
-
 }

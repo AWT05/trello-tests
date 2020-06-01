@@ -11,7 +11,6 @@ import java.util.Map;
 
 public final class TeamInviteForm extends FormPage<TeamPage> {
 
-
     private static final String INVITE_LATER_BUTTON = "a[data-test-id=\"show-later-button\"]";
     private static final String EMAIL_TEAM_MEMBERS_INPUT = "input[class=\"autocomplete-input\"]";
     private static final String INVITE_TO_TEAM = "button[class='autocomplete-btn primary disabled fullWidthButton']";
