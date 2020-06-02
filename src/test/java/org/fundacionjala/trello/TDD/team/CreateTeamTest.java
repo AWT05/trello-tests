@@ -12,6 +12,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class CreateTeamTest {
@@ -21,9 +22,10 @@ public class CreateTeamTest {
     private FormPage<?> form;
 
     @BeforeMethod
-    public final void setup() {
+    public void setup() {
         Environment env = Environment.getInstance();
         DriverFactory.resizeScreen(env.getBrowserWidth(), env.getBrowserHeight());
+        driver = getChromeDriver();
         driver.get(TRELLO_URL);
     }
 
@@ -34,7 +36,10 @@ public class CreateTeamTest {
     }
 
     @Test
-    public void createTeamTest(final Map<String, String> data) {
+    public void createTeamTest() {
+        Map<String, String> data = new HashMap<>();
+        data.put("name", "New Team");
+        data.put("type", "Education");
         User user = new User("user1");
         LoginPage page = new LoginPage(getChromeDriver());
         PageObject actualPage = page.setCredentials(user.getEmail(), user.getPassword())
