@@ -5,7 +5,7 @@ jdk:
 # TO DO: addons: sonarcloud
 
 script:
-  - ./gradlew clean check -x test
+  - ./gradlew check
 # TO DO: sonar-scanner
 
 notifications:
