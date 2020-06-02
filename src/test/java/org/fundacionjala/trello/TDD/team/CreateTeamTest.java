@@ -22,7 +22,7 @@ public class CreateTeamTest {
     private FormPage<?> form;
 
     @BeforeMethod
-    public void setup() {
+    public final void setup() {
         Environment env = Environment.getInstance();
         DriverFactory.resizeScreen(env.getBrowserWidth(), env.getBrowserHeight());
         driver = getChromeDriver();
