@@ -32,7 +32,7 @@ public final class CreateCardTest {
         board.put("name", "Board for card testing");
         response = requestManager.init(context).queryParams(board).post(BOARD.getEndPoint());
         context.saveResponse(BOARD.name().toLowerCase(), response);
-        context.saveIds(BOARD, response.jsonPath().getString("id"));
+        context.saveIds(BOARD.name(), response.jsonPath().getString("id"));
 
         Map<String, String> list = new HashMap<>();
         list.put("name", "List for card testing");
@@ -43,7 +43,7 @@ public final class CreateCardTest {
 
     @AfterMethod
     public void deleteBoard() {
-        context.getIdsByKey(BOARD)
+        context.getIdsByKey(BOARD.name())
                 .forEach(id -> requestManager.init(context).delete("/boards/".concat(id)));
     }
 

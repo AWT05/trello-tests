@@ -41,7 +41,7 @@ public final class UpdateListTest {
 
     @Test
     public void updateAListApiTest() {
-        String endPoint = LIST.getEndPoint().concat("/{list.id}");
+        String endPoint = LIST.getEndPoint().concat("{list.id}");
         Map<String, String> updateList = new HashMap<>();
         updateList.put("name", "New list Updated");
         response = requestManager.init(context).queryParams(updateList).put(endPoint);

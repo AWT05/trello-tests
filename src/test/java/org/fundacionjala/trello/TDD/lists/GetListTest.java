@@ -28,13 +28,13 @@ public final class GetListTest {
         requestManager.setApiCredentials("user1");
 
         Map<String, String> board = new HashMap<>();
-        board.put("name", "new Board to test a list");
+        board.put("name", "BestBoard");
         response = requestManager.init(context).queryParams(board).post(BOARD.getEndPoint());
         context.saveResponse(BOARD.name().toLowerCase(), response);
         context.saveIds(BOARD.name(), response.jsonPath().getString("id"));
 
         Map<String, String> list = new HashMap<>();
-        list.put("name", "New list test api");
+        list.put("name", "BestList");
         list.put("idBoard", "{board.id}");
         response = requestManager.init(context).queryParams(list).post(LIST.getEndPoint());
         context.saveResponse(LIST.name().toLowerCase(), response);
@@ -42,7 +42,7 @@ public final class GetListTest {
 
     @Test
     public void readAListApiTest() {
-        String endPoint = LIST.getEndPoint().concat("/{list.id}");
+        String endPoint = LIST.getEndPoint().concat("{list.id}");
         response = requestManager.init(context).get(endPoint);
         assertEquals(response.getStatusCode(), STATUS_CODE);
     }
