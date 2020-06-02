@@ -28,6 +28,14 @@ public class BoardStepDefs {
     }
 
     /**
+     * Navigates to Boards Home page.
+     */
+    @When("I navigate to boards home page")
+    public void navigateToBoardsPage() {
+        context.saveActualPage(boardsHome.goToPage(context.getCurrentUser().getUsername()));
+    }
+
+    /**
      * Opens a board inside personal boards.
      *
      * @param boardName to open a specified board.
@@ -35,6 +43,17 @@ public class BoardStepDefs {
     @When("I open the {string} board")
     public void iOpenTheBoard(final String boardName) {
         menuBoards.openPersonalBoard(boardName);
+    }
+
+    /**
+     * Opens a board inside a team.
+     *
+     * @param boardName String name of a specific board.
+     * @param teamName String name of a specific team.
+     */
+    @When("I select {string} board form the {string} team")
+    public void iSelectBoardFormTheTeam(final String boardName, final String teamName) {
+        menuBoards.openTeamBoard(teamName, boardName);
     }
 
     /**
@@ -56,13 +75,5 @@ public class BoardStepDefs {
     public void boardPageShouldBeVisible(final String title) {
         assertTrue(board.isDisplayed());
         assertEquals(board.getTitle(), title);
-    }
-
-    /**
-     * Navigates to Boards Home page.
-     */
-    @When("I navigate to boards home page")
-    public void navigateToBoardsPage() {
-        context.saveActualPage(boardsHome.goToPage(context.getCurrentUser().getUsername()));
     }
 }

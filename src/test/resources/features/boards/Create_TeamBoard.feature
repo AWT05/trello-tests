@@ -18,3 +18,6 @@ Feature: Board context.
     * I navigate to "TEAM test" section
     * I select "GUI Testing" board
     * "GUI Testing" board page should be visible
+    And I navigate to boards menu from header
+    * I select "GUI Testing" board form the "TEAM test" team
+    * "GUI Testing" board page should be visible
