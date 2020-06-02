@@ -91,15 +91,9 @@ public final class BoardPage extends PageObject implements IIdentifier {
     }
 
     @Override
-    public String getIdentifier() {
+    public String handleUrl() throws URISyntaxException {
         isDisplayed();
-        String identifier = "";
-        try {
-            String currentUri = new URI(driver.getCurrentUrl()).getPath();
-            identifier = Paths.get(currentUri).getName(ID_INDEX).toString();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        return identifier;
+        String currentUri = new URI(driver.getCurrentUrl()).getPath();
+        return Paths.get(currentUri).getName(ID_INDEX).toString();
     }
 }

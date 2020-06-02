@@ -1,15 +1,22 @@
 package org.fundacionjala.trello.pages.team;
 
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import org.fundacionjala.trello.pages.IIdentifier;
 import org.fundacionjala.trello.pages.core.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public final class TeamPage extends PageObject {
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
+
+import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+
+public final class TeamPage extends PageObject implements IIdentifier {
 
     private static final String TEAM_NAME = "div.tabbed-pane-header-details > div > div > div > h1";
     private static final String TEAM_SETTINGS = "a[data-tab=\"settings\"]";
+    private static final int ID_INDEX = 0;
 
     @FindBy(css = TEAM_NAME)
     private WebElement teamName;
@@ -43,5 +50,12 @@ public final class TeamPage extends PageObject {
     public TeamSettings goToSettings() {
         action.click(teamSettings);
         return new TeamSettings(getChromeDriver());
+    }
+
+    @Override
+    public String handleUrl() throws URISyntaxException {
+        isDisplayed();
+        String currentUri = new URI(driver.getCurrentUrl()).getPath();
+        return Paths.get(currentUri).getName(ID_INDEX).toString();
     }
 }
