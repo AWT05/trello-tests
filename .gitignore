@@ -11,6 +11,9 @@
 ### Json ###
 config.json
 
+### Txt ###
+super_secret.txt
+
 /out/
 /java/
 /logs/
