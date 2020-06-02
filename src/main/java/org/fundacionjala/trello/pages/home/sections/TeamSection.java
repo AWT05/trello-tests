@@ -21,7 +21,6 @@ public final class TeamSection extends BodySection {
         listBoardsSelector = xpathBaseBoard + "/ul/li//a";
         boardSelector = xpathBaseBoard + "//div[@title='%s']//ancestor::a";
         createBoardSelector = xpathBaseBoard + "//div[@class='board-tile mod-add']";
-
         String baseHref = section.replaceAll(" ", "").toLowerCase();
         String linkSelector = String.format("/following-sibling::div//a[contains(@href, '%s')][1]", baseHref);
         boardsOption = baseSelector.concat(linkSelector);

@@ -1,4 +1,4 @@
-@deleteBoardUi @deleteTeam @quitDriver
+@deleteBoardUi @deleteTeam
 Feature: Board context.
 
   Background: Login in the page
