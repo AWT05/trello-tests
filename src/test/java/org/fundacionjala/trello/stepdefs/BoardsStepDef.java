@@ -4,6 +4,7 @@ import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.fundacionjala.trello.pages.home.sections.Section;
+import org.fundacionjala.trello.pages.home.sections.TeamSection;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
 
@@ -36,5 +37,14 @@ public class BoardsStepDef {
     @When("I select {string} board")
     public void selectBoardFromSection(final String name) {
         section.getBoard(name);
+    }
+
+    /**
+     * Opens the boards page for the selected team.
+     */
+    @When("I open the boards of the team page")
+    public void openBoardsTeamPage() {
+        TeamSection teamSection = (TeamSection) section;
+        teamSection.openTeamBoards();
     }
 }
