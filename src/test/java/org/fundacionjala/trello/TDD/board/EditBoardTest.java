@@ -34,7 +34,7 @@ public final class EditBoardTest {
                 .queryParams(data)
                 .post(endpoint);
         String id = response.jsonPath().getString("id");
-        context.saveIds(BOARD, id);
+        context.saveIds(BOARD.name(), id);
         context.saveResponse("board", response);
     }
 
@@ -51,7 +51,7 @@ public final class EditBoardTest {
 
     @AfterMethod
     public void deleteBoard() {
-        context.getIdsByKey(BOARD)
+        context.getIdsByKey(BOARD.name())
                 .forEach(id -> requestManager.init(context)
                         .delete("/boards/".concat(id)));
     }

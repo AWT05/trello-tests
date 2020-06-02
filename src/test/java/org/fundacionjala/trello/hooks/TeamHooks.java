@@ -39,7 +39,7 @@ public class TeamHooks {
      */
     @After(value = "@deleteTeam", order = CLEAN_CONTEXT_ORDER_TEAM)
     public void deleteTeamByApi() {
-        context.getIdsByKey(TEAM)
+        context.getIdsByKey(TEAM.name())
                 .forEach(id -> requestManager.init(context).delete(TEAM.getEndPoint().concat(id)));
     }
 }

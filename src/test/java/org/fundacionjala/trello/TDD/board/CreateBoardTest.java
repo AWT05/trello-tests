@@ -36,13 +36,13 @@ public final class CreateBoardTest {
                 .queryParams(data)
                 .post(endpoint);
         String id = response.jsonPath().getString("id");
-        context.saveIds(BOARD, id);
+        context.saveIds(BOARD.name(), id);
         assertEquals(response.getStatusCode(), STATUS_CODE);
     }
 
     @AfterMethod
     public void deleteBoard() {
-        context.getIdsByKey(BOARD)
+        context.getIdsByKey(BOARD.name())
                 .forEach(id -> requestManager.init(context)
                         .delete("/boards/".concat(id)));
     }

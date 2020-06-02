@@ -50,6 +50,6 @@ public class ApiRequestStepDef {
         EndPointsEnum endPointsEnum = CommonValidations.verifyEndPointEnum(entity);
         response = requestManager.init(context).queryParams(params).post(endPointsEnum.getEndPoint());
         context.saveResponse(entity, response);
-        context.saveIds(endPointsEnum, response.jsonPath().getString("id"));
+        context.saveIds(endPointsEnum.name(), response.jsonPath().getString("id"));
     }
 }

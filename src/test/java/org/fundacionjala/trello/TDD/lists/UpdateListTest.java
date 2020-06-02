@@ -30,7 +30,7 @@ public final class UpdateListTest {
         board.put("name", "new Board to test a list");
         response = requestManager.init(context).queryParams(board).post(BOARD.getEndPoint());
         context.saveResponse(BOARD.name().toLowerCase(), response);
-        context.saveIds(BOARD, response.jsonPath().getString("id"));
+        context.saveIds(BOARD.name(), response.jsonPath().getString("id"));
 
         Map<String, String> list = new HashMap<>();
         list.put("name", "New list test api");
@@ -50,7 +50,7 @@ public final class UpdateListTest {
 
     @AfterMethod
     public void deleteBoard() {
-        context.getIdsByKey(BOARD)
+        context.getIdsByKey(BOARD.name())
                 .forEach(id -> requestManager.init(context).delete("/boards/".concat(id)));
     }
 }
