@@ -1,6 +1,7 @@
 package org.fundacionjala.trello.context;
 
 import io.restassured.response.Response;
+import org.fundacionjala.trello.entities.User;
 import org.fundacionjala.trello.pages.core.PageObject;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 public class Context {
 
+    private User user;
     private PageObject pageObject;
     private Map<String, Response> responses;
     private Map<EndPointsEnum, List<String>> mapIds;
@@ -28,6 +30,7 @@ public class Context {
         responses = new HashMap<>();
         mapIds = new HashMap<>();
         pageObject = null;
+        user = null;
     }
 
     /**
@@ -88,5 +91,23 @@ public class Context {
      */
     public PageObject getActualPage() {
         return pageObject;
+    }
+
+    /**
+     * Gets user saved in the context.
+     *
+     * @return user object.
+     */
+    public User getCurrentUser() {
+        return user;
+    }
+
+    /**
+     * Saves the current logged in user.
+     *
+     * @param user identifier.
+     */
+    public void saveUser(final User user) {
+        this.user = user;
     }
 }

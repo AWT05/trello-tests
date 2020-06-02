@@ -4,6 +4,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.pages.board.BoardPage;
+import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.fundacionjala.trello.pages.menus.MenuBoards;
 
 import java.util.Map;
@@ -14,6 +15,7 @@ import static org.testng.Assert.assertTrue;
 
 public class BoardStepDefs {
 
+    private final BoardsPage boardsHome;
     private MenuBoards menuBoards;
     private BoardPage board;
     private final Context context;
@@ -22,6 +24,7 @@ public class BoardStepDefs {
         this.context = context;
         board = new BoardPage(getChromeDriver());
         menuBoards = new MenuBoards(getChromeDriver());
+        boardsHome = new BoardsPage(getChromeDriver());
     }
 
     /**
@@ -53,5 +56,13 @@ public class BoardStepDefs {
     public void boardPageShouldBeVisible(final String title) {
         assertTrue(board.isDisplayed());
         assertEquals(board.getTitle(), title);
+    }
+
+    /**
+     * Navigates to Boards Home page.
+     */
+    @When("I navigate to boards home page")
+    public void navigateToBoardsPage() {
+        context.saveActualPage(boardsHome.goToPage(context.getCurrentUser().getUsername()));
     }
 }
