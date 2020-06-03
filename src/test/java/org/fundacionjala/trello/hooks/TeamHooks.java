@@ -1,13 +1,13 @@
 package org.fundacionjala.trello.hooks;
 
 import io.cucumber.java.After;
-import org.fundacionjala.trello.client.RequestManager;
-import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.core.api.RequestManager;
+import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.pages.team.TeamPage;
 import org.fundacionjala.trello.pages.team.TeamSettings;
 
 import static org.fundacionjala.trello.context.EndPointsEnum.TEAM;
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
 
 public class TeamHooks {
 

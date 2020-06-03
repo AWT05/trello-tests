@@ -1,8 +1,8 @@
 package org.fundacionjala.trello.TDD.lists;
 
 import io.restassured.response.Response;
-import org.fundacionjala.trello.client.RequestManager;
-import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.core.api.RequestManager;
+import org.fundacionjala.core.context.Context;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;

@@ -1,13 +1,13 @@
 package org.fundacionjala.trello.hooks;
 
 import io.cucumber.java.After;
-import org.fundacionjala.trello.client.RequestManager;
-import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.core.api.RequestManager;
+import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.board.MenuBoard;
 
 import static org.fundacionjala.trello.context.EndPointsEnum.BOARD;
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
 
 public final class BoardHooks {
 
@@ -34,7 +34,9 @@ public final class BoardHooks {
         if (!menuBoard.isDisplayed()) {
             menuBoard = board.displayMenu();
         }
-        menuBoard.moreMenuOptions().closeBoard().permanentlyDelete();
+        menuBoard.moreMenuOptions()
+                .closeBoard()
+                .permanentlyDelete();
     }
 
     /**

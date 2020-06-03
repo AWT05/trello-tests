@@ -2,13 +2,13 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.menus.MenuBoards;
 
 import java.util.Map;
 
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 

@@ -5,6 +5,8 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
+
 /**
  * Cucumber TestNG runner class.
  */
@@ -30,5 +32,6 @@ public final class Runner extends AbstractTestNGCucumberTests {
     @AfterTest
     public void afterAllScenarios() {
         // Code executed after features execution.
+        getChromeDriver().quit();
     }
 }

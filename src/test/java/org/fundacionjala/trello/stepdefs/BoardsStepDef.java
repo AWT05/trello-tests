@@ -1,11 +1,11 @@
 package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.When;
-import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.fundacionjala.trello.pages.home.sections.Section;
 
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
 
 public class BoardsStepDef {
 

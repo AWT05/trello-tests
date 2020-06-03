@@ -2,8 +2,8 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.fundacionjala.trello.context.Context;
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import org.fundacionjala.core.context.Context;
+import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
 import org.fundacionjala.trello.pages.team.TeamInviteForm;
 import org.fundacionjala.trello.pages.team.TeamPage;
 import static org.testng.Assert.assertEquals;

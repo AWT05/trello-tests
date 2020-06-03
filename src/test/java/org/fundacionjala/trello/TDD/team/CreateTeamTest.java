@@ -1,11 +1,11 @@
 package org.fundacionjala.trello.TDD.team;
 
-import org.fundacionjala.trello.config.Environment;
-import org.fundacionjala.trello.driver.DriverFactory;
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
-import org.fundacionjala.trello.entities.User;
-import org.fundacionjala.trello.pages.core.PageObject;
-import org.fundacionjala.trello.pages.forms.FormPage;
+import org.fundacionjala.core.Environment;
+import org.fundacionjala.core.ui.DriverFactory;
+import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
+import org.fundacionjala.core.entities.User;
+import org.fundacionjala.trello.pages.PageObject;
+import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.trello.pages.login.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
