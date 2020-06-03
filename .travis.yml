@@ -5,8 +5,12 @@ jdk:
 # TO DO: addons: sonarcloud
 
 script:
-  - ./gradlew clean check -x test
+  - ./gradlew check
+  - ./gradlew executeBDDTests
 # TO DO: sonar-scanner
 
 notifications:
   email: true
+before_install:
+- openssl aes-256-cbc -K $encrypted_c5fd3201494e_key -iv $encrypted_c5fd3201494e_iv
+  -in config.json.enc -out config.json -d
