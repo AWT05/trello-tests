@@ -1,15 +1,16 @@
 package org.fundacionjala.trello.pages.team;
 
 import org.fundacionjala.trello.pages.forms.FormFieldsEnum;
-import static org.fundacionjala.trello.pages.forms.FormFieldsEnum.DESCRIPTION;
-import static org.fundacionjala.trello.pages.forms.FormFieldsEnum.NAME;
-import static org.fundacionjala.trello.pages.forms.FormFieldsEnum.TYPE;
 import org.fundacionjala.trello.pages.forms.FormPage;
 import org.fundacionjala.trello.pages.forms.IFillerField;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static org.fundacionjala.trello.pages.forms.FormFieldsEnum.DESCRIPTION;
+import static org.fundacionjala.trello.pages.forms.FormFieldsEnum.NAME;
+import static org.fundacionjala.trello.pages.forms.FormFieldsEnum.TYPE;
 
 import java.util.HashMap;
 import java.util.Map;
