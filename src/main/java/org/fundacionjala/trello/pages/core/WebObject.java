@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.pages.core;
 
+import org.fundacionjala.trello.config.Environment;
 import org.fundacionjala.trello.utils.WebDriverAction;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -11,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public abstract class WebObject {
 
-    private static final int SECONDS = 20;
+    private static final int SECONDS = Environment.getInstance().getExplicitTimeWait();
     protected final WebDriverWait wait;
     protected final WebDriver driver;
     protected WebDriverAction action;

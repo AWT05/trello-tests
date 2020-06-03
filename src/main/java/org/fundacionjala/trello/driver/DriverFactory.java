@@ -13,13 +13,17 @@ public final class DriverFactory {
 
     }
 
+    public static void setDriver() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+    }
+
     /**
      * @return the chrome web driver.
      */
     public static WebDriver getChromeDriver() {
-        WebDriverManager.chromedriver().setup();
         if (driver == null) {
-            driver = new ChromeDriver();
+            setDriver();
         }
         return driver;
     }

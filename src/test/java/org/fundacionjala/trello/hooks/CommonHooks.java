@@ -6,6 +6,7 @@ import org.fundacionjala.trello.config.Environment;
 import org.fundacionjala.trello.driver.DriverFactory;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import static org.fundacionjala.trello.driver.DriverFactory.setDriver;
 
 public final class CommonHooks {
 
@@ -17,6 +18,7 @@ public final class CommonHooks {
      */
     @Before(order = INIT_CONTEXT_ORDER_VALUE)
     public void openAndResizeWindow() {
+        setDriver();
         Environment env = Environment.getInstance();
         DriverFactory.resizeScreen(env.getBrowserWidth(), env.getBrowserHeight());
     }

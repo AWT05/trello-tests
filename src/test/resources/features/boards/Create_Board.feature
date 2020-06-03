@@ -1,4 +1,4 @@
-@deleteBoardUi @quitDriver
+@deleteBoardUi
 Feature: Board context.
 
   Background: Login in the page
