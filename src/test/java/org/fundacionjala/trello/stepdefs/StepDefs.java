@@ -28,5 +28,6 @@ public final class StepDefs {
         User user = new User(userAccount);
         PageObject actualPage = loginPage.setCredentials(user.getEmail(), user.getPassword()).submit();
         context.saveActualPage(actualPage);
+        context.saveUser(user);
     }
 }
