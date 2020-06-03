@@ -4,6 +4,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 
 /**
  * Cucumber TestNG runner class.
@@ -22,6 +23,13 @@ public final class Runner extends AbstractTestNGCucumberTests {
     @BeforeTest
     public void beforeAllScenarios() {
         // Code executed before features execution.
+        System.setProperty("dataproviderthreadcount", "3");
+    }
+
+    @Override
+    @DataProvider(parallel = true)
+    public Object[][] scenarios() {
+        return super.scenarios();
     }
 
     /**
