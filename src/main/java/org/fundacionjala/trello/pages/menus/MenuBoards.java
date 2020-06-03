@@ -5,6 +5,7 @@ import org.fundacionjala.trello.pages.board.BoardForm;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.core.WebObject;
 import org.fundacionjala.trello.pages.forms.FormPage;
+import org.fundacionjala.trello.pages.team.TeamPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +20,7 @@ public final class MenuBoards extends WebObject {
             + "following-sibling::div//div[contains(text(), '%s')]";
     private static final String TEAM_BOARDS = "//span[text()='%s']/ancestor::a/parent::div/"
             + "following-sibling::div//div[contains(text(), '%s')]";
+    private static final String TEAM_INFO = "//span[contains(text(), '%s')]/ancestor::div/a";
 
     @FindBy(css = FIND_BOARDS)
     private WebElement findBoards;
@@ -65,5 +67,12 @@ public final class MenuBoards extends WebObject {
     public BoardClosed goToClosedBoards() {
         action.click(closedBoardsButton);
         return new BoardClosed(driver);
+    }
+
+    public TeamPage goToTeamPage(final String teamName) {
+        String teamNameLoc = String.format(TEAM_INFO, teamName);
+        WebElement teamElement = driver.findElement(By.xpath(teamNameLoc));
+        action.click(teamElement);
+        return new TeamPage(driver);
     }
 }
