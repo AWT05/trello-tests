@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class Headless extends AbstractBrowser {
+public final class Headless extends AbstractBrowser {
     @Override
     WebDriver initBrowser() {
         WebDriverManager.chromedriver().setup();

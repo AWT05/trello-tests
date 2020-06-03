@@ -9,7 +9,7 @@ public class SharedDriver {
 
     public SharedDriver() {
         if (DriverFactory.getDriver() == null) {
-            WebDriver driver = BrowserFactory.getBrowser("headless");
+            WebDriver driver = BrowserFactory.getBrowser("chrome");
             driver.manage().window().setSize(new Dimension(Environment.getInstance().getBrowserWidth(),
                     Environment.getInstance().getBrowserHeight()));
             DriverFactory.setDriver(driver);

@@ -17,7 +17,7 @@ public final class DriverFactory {
     private DriverFactory() {
     }
 
-    public static void setDriver(WebDriver driver) {
+    public static void setDriver(final WebDriver driver) {
         drivers.set(driver);
         storedDrivers.add(driver);
     }
