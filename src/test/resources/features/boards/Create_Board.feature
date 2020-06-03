@@ -2,7 +2,7 @@
 Feature: Board context.
 
   Background: Login in the page
-    Given I log in with my Trello account as "user2"
+    Given I log in with my Trello account as "user1"
 
   Scenario: Create a simple personal board from header.
     In order have a personal container of tasks
@@ -10,6 +10,7 @@ Feature: Board context.
     I want to have my board visible
     When I create a "board" from header with the following data
       | title | GUI Testing |
+      | team  | No team     |
     Then "GUI Testing" board page should be visible
     And I navigate to boards home page
     * I navigate to "member" section
