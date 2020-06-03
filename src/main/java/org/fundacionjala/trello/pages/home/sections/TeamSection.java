@@ -10,7 +10,8 @@ public final class TeamSection extends BodySection {
     public static final String LIST_BOARDS = "/ul/li//a";
     public static final String SPECIFIC_BOARD = "//div[@title='%s']//ancestor::a";
     public static final String ADD_BOARD = "//div[@class='board-tile mod-add']";
-    private static final String BOARDS_BUTTON = "/following-sibling::div//a/span[contains(@class,'icon-board')]/parent::a";
+    private static final String BOARDS_BUTTON = "/following-sibling::div//a" +
+            "/span[contains(@class,'icon-board')]/parent::a";
 
     private String boardsOption;
 
