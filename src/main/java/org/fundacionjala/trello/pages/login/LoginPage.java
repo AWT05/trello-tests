@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.concurrent.TimeUnit;
+
 public final class LoginPage extends WebObject {
 
     private static final String URI = "/login";
@@ -49,11 +51,16 @@ public final class LoginPage extends WebObject {
     }
 
     public void waitIfLoginWithAtlassian() {
+        Environment env = Environment.getInstance();
         try {
             By selector = By.cssSelector(PASSWORD_CONTAINER);
+
+            wait.withTimeout(env.getReducedTime(), TimeUnit.SECONDS);
             wait.until(ExpectedConditions.attributeContains(selector, CLASS, HIDDEN_VALUE));
         } catch (TimeoutException ex) {
             return;
+        } finally {
+            wait.withTimeout(env.getExplicitTimeWait(), TimeUnit.SECONDS);
         }
         action.click(button);
         By loginAtlassian = By.cssSelector(LOGIN_SUBMIT_ATLASSIAN);

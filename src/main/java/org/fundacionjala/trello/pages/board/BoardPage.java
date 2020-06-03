@@ -63,7 +63,7 @@ public final class BoardPage extends PageObject implements IIdentifier {
 
     public String getTitle() {
         if (isDisplayed()) {
-            return titleBoard.getText();
+            return action.getElementText(titleBoard);
         }
         return "Error: Board not Found";
     }
