@@ -27,6 +27,7 @@ public final class TeamSection extends BodySection {
     }
 
     public TeamPage openTeamBoards() {
+        action.waitForPageLoadComplete(driver);
         By boards = By.xpath(boardsOption);
         action.click(driver.findElement(boards));
         return new TeamPage(driver);
