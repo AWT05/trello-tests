@@ -52,7 +52,7 @@ task executeBDDTests(type: Test) {
     options {
         jvmArgs = ['-Dcucumber.execution.strict=' + true]
         jvmArgs = ['-DbrowserName=' + browserName]
-        jvmArgs = ['-DthreadCount=' + threadCount]
+        jvmArgs = ['-DcucumberThreadCount=' + threadCount]
     }
     // Flag to show console output.
     testLogging.showStandardStreams = true
