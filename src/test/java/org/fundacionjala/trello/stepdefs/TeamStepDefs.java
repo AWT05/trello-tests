@@ -37,4 +37,14 @@ public final class TeamStepDefs {
     public void iSkipInvitingMembers() {
         teamInviteForm.skipInvite();
     }
+
+    /**
+     * Opens the board selected.
+     *
+     * @param boardName The board name.
+     */
+    @When("I open the {string} board team")
+    public void openTheBoardTeam(final String boardName) {
+        teamPage.openBoard(boardName);
+    }
 }

@@ -1,9 +1,8 @@
 package org.fundacionjala.core.context;
 
 import io.restassured.response.Response;
+import org.fundacionjala.core.entities.User;
 import org.fundacionjala.core.ui.pages.WebObject;
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +11,7 @@ import java.util.Map;
 public class Context {
 
     private WebObject pageObject;
+    private User user;
     private Map<String, Response> responses;
     private Map<String, List<String>> mapIds;
 
@@ -29,6 +29,7 @@ public class Context {
         responses = new HashMap<>();
         mapIds = new HashMap<>();
         pageObject = null;
+        user = null;
     }
 
     /**
@@ -89,5 +90,23 @@ public class Context {
      */
     public WebObject getActualPage() {
         return pageObject;
+    }
+
+    /**
+     * Gets user saved in the context.
+     *
+     * @return user object.
+     */
+    public User getCurrentUser() {
+        return user;
+    }
+
+    /**
+     * Saves the current logged in user.
+     *
+     * @param user identifier.
+     */
+    public void saveUser(final User user) {
+        this.user = user;
     }
 }

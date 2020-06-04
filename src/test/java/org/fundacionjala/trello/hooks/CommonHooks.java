@@ -13,6 +13,7 @@ public final class CommonHooks {
      */
     @Before(order = INIT_CONTEXT_ORDER_VALUE)
     public void openAndResizeWindow() {
+        //setDriver();
         Environment env = Environment.getInstance();
         DriverFactory.resizeScreen(env.getBrowserWidth(), env.getBrowserHeight());
     }

@@ -31,6 +31,7 @@ public final class Environment {
     private static final String EXPLICIT_TIME_WAIT = "explicitTimeWait";
     private static final String BROWSER_WIDTH = "browserWidth";
     private static final String BROWSER_HEIGHT = "browserHeight";
+    private static final String REDUCE_EXPLICIT_TIME = "reduceExplicitTime";
     private static Environment instance;
 
     private final Properties properties;
@@ -139,6 +140,15 @@ public final class Environment {
      */
     public int getExplicitTimeWait() {
         return Integer.parseInt(getEnvProperty(EXPLICIT_TIME_WAIT));
+    }
+
+    /**
+     * Gets default explicit time wait.
+     *
+     * @return int of explicit time.
+     */
+    public int getReducedTime() {
+        return Integer.parseInt(getEnvProperty(REDUCE_EXPLICIT_TIME));
     }
 
     /**
