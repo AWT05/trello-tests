@@ -64,4 +64,12 @@ public class ListStepDef {
         form.fillForm(data);
         form.submit();
     }
+
+    @When("I archive the {string} list")
+    public void iArchiveTheList(String arg0) {
+    }
+
+    @Then("I verify that the list has been archived")
+    public void iVerifyThatTheListHasBeenArchived() {
+    }
 }
