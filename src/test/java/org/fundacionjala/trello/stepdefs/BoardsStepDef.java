@@ -13,12 +13,10 @@ import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public class BoardsStepDef {
 
-    private Context context;
     private Section section;
     private final BoardsPage boardsPage;
 
-    public BoardsStepDef(final SharedDriver sharedDriver, final Context context) {
-        this.context = context;
+    public BoardsStepDef(final SharedDriver sharedDriver) {
         this.boardsPage = new BoardsPage(getDriver());
     }
 

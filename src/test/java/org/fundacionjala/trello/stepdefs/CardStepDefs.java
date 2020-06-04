@@ -17,14 +17,12 @@ import static org.testng.Assert.assertTrue;
 
 public class CardStepDefs {
 
-    private Context context;
     private FormPage<?> form;
     private MenuBoard menuBoard;
     private ListPage listPage;
     private CardPage cardPage;
 
-    public CardStepDefs(final SharedDriver sharedDriver, final Context context) {
-        this.context = context;
+    public CardStepDefs(final SharedDriver sharedDriver) {
         menuBoard = new MenuBoard(getDriver());
         listPage = new ListPage(getDriver());
         cardPage = new CardPage(getDriver());
