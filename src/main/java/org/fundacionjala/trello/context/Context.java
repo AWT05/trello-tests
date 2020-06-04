@@ -92,22 +92,4 @@ public class Context {
     public PageObject getActualPage() {
         return pageObject;
     }
-
-    /**
-     * Gets user saved in the context.
-     *
-     * @return user object.
-     */
-    public User getCurrentUser() {
-        return user;
-    }
-
-    /**
-     * Saves the current logged in user.
-     *
-     * @param user identifier.
-     */
-    public void saveUser(final User user) {
-        this.user = user;
-    }
 }

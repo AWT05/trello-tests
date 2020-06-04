@@ -47,7 +47,7 @@ public final class UserTrello extends User {
     /**
      * Gets saved map by key.
      *
-     * @param keyword map key.
+     * @param keyword the key whose associated value is to be returned.
      * @return id values.
      */
     public List<String> getIdsByKey(final EndPointsEnum keyword) {

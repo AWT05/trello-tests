@@ -2,12 +2,10 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.ContextTrello;
-import org.fundacionjala.trello.pages.IIdentifier;
+import org.fundacionjala.trello.pages.core.PageObject;
 import org.fundacionjala.trello.pages.forms.FormPage;
 
 import java.util.Map;
-
-import static org.fundacionjala.trello.context.EndPointsEnum.BOARD;
 
 public final class HeaderStepDefs {
 
@@ -28,12 +26,7 @@ public final class HeaderStepDefs {
     public void createEntityWithData(final String entity, final Map<String, String> data) {
         form = context.getActualPage().getHeader().createElement(entity);
         form.fillForm(data);
-        Object webObject = form.submit();
-        if (webObject instanceof IIdentifier) {
-            IIdentifier item = (IIdentifier) webObject;
-            context.getUser(context.currentUserKey())
-                    .saveIds(BOARD, item.getIdentifier());
-        }
+        context.saveActualPage((PageObject) form.submit());
     }
 
     /**

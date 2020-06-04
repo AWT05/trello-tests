@@ -32,7 +32,7 @@ public class BoardStepDefs {
      */
     @When("I navigate to boards home page")
     public void navigateToBoardsPage() {
-        context.saveActualPage(boardsHome.goToPage(context.getCurrentUser().getUsername()));
+        context.saveActualPage(boardsHome.goToPage(context.getUser().getUsername()));
     }
 
     /**

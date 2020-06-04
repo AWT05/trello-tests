@@ -34,6 +34,10 @@ public final class ContextTrello extends Context {
         return userMap.values();
     }
 
+    public UserTrello getUser() {
+        return userMap.get(userActive);
+    }
+
     public UserTrello getUser(final String userKey) {
         return userMap.get(userKey);
     }

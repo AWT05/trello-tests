@@ -14,6 +14,7 @@ import java.util.Map;
  */
 public class ApiRequestStepDef {
 
+    private static final String ID = "id";
     private final ContextTrello context;
     private final RequestManager requestManager;
     private Response response;
@@ -51,7 +52,6 @@ public class ApiRequestStepDef {
         EndPointsEnum endPointsEnum = CommonValidations.verifyEndPointEnum(entity);
         response = requestManager.init(context).queryParams(params).post(endPointsEnum.getEndPoint());
         context.saveResponse(entity, response);
-        context.getUser(context.currentUserKey())
-                .saveIds(endPointsEnum, response.jsonPath().getString("id"));
+        context.getUser().saveIds(endPointsEnum, response.jsonPath().getString(ID));
     }
 }
