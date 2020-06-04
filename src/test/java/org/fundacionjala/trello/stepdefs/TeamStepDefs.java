@@ -2,7 +2,8 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.fundacionjala.trello.context.Context;
+
+import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.team.TeamInviteForm;
 import org.fundacionjala.trello.pages.team.TeamPage;
@@ -13,8 +14,9 @@ import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 import static org.testng.Assert.assertEquals;
 
 public final class TeamStepDefs {
-    private TeamPage teamPage;
+
     private Context context;
+    private TeamPage teamPage;
     private TeamInviteForm teamInviteForm;
 
     public TeamStepDefs(final SharedDriver sharedDriver, final Context context) {
