@@ -1,9 +1,8 @@
 package org.fundacionjala.trello.driver;
 
+import org.fundacionjala.core.Environment;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-
-import org.fundacionjala.trello.config.Environment;
 
 public class SharedDriver {
 
