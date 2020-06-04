@@ -2,11 +2,12 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.ContextTrello;
+import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.fundacionjala.trello.pages.home.sections.Section;
 import org.fundacionjala.trello.pages.home.sections.TeamSection;
 
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public class BoardsStepDef {
 
@@ -14,9 +15,9 @@ public class BoardsStepDef {
     private Section section;
     private final BoardsPage boardsPage;
 
-    public BoardsStepDef(final ContextTrello context) {
+    public BoardsStepDef(final SharedDriver sharedDriver, final ContextTrello context) {
         this.context = context;
-        this.boardsPage = new BoardsPage(getChromeDriver());
+        this.boardsPage = new BoardsPage(getDriver());
     }
 
     /**

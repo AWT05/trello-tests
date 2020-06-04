@@ -7,20 +7,21 @@ import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.context.EndPointsEnum;
 import org.fundacionjala.trello.context.UserTrello;
 import org.fundacionjala.trello.pages.IIdentifier;
+import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.core.PageObject;
 import org.fundacionjala.trello.pages.login.LoginPage;
 import org.fundacionjala.trello.utils.CommonValidations;
 
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public final class StepDefs {
 
     private ContextTrello context;
     private LoginPage loginPage;
 
-    public StepDefs(final ContextTrello context) {
+    public StepDefs(final SharedDriver sharedDriver, final ContextTrello context) {
         this.context = context;
-        loginPage = new LoginPage(getChromeDriver());
+        loginPage = new LoginPage(getDriver());
     }
 
     /**

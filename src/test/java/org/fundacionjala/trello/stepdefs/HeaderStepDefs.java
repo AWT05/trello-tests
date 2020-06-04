@@ -1,6 +1,7 @@
 package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.When;
+import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.pages.core.PageObject;
 import org.fundacionjala.trello.pages.forms.FormPage;
@@ -12,7 +13,7 @@ public final class HeaderStepDefs {
     private final ContextTrello context;
     private FormPage<?> form;
 
-    public HeaderStepDefs(final ContextTrello context) {
+    public HeaderStepDefs(final SharedDriver sharedDriver, final ContextTrello context) {
         this.context = context;
     }
 

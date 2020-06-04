@@ -3,12 +3,13 @@ package org.fundacionjala.trello.stepdefs;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.team.TeamInviteForm;
 import org.fundacionjala.trello.pages.team.TeamPage;
 
 import java.util.Map;
 
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 import static org.testng.Assert.assertEquals;
 
 public final class TeamStepDefs {
@@ -16,10 +17,10 @@ public final class TeamStepDefs {
     private Context context;
     private TeamInviteForm teamInviteForm;
 
-    public TeamStepDefs(final Context context) {
+    public TeamStepDefs(final SharedDriver sharedDriver, final Context context) {
         this.context = context;
-        this.teamPage = new TeamPage(getChromeDriver());
-        this.teamInviteForm = new TeamInviteForm(getChromeDriver());
+        this.teamPage = new TeamPage(getDriver());
+        this.teamInviteForm = new TeamInviteForm(getDriver());
     }
 
     /**

@@ -12,7 +12,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public final class TeamPage extends PageObject implements IIdentifier {
 
@@ -59,7 +59,7 @@ public final class TeamPage extends PageObject implements IIdentifier {
      */
     public TeamSettings goToSettings() {
         action.click(teamSettings);
-        return new TeamSettings(getChromeDriver());
+        return new TeamSettings(getDriver());
     }
 
     public BoardsPage openBoard(final String name) {

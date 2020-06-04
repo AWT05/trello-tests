@@ -1,8 +1,6 @@
 package org.fundacionjala.trello.TDD.team;
 
-import org.fundacionjala.trello.config.Environment;
-import org.fundacionjala.trello.driver.DriverFactory;
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 import org.fundacionjala.trello.entities.User;
 import org.fundacionjala.trello.pages.core.PageObject;
 import org.fundacionjala.trello.pages.forms.FormPage;
@@ -22,8 +20,6 @@ public class CreateTeamTest {
 
     @BeforeMethod
     public final void setup() {
-        Environment env = Environment.getInstance();
-        DriverFactory.resizeScreen(env.getBrowserWidth(), env.getBrowserHeight());
         driver.get(TRELLO_URL);
     }
 
@@ -36,7 +32,7 @@ public class CreateTeamTest {
     @Test
     public void createTeamTest(final Map<String, String> data) {
         User user = new User("user1");
-        LoginPage page = new LoginPage(getChromeDriver());
+        LoginPage page = new LoginPage(getDriver());
         PageObject actualPage = page.setCredentials(user.getEmail(), user.getPassword())
                 .submit();
         form = actualPage.getHeader().createElement("team");
