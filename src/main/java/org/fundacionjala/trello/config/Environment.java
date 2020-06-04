@@ -29,9 +29,11 @@ public final class Environment {
     private static final String ROOT_PATH = ".";
     private static final String IMPLICIT_TIME_WAIT = "implicitTimeWait";
     private static final String EXPLICIT_TIME_WAIT = "explicitTimeWait";
+    private static final String BROWSER_NAME = "browserName";
     private static final String BROWSER_WIDTH = "browserWidth";
     private static final String BROWSER_HEIGHT = "browserHeight";
     private static final String REDUCE_EXPLICIT_TIME = "reduceExplicitTime";
+    private static final String THREAD_COUNT = "threadCount";
     private static Environment instance;
 
     private final Properties properties;
@@ -150,6 +152,15 @@ public final class Environment {
     }
 
     /**
+     * Gets the name of the browser to work with.
+     *
+     * @return the browser name.
+     */
+    public String getBrowserName() {
+        return getEnvProperty(BROWSER_NAME);
+    }
+
+    /**
      * Gets the width of the browser window.
      *
      * @return the window width.
@@ -165,5 +176,14 @@ public final class Environment {
      */
     public int getBrowserHeight() {
         return Integer.parseInt(getEnvProperty(BROWSER_HEIGHT));
+    }
+
+    /**
+     * Gets the number of threads on witch tests will run.
+     *
+     * @return the thread count.
+     */
+    public String getThreadCount() {
+        return getEnvProperty(THREAD_COUNT);
     }
 }

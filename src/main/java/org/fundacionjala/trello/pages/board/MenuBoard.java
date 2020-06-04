@@ -22,6 +22,7 @@ public final class MenuBoard extends WebObject {
 
     @Override
     public boolean isDisplayed() {
+        // To do: explicit wait
         return moreButton.isDisplayed();
     }
 
