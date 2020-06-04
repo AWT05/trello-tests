@@ -1,4 +1,4 @@
-@deleteBoardUi @deleteTeam
+@deleteBoard @deleteTeam
 Feature: Board context.
 
   Background: Login in the page
@@ -12,6 +12,7 @@ Feature: Board context.
       | title | GUI Testing |
       | team  | TEAM test   |
     Then "GUI Testing" board page should be visible
+    And I save the identifier of the board created
     And I navigate to boards menu from header
     * I select "GUI Testing" board form the "TEAM test" team
     * "GUI Testing" board page should be visible
