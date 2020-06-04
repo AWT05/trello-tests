@@ -53,4 +53,6 @@ task executeBDDTests(type: Test) {
         jvmArgs = ['-Dcucumber.execution.strict=' + true]
         jvmArgs = ['-DbrowserName=' + browserName]
     }
+    // Flag to show console output.
+    testLogging.showStandardStreams = true
 }
