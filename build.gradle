@@ -49,4 +49,8 @@ tasks.withType(Pmd) {
 
 task executeBDDTests(type: Test) {
     useTestNG()
+    options {
+        jvmArgs = ['-Dcucumber.execution.strict=' + true]
+        jvmArgs = ['-DbrowserName=' + browserName]
+    }
 }

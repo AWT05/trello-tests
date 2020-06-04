@@ -6,7 +6,7 @@ jdk:
 
 script:
   - ./gradlew check
-  - ./gradlew executeBDDTests -PbrowserName=headless
+  - ./gradlew executeBDDTests -DbrowserName=headless
 # TO DO: sonar-scanner
 
 notifications:
