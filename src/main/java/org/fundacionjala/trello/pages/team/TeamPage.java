@@ -44,7 +44,7 @@ public final class TeamPage extends PageObject implements IIdentifier {
     }
 
     public String getTeamName() {
-        action.waitUntilLoad(teamName);
+        action.waitForVisibility(teamName);
         if (isDisplayed()) {
             return action.getElementText(teamName);
         } else {

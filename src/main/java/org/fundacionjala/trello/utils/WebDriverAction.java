@@ -51,12 +51,21 @@ public class WebDriverAction {
     }
 
     /**
-     * Waits for an element to be fully loaded and visible.
+     * Waits for an element known in the DOM of a page to be visible.
      *
      * @param element web element.
      */
-    public void waitUntilLoad(final WebElement element) {
+    public void waitForVisibility(final WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    /**
+     * Waits for an element to be present and visible in the DOM of a page.
+     *
+     * @param element web element.
+     */
+    public void waitForElementLocated(final By element) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
     /**
