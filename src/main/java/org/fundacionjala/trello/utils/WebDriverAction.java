@@ -63,20 +63,17 @@ public class WebDriverAction {
 
     /**
      * Wait for a page to load completely for TIMEOUT seconds.
-     *
-     * @param driver the WebDriver instance.
      */
-    public void waitForPageLoadComplete(final WebDriver driver) {
-        waitForPageLoadComplete(driver, TIMEOUT);
+    public void waitForPageLoadComplete() {
+        waitForPageLoadComplete(TIMEOUT);
     }
 
     /**
      * Wait for a page to load completely for the specified number of seconds.
      *
-     * @param driver the WebDriver instance.
      * @param specifiedTimeout amount of seconds you want to wait for.
      */
-    public void waitForPageLoadComplete(final WebDriver driver, final int specifiedTimeout) {
+    public void waitForPageLoadComplete(final int specifiedTimeout) {
         Wait<WebDriver> wait = new WebDriverWait(driver, specifiedTimeout);
         wait.until(driver1 -> String
                 .valueOf(((JavascriptExecutor) driver1).executeScript("return document.readyState"))

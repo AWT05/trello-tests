@@ -47,7 +47,7 @@ public final class BoardsPage extends HomePage {
         String baseUrl = Environment.getInstance().getUiBaseUrl();
         String url = baseUrl.concat(SLASH).concat(username).concat(BOARDS_URI);
         driver.get(url);
-        action.waitForPageLoadComplete(driver);
+        action.waitForPageLoadComplete();
         return this;
     }
 }
