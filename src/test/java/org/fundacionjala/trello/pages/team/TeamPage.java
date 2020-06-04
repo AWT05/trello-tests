@@ -1,12 +1,13 @@
 package org.fundacionjala.trello.pages.team;
 
-import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
 import org.fundacionjala.trello.pages.PageObject;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public final class TeamPage extends PageObject {
 
@@ -45,7 +46,7 @@ public final class TeamPage extends PageObject {
      */
     public TeamSettings goToSettings() {
         action.click(teamSettings);
-        return new TeamSettings(getChromeDriver());
+        return new TeamSettings(getDriver());
     }
 
     public BoardsPage openBoard(final String name) {

@@ -1,20 +1,24 @@
 package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.When;
+import org.fundacionjala.core.context.Context;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.trello.pages.menus.Header;
+import org.fundacionjala.trello.driver.SharedDriver;
 
 import java.util.Map;
 
-import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public final class HeaderStepDefs {
 
+    private Context context;
     private FormPage<?> form;
     private Header header;
 
-    public HeaderStepDefs() {
-        header = new Header(getChromeDriver());
+    public HeaderStepDefs(final SharedDriver sharedDriver, final Context context) {
+        this.context = context;
+        header = new Header(getDriver());
     }
 
     /**

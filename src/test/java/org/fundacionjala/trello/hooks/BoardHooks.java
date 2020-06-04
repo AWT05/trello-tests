@@ -7,7 +7,7 @@ import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.board.MenuBoard;
 
 import static org.fundacionjala.trello.context.EndPointsEnum.BOARD;
-import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public final class BoardHooks {
 
@@ -26,8 +26,8 @@ public final class BoardHooks {
      */
     @After(value = "@deleteBoardUi", order = CLEAN_CONTEXT_ORDER_BOARD_UI)
     public void deleteBoardByUI() {
-        BoardPage board = new BoardPage(getChromeDriver());
-        MenuBoard menuBoard = new MenuBoard(getChromeDriver());
+        BoardPage board = new BoardPage(getDriver());
+        MenuBoard menuBoard = new MenuBoard(getDriver());
         if (!board.isDisplayed()) {
             return;
         }

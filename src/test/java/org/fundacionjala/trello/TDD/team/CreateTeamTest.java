@@ -1,11 +1,10 @@
 package org.fundacionjala.trello.TDD.team;
 
 import org.fundacionjala.core.Environment;
-import org.fundacionjala.core.ui.DriverFactory;
-import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
 import org.fundacionjala.core.entities.User;
 import org.fundacionjala.trello.pages.PageObject;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 import org.fundacionjala.trello.pages.login.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -24,8 +23,7 @@ public class CreateTeamTest {
     @BeforeMethod
     public final void setup() {
         Environment env = Environment.getInstance();
-        DriverFactory.resizeScreen(env.getBrowserWidth(), env.getBrowserHeight());
-        driver = getChromeDriver();
+        driver = getDriver();
         driver.get(TRELLO_URL);
     }
 
@@ -41,7 +39,7 @@ public class CreateTeamTest {
         data.put("name", "New Team");
         data.put("type", "Education");
         User user = new User("user1");
-        LoginPage page = new LoginPage(getChromeDriver());
+        LoginPage page = new LoginPage(getDriver());
         PageObject actualPage = page.setCredentials(user.getEmail(), user.getPassword())
                 .submit();
         form = actualPage.getHeader().createElement("team");

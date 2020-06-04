@@ -7,7 +7,7 @@ import org.fundacionjala.trello.pages.team.TeamPage;
 import org.fundacionjala.trello.pages.team.TeamSettings;
 
 import static org.fundacionjala.trello.context.EndPointsEnum.TEAM;
-import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public class TeamHooks {
 
@@ -26,7 +26,7 @@ public class TeamHooks {
      */
     @After(value = "@deleteTeamUi", order = CLEAN_CONTEXT_ORDER_TEAM_UI)
     public void deleteTeamByUi() {
-        TeamPage team = new TeamPage(getChromeDriver());
+        TeamPage team = new TeamPage(getDriver());
         TeamSettings teamSettings = team.goToSettings();
         if (!teamSettings.isDisplayed()) {
             return;

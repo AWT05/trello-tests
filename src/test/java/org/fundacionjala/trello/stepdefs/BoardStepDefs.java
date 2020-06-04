@@ -2,29 +2,31 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import org.fundacionjala.core.context.Context;
+import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.fundacionjala.trello.pages.menus.MenuBoards;
 
 import java.util.Map;
 
-import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class BoardStepDefs {
 
-    Context context;
+    private Context context;
     private final BoardsPage boardsHome;
     private MenuBoards menuBoards;
     private BoardPage board;
 
-    public BoardStepDefs(Context context) {
+    public BoardStepDefs(final SharedDriver sharedDriver, final Context context) {
         this.context = context;
-        board = new BoardPage(getChromeDriver());
-        menuBoards = new MenuBoards(getChromeDriver());
-        boardsHome = new BoardsPage(getChromeDriver());
+        board = new BoardPage(getDriver());
+        menuBoards = new MenuBoards(getDriver());
+        boardsHome = new BoardsPage(getDriver());
     }
 
     /**
