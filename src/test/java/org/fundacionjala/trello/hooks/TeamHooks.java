@@ -1,13 +1,13 @@
 package org.fundacionjala.trello.hooks;
 
 import io.cucumber.java.After;
-import org.fundacionjala.trello.client.RequestManager;
-import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.core.api.RequestManager;
+import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.pages.team.TeamPage;
 import org.fundacionjala.trello.pages.team.TeamSettings;
 
 import static org.fundacionjala.trello.context.EndPointsEnum.TEAM;
-import static org.fundacionjala.trello.driver.DriverFactory.getChromeDriver;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public class TeamHooks {
 
@@ -26,7 +26,7 @@ public class TeamHooks {
      */
     @After(value = "@deleteTeamUi", order = CLEAN_CONTEXT_ORDER_TEAM_UI)
     public void deleteTeamByUi() {
-        TeamPage team = new TeamPage(getChromeDriver());
+        TeamPage team = new TeamPage(getDriver());
         TeamSettings teamSettings = team.goToSettings();
         if (!teamSettings.isDisplayed()) {
             return;
@@ -39,7 +39,7 @@ public class TeamHooks {
      */
     @After(value = "@deleteTeam", order = CLEAN_CONTEXT_ORDER_TEAM)
     public void deleteTeamByApi() {
-        context.getIdsByKey(TEAM)
+        context.getIdsByKey(TEAM.name())
                 .forEach(id -> requestManager.init(context).delete(TEAM.getEndPoint().concat(id)));
     }
 }
