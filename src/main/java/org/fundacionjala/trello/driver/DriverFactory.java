@@ -8,8 +8,8 @@ import org.openqa.selenium.WebDriver;
 public final class DriverFactory {
 
     private static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
-
     private static List<WebDriver> storedDrivers = new ArrayList<>();
+
     static {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> storedDrivers.forEach(WebDriver::quit)));
     }

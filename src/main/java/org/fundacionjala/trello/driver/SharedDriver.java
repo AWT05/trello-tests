@@ -9,8 +9,7 @@ public class SharedDriver {
 
     public SharedDriver() {
         if (DriverFactory.getDriver() == null) {
-            Environment env = Environment.getInstance();
-            WebDriver driver = BrowserFactory.getBrowser(env.getBrowserName());
+            WebDriver driver = BrowserFactory.getBrowser(Environment.getInstance().getBrowserName());
             driver.manage().window().setSize(new Dimension(Environment.getInstance().getBrowserWidth(),
                     Environment.getInstance().getBrowserHeight()));
             DriverFactory.setDriver(driver);
