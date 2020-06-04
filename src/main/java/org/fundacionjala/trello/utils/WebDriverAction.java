@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.utils;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -7,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverAction {
 
+    private static final String INNER_TEXT = "innerText";
     protected WebDriver driver;
     protected WebDriverWait wait;
 
@@ -44,7 +46,7 @@ public class WebDriverAction {
      * @return a string with the element text.
      */
     public String getElementText(final WebElement webElement) {
-        wait.until(ExpectedConditions.attributeToBeNotEmpty(webElement, "innerText"));
+        wait.until(ExpectedConditions.attributeToBeNotEmpty(webElement, INNER_TEXT));
         return webElement.getText();
     }
 
@@ -55,5 +57,25 @@ public class WebDriverAction {
      */
     public void waitUntilLoad(final WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    /**
+     * Waits for WebElement which contains specific value in its inner attribute.
+     *
+     * @param element used to check its parameters.
+     * @param text used as expected attribute value.
+     */
+    public void waitContainsInnerText(final WebElement element, final String text) {
+        wait.until(ExpectedConditions.attributeContains(element, INNER_TEXT, text));
+    }
+
+    /**
+     * Waits for WebElement defined by the By object given which contains specific value in its inner attribute.
+     *
+     * @param element used to define WebElement to check its parameters.
+     * @param text used as expected attribute value.
+     */
+    public void waitContainsInnerText(final By element, final String text) {
+        wait.until(ExpectedConditions.attributeContains(element, INNER_TEXT, text));
     }
 }
