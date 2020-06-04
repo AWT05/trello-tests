@@ -31,7 +31,7 @@ public final class TeamPage extends PageObject {
     }
 
     public String getTeamName() {
-        action.waitUntilLoad(teamName);
+        action.waitElementVisible(teamName);
         if (isDisplayed()) {
             return action.getElementText(teamName);
         } else {
