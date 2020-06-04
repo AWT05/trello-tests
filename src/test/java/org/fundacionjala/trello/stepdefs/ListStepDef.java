@@ -8,6 +8,7 @@ import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.board.MenuBoard;
 import org.fundacionjala.trello.pages.list.ListPage;
+import org.fundacionjala.trello.utils.CommonValidations;
 
 import java.util.List;
 import java.util.Map;
@@ -36,9 +37,7 @@ public class ListStepDef {
      */
     @When("I create a List with:")
     public void iCreateAListWith(final Map<String, String> data) {
-        if (menuBoard.isDisplayed()) {
-            menuBoard.closeMenuOptions();
-        }
+        menuBoard.closeMenuOptions();
         form = boardPage.createNewList();
         form.fillForm(data);
         form.submit();
@@ -63,9 +62,7 @@ public class ListStepDef {
      */
     @When("I update the {string} List with:")
     public void updateTheList(final String listName, final Map<String, String> data) {
-        if (menuBoard.isDisplayed()) {
-            menuBoard.closeMenuOptions();
-        }
+        menuBoard.closeMenuOptions();
         form = boardPage.updateList(listName);
         form.fillForm(data);
         form.submit();
