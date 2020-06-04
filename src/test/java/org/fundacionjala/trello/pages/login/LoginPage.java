@@ -12,8 +12,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.concurrent.TimeUnit;
-
 public final class LoginPage extends WebObject {
 
     private static final String URI = "/login";

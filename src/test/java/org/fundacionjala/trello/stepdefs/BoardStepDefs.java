@@ -2,6 +2,7 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.fundacionjala.trello.pages.menus.MenuBoards;
@@ -14,11 +15,13 @@ import static org.testng.Assert.assertTrue;
 
 public class BoardStepDefs {
 
+    Context context;
     private final BoardsPage boardsHome;
     private MenuBoards menuBoards;
     private BoardPage board;
 
-    public BoardStepDefs() {
+    public BoardStepDefs(Context context) {
+        this.context = context;
         board = new BoardPage(getChromeDriver());
         menuBoards = new MenuBoards(getChromeDriver());
         boardsHome = new BoardsPage(getChromeDriver());

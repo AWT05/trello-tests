@@ -1,6 +1,6 @@
 package org.fundacionjala.trello.pages.home;
 
-import org.fundacionjala.trello.config.Environment;
+import org.fundacionjala.core.Environment;
 import org.fundacionjala.trello.pages.home.sections.BoardSection;
 import org.fundacionjala.trello.pages.home.sections.BodySection;
 import org.fundacionjala.trello.pages.home.sections.TeamSection;

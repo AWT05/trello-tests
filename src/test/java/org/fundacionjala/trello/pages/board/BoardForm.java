@@ -1,15 +1,9 @@
 package org.fundacionjala.trello.pages.board;
 
-<<<<<<< HEAD:src/test/java/org/fundacionjala/trello/pages/board/BoardForm.java
 import org.fundacionjala.core.ui.pages.forms.FormFieldsEnum;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.core.ui.pages.forms.IFillerField;
-=======
-import org.fundacionjala.trello.pages.forms.FormFieldsEnum;
-import org.fundacionjala.trello.pages.forms.FormPage;
-import org.fundacionjala.trello.pages.forms.IFillerField;
 import org.openqa.selenium.By;
->>>>>>> ad5e39184211e3bc0bc901a3a4b31a5293a96f19:src/main/java/org/fundacionjala/trello/pages/board/BoardForm.java
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,12 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.HashMap;
 import java.util.Map;
 
-<<<<<<< HEAD:src/test/java/org/fundacionjala/trello/pages/board/BoardForm.java
+import static org.fundacionjala.core.ui.pages.forms.FormFieldsEnum.TEAM;
 import static org.fundacionjala.core.ui.pages.forms.FormFieldsEnum.TITLE;
-=======
-import static org.fundacionjala.trello.pages.forms.FormFieldsEnum.TEAM;
-import static org.fundacionjala.trello.pages.forms.FormFieldsEnum.TITLE;
->>>>>>> ad5e39184211e3bc0bc901a3a4b31a5293a96f19:src/main/java/org/fundacionjala/trello/pages/board/BoardForm.java
 
 public final class BoardForm extends FormPage<BoardPage> {
 
