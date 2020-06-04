@@ -2,7 +2,6 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.menus.MenuBoards;
 
@@ -16,10 +15,8 @@ public class BoardStepDefs {
 
     private MenuBoards menuBoards;
     private BoardPage board;
-    private final Context context;
 
-    public BoardStepDefs(final Context context) {
-        this.context = context;
+    public BoardStepDefs() {
         board = new BoardPage(getChromeDriver());
         menuBoards = new MenuBoards(getChromeDriver());
     }

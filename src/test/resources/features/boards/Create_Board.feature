@@ -2,7 +2,7 @@
 Feature: Board context.
 
   Background: Login in the page
-    Given I log in with my Trello account as "user2"
+    Given I log in with my Trello account as "user1"
 
   Scenario: Create a personal simple board from header.
     In order have a personal container of tasks

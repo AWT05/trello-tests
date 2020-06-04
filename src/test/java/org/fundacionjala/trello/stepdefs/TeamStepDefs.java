@@ -2,21 +2,20 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.fundacionjala.core.context.Context;
-import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
 import org.fundacionjala.trello.pages.team.TeamInviteForm;
 import org.fundacionjala.trello.pages.team.TeamPage;
-import static org.testng.Assert.assertEquals;
 
 import java.util.Map;
 
+import static org.fundacionjala.core.ui.DriverFactory.getChromeDriver;
+import static org.testng.Assert.assertEquals;
+
 public final class TeamStepDefs {
+
     private TeamPage teamPage;
-    private Context context;
     private TeamInviteForm teamInviteForm;
 
-    public TeamStepDefs(final Context context) {
-        this.context = context;
+    public TeamStepDefs() {
         this.teamPage = new TeamPage(getChromeDriver());
         this.teamInviteForm = new TeamInviteForm(getChromeDriver());
     }
