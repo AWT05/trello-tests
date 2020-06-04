@@ -2,8 +2,8 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Given;
 import io.restassured.response.Response;
-import org.fundacionjala.trello.client.RequestManager;
-import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.core.api.RequestManager;
+import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.context.EndPointsEnum;
 import org.fundacionjala.trello.utils.CommonValidations;
 
@@ -50,6 +50,6 @@ public class ApiRequestStepDef {
         EndPointsEnum endPointsEnum = CommonValidations.verifyEndPointEnum(entity);
         response = requestManager.init(context).queryParams(params).post(endPointsEnum.getEndPoint());
         context.saveResponse(entity, response);
-        context.saveIds(endPointsEnum, response.jsonPath().getString("id"));
+        context.saveIds(endPointsEnum.name(), response.jsonPath().getString("id"));
     }
 }
