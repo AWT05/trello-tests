@@ -1,8 +1,6 @@
 package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.When;
-
-import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.fundacionjala.trello.pages.home.sections.Section;
