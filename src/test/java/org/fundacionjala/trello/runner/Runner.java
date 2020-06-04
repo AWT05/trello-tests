@@ -7,8 +7,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 
-import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
-
 /**
  * Cucumber TestNG runner class.
  */
