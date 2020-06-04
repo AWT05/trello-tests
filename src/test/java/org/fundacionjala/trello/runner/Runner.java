@@ -41,6 +41,5 @@ public final class Runner extends AbstractTestNGCucumberTests {
     @AfterTest
     public void afterAllScenarios() {
         // Code executed after features execution.
-        getDriver().quit();
     }
 }

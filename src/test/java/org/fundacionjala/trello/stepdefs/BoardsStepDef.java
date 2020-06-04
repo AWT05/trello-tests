@@ -8,7 +8,6 @@ import org.fundacionjala.trello.pages.home.sections.TeamSection;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
-
 public class BoardsStepDef {
 
     private Section section;
