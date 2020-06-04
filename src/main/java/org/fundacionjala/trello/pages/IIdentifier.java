@@ -3,6 +3,7 @@ package org.fundacionjala.trello.pages;
 import java.net.URISyntaxException;
 
 public interface IIdentifier {
+
     default String getIdentifier() {
         String identifier = "";
         try {

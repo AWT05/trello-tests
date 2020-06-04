@@ -2,7 +2,7 @@
 Feature: Team manipulation
 
   Background: Login to trello.
-    Given I log in with my Trello account as "user2"
+    Given I log in with my Trello account as "user1"
 
   @acceptance
   Scenario: User is able to create a team

@@ -50,7 +50,7 @@ public class BoardStepDefs {
      * Opens a board inside a team.
      *
      * @param boardName String name of a specific board.
-     * @param teamName String name of a specific team.
+     * @param teamName  String name of a specific team.
      */
     @When("I select {string} board form the {string} team")
     public void iSelectBoardFormTheTeam(final String boardName, final String teamName) {

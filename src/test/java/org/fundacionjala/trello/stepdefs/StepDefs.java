@@ -48,7 +48,7 @@ public final class StepDefs {
      * @param element value used to save the Id.
      */
     @When("I save the identifier of the {element} created")
-    public void iSaveTheCreatedInTheContext(final EndPointsEnum element) {
+    public void savesIDsInContext(final EndPointsEnum element) {
         if (context.getActualPage() instanceof IIdentifier) {
             IIdentifier item = (IIdentifier) context.getActualPage();
             context.getUser().saveIds(element, item.getIdentifier());

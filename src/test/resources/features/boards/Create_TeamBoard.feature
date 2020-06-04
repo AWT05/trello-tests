@@ -11,8 +11,8 @@ Feature: Board context.
     When I create a "board" from header with the following data
       | title | GUI Testing |
       | team  | TEAM test   |
-    Then "GUI Testing" board page should be visible
     And I save the identifier of the board created
+    Then "GUI Testing" board page should be visible
     And I navigate to boards menu from header
     * I select "GUI Testing" board form the "TEAM test" team
     * "GUI Testing" board page should be visible
