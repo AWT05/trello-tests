@@ -16,10 +16,6 @@ public final class ContextTrello extends Context {
         this.userMap = new HashMap<>();
     }
 
-    public String currentUserKey() {
-        return userActive;
-    }
-
     public void saveUser(final String userKeyword) {
         saveUser(new UserTrello(userKeyword));
     }

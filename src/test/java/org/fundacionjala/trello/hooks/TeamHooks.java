@@ -10,9 +10,6 @@ public class TeamHooks {
 
     private static final int CLEAN_CONTEXT_ORDER_TEAM_UI = 10;
 
-    public TeamHooks() {
-    }
-
     /**
      * Delete a Team if it was created by UI.
      */

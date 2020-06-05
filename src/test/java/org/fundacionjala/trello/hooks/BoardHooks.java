@@ -10,9 +10,6 @@ public final class BoardHooks {
 
     private static final int CLEAN_CONTEXT_ORDER_BOARD_UI = 20;
 
-    public BoardHooks() {
-    }
-
     /**
      * Delete a Board if it was created by UI.
      */

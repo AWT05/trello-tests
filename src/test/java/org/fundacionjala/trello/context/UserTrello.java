@@ -17,6 +17,11 @@ public final class UserTrello extends User {
         this.mapIds = new HashMap<>();
     }
 
+    /**
+     * Gets the value to select a user.
+     *
+     * @return user keyword.
+     */
     public String getKeyword() {
         return user.get(USER);
     }
