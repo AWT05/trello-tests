@@ -3,9 +3,7 @@ package org.fundacionjala.trello.hooks;
 import io.cucumber.java.After;
 import org.fundacionjala.core.api.RequestManager;
 import org.fundacionjala.trello.context.ContextTrello;
-
-import static org.fundacionjala.trello.context.EndPointsEnum.BOARD;
-import static org.fundacionjala.trello.context.EndPointsEnum.TEAM;
+import org.fundacionjala.trello.context.EndPointsEnum;
 
 public final class CommonHooks {
 
@@ -23,26 +21,17 @@ public final class CommonHooks {
      */
     @After(value = "@cleanData", order = CLEAN_CONTEXT_ORDER)
     public void cleanTestsData() {
-        deleteBoardByApi();
-        deleteTeamByApi();
+        for (EndPointsEnum elem: EndPointsEnum.values()) {
+            deleteItemsByApi(elem);
+        }
     }
 
-    private void deleteBoardByApi() {
+    private void deleteItemsByApi(final EndPointsEnum item) {
         context.getUsers().forEach(user -> {
             requestManager.setApiCredentials(user.getKeyword());
-            user.getIdsByKey(BOARD).forEach(id -> requestManager
+            user.getIdsByKey(item).forEach(id -> requestManager
                     .init(context)
-                    .delete(BOARD.getEndPoint().concat(id)));
+                    .delete(item.getEndPoint().concat(id)));
         });
     }
-
-    private void deleteTeamByApi() {
-        context.getUsers().forEach(user -> {
-            requestManager.setApiCredentials(user.getKeyword());
-            user.getIdsByKey(TEAM).forEach(id -> requestManager
-                    .init(context)
-                    .delete(TEAM.getEndPoint().concat(id)));
-        });
-    }
-
 }
