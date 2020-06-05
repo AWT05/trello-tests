@@ -33,7 +33,7 @@ public final class Environment {
     private static final String BROWSER_WIDTH = "browserWidth";
     private static final String BROWSER_HEIGHT = "browserHeight";
     private static final String REDUCE_EXPLICIT_TIME = "reduceExplicitTime";
-    private static final String THREAD_COUNT = "threadCount";
+    private static final String THREAD_COUNT = "cucumberThreadCount";
     private static Environment instance;
 
     private final Properties properties;
