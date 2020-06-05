@@ -17,7 +17,7 @@ public final class CommonHooks {
     }
 
     /**
-     * Delete a Board if it was created by UI.
+     * Deletes Items if they were created by UI or API.
      */
     @After(value = "@cleanData", order = CLEAN_CONTEXT_ORDER)
     public void cleanTestsData() {
