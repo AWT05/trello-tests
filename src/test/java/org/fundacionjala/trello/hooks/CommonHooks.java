@@ -21,17 +21,13 @@ public final class CommonHooks {
      */
     @After(value = "@cleanData", order = CLEAN_CONTEXT_ORDER)
     public void cleanTestsData() {
-        for (EndPointsEnum elem: EndPointsEnum.values()) {
-            deleteItemsByApi(elem);
-        }
-    }
-
-    private void deleteItemsByApi(final EndPointsEnum item) {
         context.getUsers().forEach(user -> {
             requestManager.setApiCredentials(user.getKeyword());
-            user.getIdsByKey(item).forEach(id -> requestManager
-                    .init(context)
-                    .delete(item.getEndPoint().concat(id)));
+            for (EndPointsEnum item : EndPointsEnum.values()) {
+                user.getIdsByKey(item).forEach(id -> requestManager
+                        .init(context)
+                        .delete(item.getEndPoint().concat(id)));
+            }
         });
     }
 }
