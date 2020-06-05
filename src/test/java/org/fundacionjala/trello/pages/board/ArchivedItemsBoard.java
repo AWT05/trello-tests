@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public final class ArchivedItemsBoard extends PageObject {
 
+    private static final String LIST_TEXT_PARAMETERS = "list";
     private static final String ARCHIVE_TITTLE = "h3.board-menu-header-title";
     private static final String SWITCH_BUTTON = "a.archive-controls-switch";
     private static final String ARCHIVED_LIST = "div.item-name";
@@ -40,7 +41,7 @@ public final class ArchivedItemsBoard extends PageObject {
 
     public ArchivedItemsBoard switchItems() {
         action.waitForVisibility(switchButton);
-        if (switchButton.getText().contains("list")) {
+        if (switchButton.getText().contains(LIST_TEXT_PARAMETERS)) {
             action.click(switchButton);
         }
         return this;
