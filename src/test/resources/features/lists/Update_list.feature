@@ -25,4 +25,4 @@ Feature: List
     And I navigate to boards menu from header
     And I open the "WorldNews" board
     When I archive the "testing" list
-    Then I verify that the list has been archived
+    Then I verify that the "testing" list has been archived

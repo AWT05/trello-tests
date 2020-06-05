@@ -6,6 +6,7 @@ import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.board.MenuBoard;
+import org.fundacionjala.trello.pages.list.ListMenu;
 import org.fundacionjala.trello.pages.list.ListPage;
 
 import java.util.List;
@@ -20,11 +21,13 @@ public class ListStepDef {
     private MenuBoard menuBoard;
     private ListPage listPage;
     private FormPage<?> form;
+    private ListMenu listMenu;
 
     public ListStepDef(final SharedDriver sharedDriver) {
         boardPage = new BoardPage(getDriver());
         menuBoard = new MenuBoard(getDriver());
         listPage = new ListPage(getDriver());
+        listMenu = new ListMenu(getDriver());
     }
 
     /**
@@ -65,13 +68,29 @@ public class ListStepDef {
         form.submit();
     }
 
+    /**
+     * Archives a list by its name.
+     *
+     * @param listName to archive.
+     */
     @When("I archive the {string} list")
     public void iArchiveTheList(String listName) {
         menuBoard.closeMenuOptions();
-        listPage.getListMenu(listName);
+        listPage.getListMenu(listName).archiveList();
     }
 
-    @Then("I verify that the list has been archived")
-    public void iVerifyThatTheListHasBeenArchived() {
+    /**
+     * Validates that the list has been correctly archived.
+     *
+     * @param expectedListName the list name.
+     */
+    @Then("I verify that the {string} list has been archived")
+    public void iVerifyThatTheListHasBeenArchived(String expectedListName) {
+        List<String> archivedLists = boardPage.displayMenu()
+                .moreMenuOptions()
+                .archivedItems()
+                .switchItems()
+                .ArchivedItemList();
+        assertTrue(archivedLists.contains(expectedListName));
     }
 }

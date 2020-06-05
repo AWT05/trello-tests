@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,6 +39,7 @@ public final class ListPage extends PageObject {
 
     public List<String> getAllListsNames() {
         action.waitForPageLoadComplete();
+        wait.until(ExpectedConditions.visibilityOfAllElements(listNames));
         return listNames.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
