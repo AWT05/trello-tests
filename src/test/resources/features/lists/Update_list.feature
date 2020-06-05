@@ -9,7 +9,7 @@ Feature: List
       | name    | testing    |
       | idBoard | {board.id} |
 
-  @deleteBoard
+  @cleanData
   Scenario: Update a list name
     Given I log in with my Trello account as "user1"
     And I navigate to boards menu from header

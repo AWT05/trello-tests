@@ -7,7 +7,6 @@ import org.fundacionjala.trello.pages.home.sections.TeamSection;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public final class BoardsPage extends HomePage {
 
@@ -31,8 +30,8 @@ public final class BoardsPage extends HomePage {
     }
 
     public BodySection getSection(final String section) {
-        wait.until(ExpectedConditions.visibilityOf(container));
-        wait.until(ExpectedConditions.visibilityOfAllElements(createBoardButton));
+        action.waitForVisibility(container);
+        action.waitForVisibility(createBoardButton);
 
         switch (section) {
             case "member":

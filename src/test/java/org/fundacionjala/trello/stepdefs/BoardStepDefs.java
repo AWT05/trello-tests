@@ -3,7 +3,7 @@ package org.fundacionjala.trello.stepdefs;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import org.fundacionjala.core.context.Context;
+import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.home.BoardsPage;
@@ -17,12 +17,12 @@ import static org.testng.Assert.assertTrue;
 
 public class BoardStepDefs {
 
-    private Context context;
     private final BoardsPage boardsHome;
     private MenuBoards menuBoards;
     private BoardPage board;
+    private final ContextTrello context;
 
-    public BoardStepDefs(final SharedDriver sharedDriver, final Context context) {
+    public BoardStepDefs(final SharedDriver sharedDriver, final ContextTrello context) {
         this.context = context;
         board = new BoardPage(getDriver());
         menuBoards = new MenuBoards(getDriver());
@@ -34,7 +34,7 @@ public class BoardStepDefs {
      */
     @When("I navigate to boards home page")
     public void navigateToBoardsPage() {
-        context.saveActualPage(boardsHome.goToPage(context.getCurrentUser().getUsername()));
+        context.saveActualPage(boardsHome.goToPage(context.getUser().getUsername()));
     }
 
     /**
@@ -51,7 +51,7 @@ public class BoardStepDefs {
      * Opens a board inside a team.
      *
      * @param boardName String name of a specific board.
-     * @param teamName String name of a specific team.
+     * @param teamName  String name of a specific team.
      */
     @When("I select {string} board form the {string} team")
     public void iSelectBoardFormTheTeam(final String boardName, final String teamName) {

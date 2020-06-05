@@ -51,8 +51,9 @@ public abstract class BodySection extends Section {
 
     @Override
     public final BoardPage getBoard(final String title) {
-        By boardXpath = By.xpath(String.format(boardSelector, title));
-        action.click(driver.findElement(boardXpath));
+        By boardLocator = By.xpath(String.format(boardSelector, title));
+        action.waitForElementLocated(boardLocator);
+        action.click(driver.findElement(boardLocator));
         return new BoardPage(driver);
     }
 
