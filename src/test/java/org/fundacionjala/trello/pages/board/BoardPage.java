@@ -1,7 +1,7 @@
 package org.fundacionjala.trello.pages.board;
 
 import org.fundacionjala.core.ui.pages.forms.FormPage;
-import org.fundacionjala.trello.pages.IIdentifier;
+import org.fundacionjala.trello.pages.IIdentifiable;
 import org.fundacionjala.trello.pages.list.ListForm;
 import org.fundacionjala.trello.pages.list.ListUpdateForm;
 import org.fundacionjala.trello.pages.PageObject;
@@ -14,7 +14,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
-public final class BoardPage extends PageObject implements IIdentifier {
+public final class BoardPage extends PageObject implements IIdentifiable {
 
     private static final String TITLE_TEXT = "div.mod-board-name > span";
     private static final String TITLE_INPUT = "div.mod-board-name > input";

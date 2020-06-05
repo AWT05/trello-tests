@@ -1,6 +1,6 @@
 package org.fundacionjala.trello.pages.team;
 
-import org.fundacionjala.trello.pages.IIdentifier;
+import org.fundacionjala.trello.pages.IIdentifiable;
 import org.fundacionjala.trello.pages.PageObject;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.openqa.selenium.By;
@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
-public final class TeamPage extends PageObject implements IIdentifier {
+public final class TeamPage extends PageObject implements IIdentifiable {
 
     private static final String TEAM_NAME = "div.tabbed-pane-header-details > div > div > div > h1";
     private static final String TEAM_SETTINGS = "a[data-tab=\"settings\"]";
