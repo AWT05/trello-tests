@@ -9,7 +9,7 @@ Feature: Card
       | name    | Jacoco     |
       | idBoard | {board.id} |
 
-  @deleteBoard
+  @cleanData
   Scenario: Create a card
     Given I log in with my Trello account as "user1"
     And I navigate to boards menu from header

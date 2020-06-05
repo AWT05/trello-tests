@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -27,6 +28,7 @@ public final class BoardPage extends PageObject implements IIdentifiable {
     private static final String GET_LIST = "//textarea[contains(text(), '%s')]/parent::"
             + "div[contains(@class,'list-header')]";
     private static final int ID_INDEX = 1;
+    private static final String URL_REGEX = "/b/[\\w]+/";
 
     @FindBy(css = BOARD_HEADER)
     private WebElement boardHeader;
@@ -58,8 +60,14 @@ public final class BoardPage extends PageObject implements IIdentifiable {
 
     @Override
     public boolean isDisplayed() {
-        action.waitForPageLoadComplete();
         return boardHeader.isDisplayed() && board.isDisplayed();
+    }
+
+    @Override
+    public String handleUrl() throws URISyntaxException {
+        wait.until(ExpectedConditions.urlMatches(URL_REGEX));
+        String currentUri = new URI(driver.getCurrentUrl()).getPath();
+        return Paths.get(currentUri).getName(ID_INDEX).toString();
     }
 
     public String getTitle() {
@@ -83,16 +91,8 @@ public final class BoardPage extends PageObject implements IIdentifiable {
 
     public FormPage<?> updateList(final String listName) {
         String getList = String.format(GET_LIST, listName);
-        action.waitForElementLocated(By.xpath(getList));
         WebElement actualList = driver.findElement(By.xpath(getList));
         action.click(actualList);
         return new ListUpdateForm(driver);
-    }
-
-    @Override
-    public String handleUrl() throws URISyntaxException {
-        isDisplayed();
-        String currentUri = new URI(driver.getCurrentUrl()).getPath();
-        return Paths.get(currentUri).getName(ID_INDEX).toString();
     }
 }

@@ -1,4 +1,4 @@
-@deleteTeam
+@cleanData
 Feature: Team manipulation
 
   Background: Login to trello.

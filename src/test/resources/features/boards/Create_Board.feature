@@ -1,4 +1,4 @@
-@deleteBoard
+@cleanData
 Feature: Board context.
 
   Background: Login in the page

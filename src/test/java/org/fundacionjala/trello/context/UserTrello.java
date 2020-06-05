@@ -25,7 +25,7 @@ public final class UserTrello extends User {
      * Saves id in a map.
      *
      * @param keyword map key.
-     * @param id      project id.
+     * @param id      element id to save.
      */
     public void saveIds(final EndPointsEnum keyword, final String id) {
         if (!mapIds.containsKey(keyword)) {
