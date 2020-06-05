@@ -1,19 +1,27 @@
 package org.fundacionjala.trello.pages.team;
 
+import org.fundacionjala.trello.pages.IIdentifiable;
 import org.fundacionjala.trello.pages.PageObject;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
-public final class TeamPage extends PageObject {
+public final class TeamPage extends PageObject implements IIdentifiable {
 
     private static final String TEAM_NAME = "div.tabbed-pane-header-details > div > div > div > h1";
     private static final String TEAM_SETTINGS = "a[data-tab=\"settings\"]";
     private static final String XPATH_BOARD_TILE = "//div[contains(@title, '%s')]//ancestor::a[@class='board-tile']";
+    private static final int ID_INDEX = 0;
+    private static final String URL_REGEX = "/[\\w]+";
 
     @FindBy(css = TEAM_NAME)
     private WebElement teamName;
@@ -30,8 +38,15 @@ public final class TeamPage extends PageObject {
         return teamName.isDisplayed() && teamSettings.isDisplayed();
     }
 
+    @Override
+    public String handleUrl() throws URISyntaxException {
+        wait.until(ExpectedConditions.urlMatches(URL_REGEX));
+        String currentUri = new URI(driver.getCurrentUrl()).getPath();
+        return Paths.get(currentUri).getName(ID_INDEX).toString();
+    }
+
     public String getTeamName() {
-        action.waitElementVisible(teamName);
+        action.waitForVisibility(teamName);
         if (isDisplayed()) {
             return action.getElementText(teamName);
         } else {

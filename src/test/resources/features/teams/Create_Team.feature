@@ -1,4 +1,4 @@
-@deleteTeamUi
+@cleanData
 Feature: Team manipulation
 
   Background: Login to trello.
@@ -11,6 +11,7 @@ Feature: Team manipulation
       | type        | Education                                               |
       | description | Ancient monastic and kraterocratic cultist organization |
     And I skip inviting members
+    And I save the identifier of the team created
     Then I should have a team created with the following data
       | name | Sith Empire |
     And I navigate to boards home page

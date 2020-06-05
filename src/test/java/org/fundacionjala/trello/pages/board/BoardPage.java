@@ -1,15 +1,21 @@
 package org.fundacionjala.trello.pages.board;
 
-import org.fundacionjala.trello.pages.PageObject;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
+import org.fundacionjala.trello.pages.IIdentifiable;
 import org.fundacionjala.trello.pages.list.ListForm;
 import org.fundacionjala.trello.pages.list.ListUpdateForm;
+import org.fundacionjala.trello.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public final class BoardPage extends PageObject {
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Paths;
+
+public final class BoardPage extends PageObject implements IIdentifiable {
 
     private static final String TITLE_TEXT = "div.mod-board-name > span";
     private static final String TITLE_INPUT = "div.mod-board-name > input";
@@ -21,6 +27,8 @@ public final class BoardPage extends PageObject {
     private static final String ADD_LIST = "div.js-add-list span.icon-add";
     private static final String GET_LIST = "//textarea[contains(text(), '%s')]/parent::"
             + "div[contains(@class,'list-header')]";
+    private static final int ID_INDEX = 1;
+    private static final String URL_REGEX = "/b/[\\w]+/";
 
     @FindBy(css = BOARD_HEADER)
     private WebElement boardHeader;
@@ -52,14 +60,20 @@ public final class BoardPage extends PageObject {
 
     @Override
     public boolean isDisplayed() {
+        action.waitForVisibility(boardHeader);
+        action.waitForVisibility(board);
         return boardHeader.isDisplayed() && board.isDisplayed();
     }
 
+    @Override
+    public String handleUrl() throws URISyntaxException {
+        wait.until(ExpectedConditions.urlMatches(URL_REGEX));
+        String currentUri = new URI(driver.getCurrentUrl()).getPath();
+        return Paths.get(currentUri).getName(ID_INDEX).toString();
+    }
+
     public String getTitle() {
-        if (isDisplayed()) {
-            return action.getElementText(titleBoard);
-        }
-        return "Error: Board not Found";
+        return action.getElementText(titleBoard);
     }
 
     public MenuBoard displayMenu() {
