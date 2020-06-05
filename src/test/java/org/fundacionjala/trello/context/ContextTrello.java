@@ -37,7 +37,7 @@ public final class ContextTrello extends Context {
     }
 
     public UserTrello getUser() {
-        return userMap.get(userActive);
+        return getUser(userActive);
     }
 
     public UserTrello getUser(final String userKey) {

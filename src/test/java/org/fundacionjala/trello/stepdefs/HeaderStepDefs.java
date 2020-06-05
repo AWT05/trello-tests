@@ -2,9 +2,7 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.When;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
-import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.driver.SharedDriver;
-import org.fundacionjala.trello.pages.PageObject;
 import org.fundacionjala.trello.pages.menus.Header;
 
 import java.util.Map;
@@ -13,12 +11,10 @@ import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public final class HeaderStepDefs {
 
-    private final ContextTrello context;
     private FormPage<?> form;
     private Header header;
 
-    public HeaderStepDefs(final SharedDriver sharedDriver, final ContextTrello context) {
-        this.context = context;
+    public HeaderStepDefs(final SharedDriver sharedDriver) {
         header = new Header(getDriver());
     }
 
@@ -32,7 +28,7 @@ public final class HeaderStepDefs {
     public void createEntityWithData(final String entity, final Map<String, String> data) {
         form = header.createElement(entity);
         form.fillForm(data);
-        context.saveActualPage((PageObject) form.submit());
+        form.submit();
     }
 
     /**

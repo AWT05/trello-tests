@@ -58,6 +58,7 @@ public final class BoardPage extends PageObject implements IIdentifiable {
 
     @Override
     public boolean isDisplayed() {
+        action.waitForPageLoadComplete();
         return boardHeader.isDisplayed() && board.isDisplayed();
     }
 
