@@ -77,4 +77,13 @@ public class BoardStepDefs {
         assertTrue(board.isDisplayed());
         assertEquals(board.getTitle(), title);
     }
+
+    /** Opens team from boards menu of header.
+     *
+     * @param teamName name of the team to open.
+     */
+    @When("I open the {string} team")
+    public void selectTeam(final String teamName) {
+        menuBoards.goToTeamPage(teamName);
+    }
 }

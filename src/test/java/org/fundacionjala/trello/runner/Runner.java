@@ -2,7 +2,7 @@ package org.fundacionjala.trello.runner;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import org.fundacionjala.trello.config.Environment;
+import org.fundacionjala.core.Environment;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;

@@ -8,7 +8,7 @@ import org.fundacionjala.trello.context.EndPointsEnum;
 import org.fundacionjala.trello.context.UserTrello;
 import org.fundacionjala.trello.pages.IIdentifier;
 import org.fundacionjala.trello.driver.SharedDriver;
-import org.fundacionjala.trello.pages.core.PageObject;
+import org.fundacionjala.trello.pages.PageObject;
 import org.fundacionjala.trello.pages.login.LoginPage;
 import org.fundacionjala.trello.utils.CommonValidations;
 

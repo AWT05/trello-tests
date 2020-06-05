@@ -1,7 +1,7 @@
 package org.fundacionjala.trello.hooks;
 
 import io.cucumber.java.After;
-import org.fundacionjala.trello.client.RequestManager;
+import org.fundacionjala.core.api.RequestManager;
 import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.pages.team.TeamPage;
 import org.fundacionjala.trello.pages.team.TeamSettings;

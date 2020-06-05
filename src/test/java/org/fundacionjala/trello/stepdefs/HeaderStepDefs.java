@@ -1,20 +1,25 @@
 package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.When;
-import org.fundacionjala.trello.driver.SharedDriver;
+import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.trello.context.ContextTrello;
+import org.fundacionjala.trello.driver.SharedDriver;
+import org.fundacionjala.trello.pages.menus.Header;
 import org.fundacionjala.trello.pages.core.PageObject;
-import org.fundacionjala.trello.pages.forms.FormPage;
 
 import java.util.Map;
+
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public final class HeaderStepDefs {
 
     private final ContextTrello context;
     private FormPage<?> form;
+    private Header header;
 
     public HeaderStepDefs(final SharedDriver sharedDriver, final ContextTrello context) {
         this.context = context;
+        header = new Header(getDriver());
     }
 
     /**
@@ -25,7 +30,7 @@ public final class HeaderStepDefs {
      */
     @When("I create a {string} from header with the following data")
     public void createEntityWithData(final String entity, final Map<String, String> data) {
-        form = context.getActualPage().getHeader().createElement(entity);
+        form = header.createElement(entity);
         form.fillForm(data);
         context.saveActualPage((PageObject) form.submit());
     }
@@ -35,6 +40,6 @@ public final class HeaderStepDefs {
      */
     @When("I navigate to boards menu from header")
     public void iNavigateToBoardsPage() {
-        context.getActualPage().getHeader().getMenuBoards();
+        header.getMenuBoards();
     }
 }

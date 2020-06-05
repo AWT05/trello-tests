@@ -1,7 +1,7 @@
 package org.fundacionjala.trello.hooks;
 
 import io.cucumber.java.After;
-import org.fundacionjala.trello.client.RequestManager;
+import org.fundacionjala.core.api.RequestManager;
 import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.board.MenuBoard;
@@ -34,7 +34,9 @@ public final class BoardHooks {
         if (!menuBoard.isDisplayed()) {
             menuBoard = board.displayMenu();
         }
-        menuBoard.moreMenuOptions().closeBoard().permanentlyDelete();
+        menuBoard.moreMenuOptions()
+                .closeBoard()
+                .permanentlyDelete();
     }
 
     /**
