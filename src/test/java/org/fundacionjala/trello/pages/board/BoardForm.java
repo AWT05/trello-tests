@@ -76,18 +76,11 @@ public final class BoardForm extends FormPage<BoardPage> {
 
     private void selectTeamOption(final String team) {
         String locator;
-        String selected = team;
         if (NO_TEAM.equals(team)) {
             locator = XPATH_NO_TEAM_OPTION;
-            selected = setValueByLanguage();
         } else {
             locator = String.format(XPATH_TEAM_OPTION, team);
         }
         action.click(driver.findElement(By.xpath(locator)));
-        action.waitContainsInnerText(By.cssSelector(TEAM_OPTIONS_BUTTON), selected);
-    }
-
-    private String setValueByLanguage() {
-        return NO_TEAM;
     }
 }
