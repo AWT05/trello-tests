@@ -11,6 +11,7 @@ public class User {
 
     private static final String EMAIL = "email";
     private static final String PASSWORD = "password";
+    private static final String USERNAME = "username";
     protected final Map<String, String> user;
 
     public User(final String userAccount) {
@@ -24,6 +25,15 @@ public class User {
      */
     public String getEmail() {
         return user.get(EMAIL);
+    }
+
+    /**
+     * Gets username.
+     *
+     * @return username as string.
+     */
+    public String getUsername() {
+        return user.get(USERNAME);
     }
 
     /**

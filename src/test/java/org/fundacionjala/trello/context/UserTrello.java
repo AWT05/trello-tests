@@ -9,22 +9,12 @@ import java.util.Map;
 
 public final class UserTrello extends User {
 
-    private static final String USERNAME = "username";
     private static final String USER = "user";
     private Map<EndPointsEnum, List<String>> mapIds;
 
     public UserTrello(final String userAccount) {
         super(userAccount);
         this.mapIds = new HashMap<>();
-    }
-
-    /**
-     * Gets username.
-     *
-     * @return username.
-     */
-    public String getUsername() {
-        return user.get(USERNAME);
     }
 
     public String getKeyword() {
