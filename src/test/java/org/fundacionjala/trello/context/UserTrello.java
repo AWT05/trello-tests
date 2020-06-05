@@ -1,6 +1,6 @@
 package org.fundacionjala.trello.context;
 
-import org.fundacionjala.trello.entities.User;
+import org.fundacionjala.core.entities.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;

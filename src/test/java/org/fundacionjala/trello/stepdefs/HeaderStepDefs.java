@@ -4,8 +4,8 @@ import io.cucumber.java.en.When;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.driver.SharedDriver;
+import org.fundacionjala.trello.pages.PageObject;
 import org.fundacionjala.trello.pages.menus.Header;
-import org.fundacionjala.trello.pages.core.PageObject;
 
 import java.util.Map;
 

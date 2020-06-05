@@ -62,10 +62,7 @@ public final class BoardPage extends PageObject implements IIdentifier {
     }
 
     public String getTitle() {
-        if (isDisplayed()) {
-            return action.getElementText(titleBoard);
-        }
-        return "Error: Board not Found";
+        return action.getElementText(titleBoard);
     }
 
     public MenuBoard displayMenu() {
@@ -85,6 +82,7 @@ public final class BoardPage extends PageObject implements IIdentifier {
 
     public FormPage<?> updateList(final String listName) {
         String getList = String.format(GET_LIST, listName);
+        action.waitForElementLocated(By.xpath(getList));
         WebElement actualList = driver.findElement(By.xpath(getList));
         action.click(actualList);
         return new ListUpdateForm(driver);

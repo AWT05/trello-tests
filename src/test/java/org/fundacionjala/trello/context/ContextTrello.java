@@ -1,5 +1,7 @@
 package org.fundacionjala.trello.context;
 
+import org.fundacionjala.core.context.Context;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
