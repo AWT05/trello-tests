@@ -35,7 +35,7 @@ public final class MenuMoreBoard extends WebObject {
         return new BoardPage(driver);
     }
 
-    public ArchivedItemsBoard archivedItems(){
+    public ArchivedItemsBoard archivedItems() {
         action.waitElementVisible(archivedItemsButton);
         action.click(archivedItemsButton);
         return new ArchivedItemsBoard(driver);

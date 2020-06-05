@@ -74,7 +74,7 @@ public class ListStepDef {
      * @param listName to archive.
      */
     @When("I archive the {string} list")
-    public void iArchiveTheList(String listName) {
+    public void iArchiveTheList(final String listName) {
         menuBoard.closeMenuOptions();
         listPage.getListMenu(listName).archiveList();
     }
@@ -85,12 +85,12 @@ public class ListStepDef {
      * @param expectedListName the list name.
      */
     @Then("I verify that the {string} list has been archived")
-    public void iVerifyThatTheListHasBeenArchived(String expectedListName) {
+    public void iVerifyThatTheListHasBeenArchived(final String expectedListName) {
         List<String> archivedLists = boardPage.displayMenu()
                 .moreMenuOptions()
                 .archivedItems()
                 .switchItems()
-                .ArchivedItemList();
+                .archivedItemsList();
         assertTrue(archivedLists.contains(expectedListName));
     }
 }
