@@ -66,7 +66,9 @@ public class ListStepDef {
     }
 
     @When("I archive the {string} list")
-    public void iArchiveTheList(String arg0) {
+    public void iArchiveTheList(String listName) {
+        menuBoard.closeMenuOptions();
+        listPage.getListMenu(listName);
     }
 
     @Then("I verify that the list has been archived")
