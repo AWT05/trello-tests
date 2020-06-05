@@ -14,6 +14,7 @@ public final class Header extends WebObject {
     private static final String CREATE_BOARD_BUTTON = "button[data-test-id=\"header-create-board-button\"]";
     private static final String CREATE_TEAM_BUTTON = "button[data-test-id=\"header-create-team-button\"]";
     private static final String BOARDS_MENU_BUTTON = "button[data-test-id=\"header-boards-menu-button\"]";
+    private static final String PROFILE_BUTTON = "button[data-test-id= 'header-member-menu-button']";
 
     @FindBy(css = CREATE_MENU_BUTTON)
     private WebElement creationButton;
@@ -26,6 +27,9 @@ public final class Header extends WebObject {
 
     @FindBy(css = BOARDS_MENU_BUTTON)
     private WebElement headerMenuBoards;
+
+    @FindBy(css = PROFILE_BUTTON)
+    private WebElement profileButton;
 
     public Header(final WebDriver driver) {
         super(driver);
@@ -53,5 +57,10 @@ public final class Header extends WebObject {
     public MenuBoards getMenuBoards() {
         action.click(headerMenuBoards);
         return new MenuBoards(driver);
+    }
+
+    public MenuProfile getMenuProfile(){
+        action.click(profileButton);
+        return new MenuProfile(driver);
     }
 }
