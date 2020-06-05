@@ -34,12 +34,12 @@ public final class ArchivedItemsBoard extends PageObject {
      */
     @Override
     public boolean isDisplayed() {
-        action.waitElementVisible(tittle);
+        action.waitForVisibility(tittle);
         return tittle.isDisplayed();
     }
 
     public ArchivedItemsBoard switchItems() {
-        action.waitElementVisible(switchButton);
+        action.waitForVisibility(switchButton);
         if (switchButton.getText().contains("list")) {
             action.click(switchButton);
         }

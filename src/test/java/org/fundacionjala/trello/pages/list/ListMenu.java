@@ -27,12 +27,12 @@ public final class ListMenu extends PageObject {
      */
     @Override
     public boolean isDisplayed() {
-        action.waitElementVisible(actionsTittle);
+        action.waitForVisibility(actionsTittle);
         return actionsTittle.isDisplayed();
     }
 
     public void archiveList() {
-        action.waitElementVisible(archiveListButton);
+        action.waitForVisibility(archiveListButton);
         action.click(archiveListButton);
     }
 }
