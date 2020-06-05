@@ -4,7 +4,6 @@ import org.fundacionjala.trello.pages.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -48,7 +47,7 @@ public final class ArchivedItemsBoard extends PageObject {
     }
 
     public List<String> archivedItemsList() {
-        wait.until(ExpectedConditions.visibilityOfAllElements(archivedLists));
+        action.waitForVisibilityOfAllElements(archivedLists);
         return archivedLists.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 

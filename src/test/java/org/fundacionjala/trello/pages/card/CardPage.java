@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ public final class CardPage extends PageObject {
     private WebElement addNewCardButton;
 
     @FindBy(css = ALL_CARDS_LIST)
-    private List<WebElement> test;
+    private List<WebElement> cardsList;
 
     public CardPage(final WebDriver driver) {
         super(driver);
@@ -38,7 +37,7 @@ public final class CardPage extends PageObject {
 
     public List<String> getAllCardNames(final String listName) {
         String getCardsList = String.format(CARD_NAMES_LIST, listName);
-        wait.until(ExpectedConditions.visibilityOfAllElements(test));
+        action.waitForVisibilityOfAllElements(cardsList);
         List<WebElement> getCards = driver.findElements(By.xpath(getCardsList));
         List<String> list = new ArrayList<>();
         for (WebElement getCard : getCards) {
