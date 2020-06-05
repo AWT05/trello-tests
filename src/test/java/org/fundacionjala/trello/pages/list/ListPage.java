@@ -35,6 +35,7 @@ public final class ListPage extends PageObject {
     }
 
     public List<String> getAllListsNames() {
+        action.waitForPageLoadComplete();
         return listNames.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 

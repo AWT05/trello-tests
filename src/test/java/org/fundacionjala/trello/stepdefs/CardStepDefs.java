@@ -35,9 +35,7 @@ public class CardStepDefs {
      */
     @When("I create a card on {string} list with:")
     public void iCreateCardWith(final String listName, final Map<String, String> data) {
-        if (menuBoard.isDisplayed()) {
-            menuBoard.closeMenuOptions();
-        }
+        menuBoard.closeMenuOptions();
         form = listPage.createNewCard(listName);
         form.fillForm(data);
         form.submit();
