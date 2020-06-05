@@ -32,7 +32,10 @@ public final class MenuBoard extends WebObject {
     }
 
     public BoardPage closeMenuOptions() {
-        action.click(closeMenuButton);
+        action.waitForPageLoadComplete();
+        if (isDisplayed()) {
+            action.click(closeMenuButton);
+        }
         return new BoardPage(driver);
     }
 }

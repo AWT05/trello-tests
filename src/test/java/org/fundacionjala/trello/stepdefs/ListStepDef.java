@@ -2,7 +2,6 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
 import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.BoardPage;
@@ -13,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
-
 import static org.testng.Assert.assertTrue;
 
 public class ListStepDef {
@@ -36,9 +34,7 @@ public class ListStepDef {
      */
     @When("I create a List with:")
     public void iCreateAListWith(final Map<String, String> data) {
-        if (menuBoard.isDisplayed()) {
-            menuBoard.closeMenuOptions();
-        }
+        menuBoard.closeMenuOptions();
         form = boardPage.createNewList();
         form.fillForm(data);
         form.submit();
@@ -63,9 +59,7 @@ public class ListStepDef {
      */
     @When("I update the {string} List with:")
     public void updateTheList(final String listName, final Map<String, String> data) {
-        if (menuBoard.isDisplayed()) {
-            menuBoard.closeMenuOptions();
-        }
+        menuBoard.closeMenuOptions();
         form = boardPage.updateList(listName);
         form.fillForm(data);
         form.submit();
