@@ -12,7 +12,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.AssertJUnit.assertEquals;
 
@@ -53,12 +56,22 @@ public class CreateBoardMobileTest {
         DesiredCapabilities desCap = new DesiredCapabilities();
         desCap.setCapability("deviceName", "Mau-android");
         desCap.setCapability("platformName", "Android");
-        desCap.setCapability("platformVersion", "1.7.2");
-        desCap.setCapability("appPackage ", "com.trello");
-        desCap.setCapability("appActivity  ", ".home.HomeActivity");
-        WebDriver driver1 = new AppiumDriver(desCap);
-        driver1.get("http://localhost:5554/wd/hub");
-        driver = driver1;
+        desCap.setCapability("platformVersion", "7.1.2");
+        desCap.setCapability("appPackage", "com.trello");
+        desCap.setCapability("appActivity", ".home.HomeActivity");
+        desCap.setCapability("udid", "emulator-5554");
+        try {
+            driver = new AppiumDriver<MobileElement>(new URL("http://127.0.0.1:5554/wd/hub"), desCap);
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+//            WebDriver driver1 = new AppiumDriver(desCap);
+//            driver1.get("http://127.0.0.1:localhost:5554/wd/hub/");
+//            driver = driver1;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+
+
 //        AndroidDriver driver2=new AndroidDriver(desCap);
         System.out.println("Executed BEFORE method");
     }
@@ -71,6 +84,7 @@ public class CreateBoardMobileTest {
 
     @Test
     public void createBoardMobileTest() {
+        //login
         addButton.click();
         addCardButton.click();
         boardName.sendKeys("FirstMobileBoard");
