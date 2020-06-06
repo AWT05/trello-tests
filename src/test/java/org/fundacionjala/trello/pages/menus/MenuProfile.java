@@ -16,7 +16,7 @@ public final class MenuProfile extends WebObject {
     @FindBy(css = LOGOUT_BUTTON)
     private WebElement logOutButton;
 
-    public MenuProfile(WebDriver driver) {
+    public MenuProfile(final WebDriver driver) {
         super(driver);
     }
 
@@ -31,7 +31,7 @@ public final class MenuProfile extends WebObject {
         return sectionMember.isDisplayed();
     }
 
-    public void logOutSession(){
+    public void logOutSession() {
         action.waitForVisibility(logOutButton);
         action.click(logOutButton);
     }

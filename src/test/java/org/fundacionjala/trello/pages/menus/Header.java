@@ -1,8 +1,8 @@
 package org.fundacionjala.trello.pages.menus;
 
-import org.fundacionjala.trello.pages.board.BoardForm;
 import org.fundacionjala.core.ui.pages.WebObject;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
+import org.fundacionjala.trello.pages.board.BoardForm;
 import org.fundacionjala.trello.pages.team.TeamForm;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -59,7 +59,7 @@ public final class Header extends WebObject {
         return new MenuBoards(driver);
     }
 
-    public MenuProfile getMenuProfile(){
+    public MenuProfile getMenuProfile() {
         action.click(profileButton);
         return new MenuProfile(driver);
     }

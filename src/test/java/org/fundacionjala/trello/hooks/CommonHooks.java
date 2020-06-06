@@ -38,7 +38,7 @@ public final class CommonHooks {
     }
 
     @After(order = LOGOUT_ORDER)
-    public void logoutAccount(){
+    public void logoutAccount() {
         header.getMenuProfile().logOutSession();
     }
 }
