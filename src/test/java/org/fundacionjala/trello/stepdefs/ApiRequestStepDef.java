@@ -66,7 +66,7 @@ public class ApiRequestStepDef {
     @Given("I invite {string} as member with:")
     public void iInviteAsMemberWith(final String userAccount, final Map<String, String> params) {
         UserTrello user = new UserTrello(userAccount);
-        String endPointAddMember = INVITE_MEMBER_END_POINT.concat(user.getIdMember());
+        String endPointAddMember = INVITE_MEMBER_END_POINT.concat(user.getUsername());
         requestManager.init(context).queryParams(params).put(endPointAddMember);
     }
 }
