@@ -55,11 +55,13 @@ public final class Header extends WebObject {
     }
 
     public MenuBoards getMenuBoards() {
+        action.waitForVisibility(headerMenuBoards);
         action.click(headerMenuBoards);
         return new MenuBoards(driver);
     }
 
     public MenuProfile getMenuProfile() {
+        action.waitForVisibility(profileButton);
         action.click(profileButton);
         return new MenuProfile(driver);
     }

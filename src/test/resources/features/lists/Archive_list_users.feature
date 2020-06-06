@@ -4,19 +4,17 @@ Feature: list interactions
   Background: Set the authentication
     Given I authenticate as "user1"
     And I create a "board" with:
-      | name | ToShareApp |
+      | name | CheckApp |
     And I invite "user2" as member with:
       | type | normal |
     And I create a "list" with:
-      | name    | toShare    |
+      | name    | ToReview   |
       | idBoard | {board.id} |
 
   @cleanData
-  Scenario: updating a list from other account
+  Scenario: Archive a list
     Given I log in with my Trello account as "user2"
     And I navigate to boards menu from header
-    And I open the "ToShareApp" board
-    When I update the "toShare" List with:
-      | name | reName |
-    Then I should have a list updated with:
-      | name | reName |
+    And I open the "CheckApp" board
+    When I archive the "ToReview" list
+    Then I verify that the "ToReview" list has been archived
