@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 import static org.openqa.selenium.remote.ErrorCodes.TIMEOUT;
 
 public class WebDriverAction {
@@ -109,5 +111,14 @@ public class WebDriverAction {
         wait.until(driver1 -> String
                 .valueOf(((JavascriptExecutor) driver1).executeScript("return document.readyState"))
                 .equals("complete"));
+    }
+
+    /**
+     * Wait for all elements of a list are visible.
+     *
+     * @param webElementList web elements list.
+     */
+    public void waitForVisibilityOfAllElements(final List<WebElement> webElementList) {
+        wait.until(ExpectedConditions.visibilityOfAllElements(webElementList));
     }
 }

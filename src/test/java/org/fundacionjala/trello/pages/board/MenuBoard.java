@@ -33,6 +33,7 @@ public final class MenuBoard extends WebObject {
 
     public BoardPage closeMenuOptions() {
         action.waitForPageLoadComplete();
+        action.waitForVisibility(closeMenuButton);
         if (isDisplayed()) {
             action.click(closeMenuButton);
         }

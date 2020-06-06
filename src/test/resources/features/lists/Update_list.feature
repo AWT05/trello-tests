@@ -18,3 +18,11 @@ Feature: List
       | name | reviewed |
     Then I should have a list updated with:
       | name | reviewed |
+
+  @cleanData
+  Scenario: Archive a list
+    Given I log in with my Trello account as "user1"
+    And I navigate to boards menu from header
+    And I open the "WorldNews" board
+    When I archive the "testing" list
+    Then I verify that the "testing" list has been archived
