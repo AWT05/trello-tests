@@ -1,6 +1,5 @@
 package org.fundacionjala.trello.stepdefs;
 
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.restassured.response.Response;
 import org.fundacionjala.core.api.RequestManager;
@@ -9,11 +8,8 @@ import org.fundacionjala.trello.context.EndPointsEnum;
 import org.fundacionjala.trello.context.UserTrello;
 import org.fundacionjala.trello.utils.CommonValidations;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 /**
  * Groups request step definitions.
@@ -69,7 +65,7 @@ public class ApiRequestStepDef {
      * @param data request parameters with user and type.
      */
     @Given("I invite a member by setting its type with:")
-    public void iInviteAsMemberWith(Map<String, String> data) {
+    public void iInviteAsMemberWith(final Map<String, String> data) {
         Map<String, String> params = new HashMap<>();
         data.forEach((key, value) -> {
             params.put(TYPE, value);
