@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.stepdefs;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.restassured.response.Response;
 import org.fundacionjala.core.api.RequestManager;
@@ -8,7 +9,11 @@ import org.fundacionjala.trello.context.EndPointsEnum;
 import org.fundacionjala.trello.context.UserTrello;
 import org.fundacionjala.trello.utils.CommonValidations;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 /**
  * Groups request step definitions.
@@ -16,6 +21,7 @@ import java.util.Map;
 public class ApiRequestStepDef {
 
     private static final String INVITE_MEMBER_END_POINT = "/boards/{board.id}/members/";
+    private static final String TYPE = "type";
     private static final String ID = "id";
     private final ContextTrello context;
     private final RequestManager requestManager;
@@ -58,15 +64,17 @@ public class ApiRequestStepDef {
     }
 
     /**
-     * Sends PUT request for add a member in to a board.
+     * Sends PUT request for add members in to a board.
      *
-     * @param userAccount to get a user data.
-     * @param params request parameters.
+     * @param data request parameters with user and type.
      */
-    @Given("I invite {string} as member with:")
-    public void iInviteAsMemberWith(final String userAccount, final Map<String, String> params) {
-        UserTrello user = new UserTrello(userAccount);
-        String endPointAddMember = INVITE_MEMBER_END_POINT.concat(user.getUsername());
-        requestManager.init(context).queryParams(params).put(endPointAddMember);
+    @Given("I invite a member by setting its type with:")
+    public void iInviteAsMemberWith(Map<String, String> data) {
+        Map<String, String> params = new HashMap<>();
+        data.forEach((key, value) -> {
+            params.put(TYPE, value);
+            requestManager.init(context).queryParams(params)
+                    .put(INVITE_MEMBER_END_POINT.concat(new UserTrello(key).getUsername()));
+        });
     }
 }

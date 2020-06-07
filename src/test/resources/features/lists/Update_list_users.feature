@@ -5,8 +5,8 @@ Feature: list interactions
     Given I authenticate as "user1"
     And I create a "board" with:
       | name | ToShareApp |
-    And I invite "user2" as member with:
-      | type | normal |
+    And I invite a member by setting its type with:
+      | user2 | normal |
     And I create a "list" with:
       | name    | toShare    |
       | idBoard | {board.id} |
