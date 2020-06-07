@@ -12,6 +12,8 @@ public class User {
     private static final String EMAIL = "email";
     private static final String PASSWORD = "password";
     private static final String USERNAME = "username";
+    private static final String API_KEY = "key";
+    private static final String API_TOKEN = "token";
     protected final Map<String, String> user;
 
     public User(final String userAccount) {
@@ -51,7 +53,7 @@ public class User {
      * @return user api key.
      */
     public String getApiKey() {
-        return user.get("key");
+        return user.get(API_KEY);
     }
 
     /**
@@ -60,6 +62,6 @@ public class User {
      * @return user api token.
      */
     public String getApiToken() {
-        return user.get("token");
+        return user.get(API_TOKEN);
     }
 }

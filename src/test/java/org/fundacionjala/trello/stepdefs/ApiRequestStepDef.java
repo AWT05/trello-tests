@@ -5,8 +5,10 @@ import io.restassured.response.Response;
 import org.fundacionjala.core.api.RequestManager;
 import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.context.EndPointsEnum;
+import org.fundacionjala.trello.context.UserTrello;
 import org.fundacionjala.trello.utils.CommonValidations;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -14,6 +16,8 @@ import java.util.Map;
  */
 public class ApiRequestStepDef {
 
+    private static final String INVITE_MEMBER_END_POINT = "/boards/{board.id}/members/";
+    private static final String TYPE = "type";
     private static final String ID = "id";
     private final ContextTrello context;
     private final RequestManager requestManager;
@@ -53,5 +57,20 @@ public class ApiRequestStepDef {
         response = requestManager.init(context).queryParams(params).post(endPointsEnum.getEndPoint());
         context.saveResponse(entity, response);
         context.getUser().saveIds(endPointsEnum, response.jsonPath().getString(ID));
+    }
+
+    /**
+     * Sends PUT request for add members in to a board.
+     *
+     * @param data request parameters with user and type.
+     */
+    @Given("I invite a member by setting its type with:")
+    public void iInviteAsMemberWith(final Map<String, String> data) {
+        Map<String, String> params = new HashMap<>();
+        data.forEach((key, value) -> {
+            params.put(TYPE, value);
+            requestManager.init(context).queryParams(params)
+                    .put(INVITE_MEMBER_END_POINT.concat(new UserTrello(key).getUsername()));
+        });
     }
 }

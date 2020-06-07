@@ -56,6 +56,8 @@ public final class ListPage extends PageObject {
     }
 
     public ListMenu getListMenu(final String listName) {
+        action.waitForPageLoadComplete();
+        action.waitForVisibility(menuList(listName));
         action.click(menuList(listName));
         return new ListMenu(driver);
     }
