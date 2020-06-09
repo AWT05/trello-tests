@@ -1,0 +1,15 @@
+{
+  "server": "hub-cloud.browserstack.com/wd/hub",
+  "user": "carlos1352",
+  "key": "f2xrpE3pP6ZMwGggypoY",
+  "capabilities": {
+    "project": "Testing Trello AWT-05",
+    "name": "Acceptance Tests TRELLO",
+    "build": "TestingTrello-1",
+    "os": "OS X",
+    "os_version": "Catalina",
+    "browser": "Chrome",
+    "browser_version": "83.0",
+    "resolution": "1024x768"
+  }
+}
