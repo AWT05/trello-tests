@@ -1,7 +1,7 @@
 {
   "server": "hub-cloud.browserstack.com/wd/hub",
-  "user": "carlos1352",
-  "key": "f2xrpE3pP6ZMwGggypoY",
+  "user": "<ACCOUNT_USER>",
+  "key": "<ACCOUNT_KEY>",
   "capabilities": {
     "project": "Testing Trello AWT-05",
     "name": "Acceptance Tests TRELLO",
