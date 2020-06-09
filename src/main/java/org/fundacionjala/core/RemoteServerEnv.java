@@ -21,7 +21,6 @@ public final class RemoteServerEnv {
     private static final String ENVIRONMENTS = "environments";
     private static final String SET_SERVER_CREDENTIALS = "https://%s:%s@";
     private static final String REMOTE_SERVER_ENV = Environment.getInstance().getRemoteServerEnvironment();
-    private static final String ACCESS_PATH = "%s.%s";
     private static RemoteServerEnv instance;
     private final Map<String, Object> envConfig;
 

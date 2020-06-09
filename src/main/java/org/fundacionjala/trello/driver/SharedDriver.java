@@ -4,11 +4,9 @@ import org.fundacionjala.core.Environment;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 
-import java.net.MalformedURLException;
-
 public class SharedDriver {
 
-    public SharedDriver() throws MalformedURLException {
+    public SharedDriver() {
         if (DriverFactory.getDriver() == null) {
             WebDriver driver = BrowserFactory.getBrowser(Environment.getInstance().getBrowserName());
             driver.manage().window().setSize(new Dimension(Environment.getInstance().getBrowserWidth(),

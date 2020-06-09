@@ -14,8 +14,15 @@ public final class RemoteDriver extends AbstractBrowser {
     private static final String URL = RemoteServerEnv.getInstance().getRemoteServerURL();
 
     @Override
-    WebDriver initBrowser() throws MalformedURLException {
-        return new RemoteWebDriver(new URL(URL), setCapabilities());
+    WebDriver initBrowser() {
+        RemoteWebDriver remote = null;
+        try {
+            remote = new RemoteWebDriver(new URL(URL), setCapabilities());
+        } catch (MalformedURLException e) {
+            String message = String.format("Error: <%s> Not found, or malformed URL", URL);
+            throw new RuntimeException(message.concat(e.getMessage()));
+        }
+        return remote;
     }
 
     private DesiredCapabilities setCapabilities() {
