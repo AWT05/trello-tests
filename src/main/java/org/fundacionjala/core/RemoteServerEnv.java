@@ -18,7 +18,10 @@ public final class RemoteServerEnv {
     private static final String KEY = "key";
     private static final String SERVER_URL = "server";
     private static final String CAPABILITIES = "capabilities";
+    private static final String ENVIRONMENTS = "environments";
     private static final String SET_SERVER_CREDENTIALS = "https://%s:%s@";
+    private static final String REMOTE_SERVER_ENV = Environment.getInstance().getRemoteServerEnvironment();
+    private static final String ACCESS_PATH = "%s.%s";
     private static RemoteServerEnv instance;
     private final Map<String, Object> envConfig;
 
@@ -73,7 +76,7 @@ public final class RemoteServerEnv {
     }
 
     /**
-     * Gets remote server completely URL .
+     * Gets remote server completely URL.
      *
      * @return environment server URL.
      */
@@ -84,10 +87,21 @@ public final class RemoteServerEnv {
     /**
      * Gets capabilities from remote server environment config.
      *
-     * @return a map of capabilities.
+     * @return a map of general capabilities.
      */
     @SuppressWarnings("unchecked")
     public Map<String, String> getCapabilities() {
-        return  (Map<String, String>) envConfig.get(CAPABILITIES);
+        return (Map<String, String>) envConfig.get(CAPABILITIES);
+    }
+
+    /**
+     * Gets the environment defined in gradle.properties.
+     *
+     * @return a map of environment selected capabilities.
+     */
+    @SuppressWarnings("unchecked")
+    public Map<String, String> getRemoteEnvironments() {
+        Map<String, Map<String, String>> env = (Map<String, Map<String, String>>) envConfig.get(ENVIRONMENTS);
+        return env.get(REMOTE_SERVER_ENV);
     }
 }

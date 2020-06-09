@@ -18,10 +18,12 @@ public final class RemoteDriver extends AbstractBrowser {
         return new RemoteWebDriver(new URL(URL), setCapabilities());
     }
 
-    public DesiredCapabilities setCapabilities() {
+    private DesiredCapabilities setCapabilities() {
         Map<String, String> capsData = RemoteServerEnv.getInstance().getCapabilities();
+        Map<String, String> envData = RemoteServerEnv.getInstance().getRemoteEnvironments();
         DesiredCapabilities caps = new DesiredCapabilities();
         capsData.forEach(caps::setCapability);
+        envData.forEach(caps::setCapability);
         return caps;
     }
 }

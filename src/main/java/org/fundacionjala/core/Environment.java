@@ -34,6 +34,7 @@ public final class Environment {
     private static final String BROWSER_HEIGHT = "browserHeight";
     private static final String REDUCE_EXPLICIT_TIME = "reduceExplicitTime";
     private static final String THREAD_COUNT = "cucumberThreadCount";
+    private static final String REMOTE_SERVER_ENVIRONMENT = "remoteServerEnvironment";
     private static Environment instance;
 
     private final Properties properties;
@@ -187,5 +188,14 @@ public final class Environment {
      */
     public String getThreadCount() {
         return getEnvProperty(THREAD_COUNT);
+    }
+
+    /**
+     * Gets the remote server environment.
+     *
+     * @return the environment selected.
+     */
+    public String getRemoteServerEnvironment() {
+        return getEnvProperty(REMOTE_SERVER_ENVIRONMENT);
     }
 }

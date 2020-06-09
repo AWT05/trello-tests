@@ -5,11 +5,21 @@
   "capabilities": {
     "project": "Testing Trello AWT-05",
     "name": "Acceptance Tests TRELLO",
-    "build": "TestingTrello-1",
-    "os": "OS X",
-    "os_version": "Catalina",
-    "browser": "Chrome",
-    "browser_version": "83.0",
-    "resolution": "1024x768"
+    "build": "TestingTrello-1"
+  },
+  "environments": {
+    "desktop": {
+      "os": "OS X",
+      "os_version": "Catalina",
+      "browser": "Chrome",
+      "browser_version": "83.0",
+      "resolution": "1024x768"
+    },
+    "mobile": {
+      "browserName": "iPhone",
+      "device": "iPhone 11 Pro Max",
+      "realMobile": "false",
+      "os_version": "13"
+    }
   }
 }
