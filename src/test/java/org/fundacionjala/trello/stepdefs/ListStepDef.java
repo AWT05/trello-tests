@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
-import static org.testng.Assert.assertTrue;
+import static org.fundacionjala.trello.utils.AssertGroup.getAssertGroup;
+import org.testng.asserts.Assertion;
 
 public class ListStepDef {
 
@@ -22,12 +23,14 @@ public class ListStepDef {
     private ListPage listPage;
     private FormPage<?> form;
     private ListMenu listMenu;
+    private Assertion assertGroup;
 
     public ListStepDef(final SharedDriver sharedDriver) {
         boardPage = new BoardPage(getDriver());
         menuBoard = new MenuBoard(getDriver());
         listPage = new ListPage(getDriver());
         listMenu = new ListMenu(getDriver());
+        assertGroup = getAssertGroup();
     }
 
     /**
@@ -51,7 +54,7 @@ public class ListStepDef {
     @Then("I should have a list (created)(updated) with:")
     public void shouldHaveAListCreatedUpdated(final Map<String, String> expectedData) {
         List<String> stringListNames = listPage.getAllListsNames();
-        assertTrue(stringListNames.contains(expectedData.get("name")));
+        assertGroup.assertTrue(stringListNames.contains(expectedData.get("name")));
     }
 
     /**
@@ -91,6 +94,6 @@ public class ListStepDef {
                 .archivedItems()
                 .switchItems()
                 .archivedItemsList();
-        assertTrue(archivedLists.contains(expectedListName));
+        assertGroup.assertTrue(archivedLists.contains(expectedListName));
     }
 }

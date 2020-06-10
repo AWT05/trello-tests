@@ -7,12 +7,12 @@ import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.MenuBoard;
 import org.fundacionjala.trello.pages.card.CardPage;
 import org.fundacionjala.trello.pages.list.ListPage;
-
+import org.testng.asserts.Assertion;
 import java.util.List;
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
-import static org.testng.Assert.assertTrue;
+import static org.fundacionjala.trello.utils.AssertGroup.getAssertGroup;
 
 public class CardStepDefs {
 
@@ -20,11 +20,13 @@ public class CardStepDefs {
     private MenuBoard menuBoard;
     private ListPage listPage;
     private CardPage cardPage;
+    private Assertion assertGroup;
 
     public CardStepDefs(final SharedDriver sharedDriver) {
         menuBoard = new MenuBoard(getDriver());
         listPage = new ListPage(getDriver());
         cardPage = new CardPage(getDriver());
+        assertGroup = getAssertGroup();
     }
 
     /**
@@ -50,6 +52,6 @@ public class CardStepDefs {
     @Then("I should have a card on {string} list with:")
     public void iShouldHaveACardWith(final String listName, final Map<String, String> expectedData) {
         List<String> cardNamesList = cardPage.getAllCardNames(listName);
-        assertTrue(cardNamesList.contains(expectedData.get("name")));
+        assertGroup.assertTrue(cardNamesList.contains(expectedData.get("name")));
     }
 }
