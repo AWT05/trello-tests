@@ -1,19 +1,25 @@
 package org.fundacionjala.trello.utils;
 
 import org.testng.asserts.Assertion;
+import org.testng.asserts.SoftAssert;
 
-public final class AssertGroup {
+public final class AssertGroup{
 
-    private static Assertion assertGroup = new Assertion();
+    private Assertion assertGroup;
 
-    private AssertGroup() {
+    public AssertGroup() {
+        assertGroup = new Assertion();
     }
 
-    public static Assertion getAssertGroup() {
+    public Assertion getAssertGroup() {
         return assertGroup;
     }
 
-    public static void setAssertGroup(final Assertion assertGroup) {
-        AssertGroup.assertGroup = assertGroup;
+    public void setAssertGroup(final Assertion assertGroup) {
+        this.assertGroup = assertGroup;
+    }
+
+    public void assertAll() {
+        ((SoftAssert) assertGroup).assertAll();
     }
 }

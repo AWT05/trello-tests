@@ -5,14 +5,11 @@ import io.cucumber.java.Before;
 import org.fundacionjala.core.api.RequestManager;
 import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.context.EndPointsEnum;
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.menus.Header;
-import org.testng.asserts.Assertion;
+import org.fundacionjala.trello.utils.AssertGroup;
 import org.testng.asserts.SoftAssert;
-
-import static org.fundacionjala.trello.utils.AssertGroup.getAssertGroup;
-import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
-import static org.fundacionjala.trello.utils.AssertGroup.setAssertGroup;
 
 public final class CommonHooks {
 
@@ -22,14 +19,14 @@ public final class CommonHooks {
     private final ContextTrello context;
     private final RequestManager requestManager;
     private Header header;
-    private Assertion assertGroup;
+    private AssertGroup assertGroup;
 
     public CommonHooks(final SharedDriver sharedDriver, final ContextTrello context,
-                       final RequestManager requestManager) {
+                       final RequestManager requestManager, final AssertGroup assertGroup) {
         this.context = context;
         this.requestManager = requestManager;
         header = new Header(getDriver());
-        this.assertGroup = getAssertGroup();
+        this.assertGroup = assertGroup;
     }
 
     /**
@@ -57,8 +54,7 @@ public final class CommonHooks {
      */
     @Before(value = "@softAssert")
     public void initializeSoftAssert() {
-        assertGroup = new SoftAssert();
-        setAssertGroup(assertGroup);
+        assertGroup.setAssertGroup(new SoftAssert());
     }
 
     /**
@@ -66,6 +62,6 @@ public final class CommonHooks {
      */
     @After(value = "@softAssert", order = SOFT_ASSERT_ORDER)
     public void assertAll() {
-        ((SoftAssert) assertGroup).assertAll();
+        assertGroup.assertAll();
     }
 }

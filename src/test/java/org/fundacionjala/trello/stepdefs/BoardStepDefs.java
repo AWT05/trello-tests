@@ -8,12 +8,11 @@ import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.fundacionjala.trello.pages.menus.MenuBoards;
-
+import org.fundacionjala.trello.utils.AssertGroup;
 import org.testng.asserts.Assertion;
 
 import java.util.Map;
 
-import static org.fundacionjala.trello.utils.AssertGroup.getAssertGroup;
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public class BoardStepDefs {
@@ -24,12 +23,12 @@ public class BoardStepDefs {
     private final ContextTrello context;
     private Assertion assertGroup;
 
-    public BoardStepDefs(final SharedDriver sharedDriver, final ContextTrello context) {
+    public BoardStepDefs(final SharedDriver sharedDriver, final ContextTrello context, AssertGroup assertGroup) {
         this.context = context;
         board = new BoardPage(getDriver());
         menuBoards = new MenuBoards(getDriver());
         boardsHome = new BoardsPage(getDriver());
-        this.assertGroup = getAssertGroup();
+        this.assertGroup = assertGroup.getAssertGroup();
     }
 
     /**

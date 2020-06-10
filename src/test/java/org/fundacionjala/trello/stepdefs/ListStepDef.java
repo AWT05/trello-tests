@@ -8,12 +8,12 @@ import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.board.MenuBoard;
 import org.fundacionjala.trello.pages.list.ListMenu;
 import org.fundacionjala.trello.pages.list.ListPage;
+import org.fundacionjala.trello.utils.AssertGroup;
 
 import java.util.List;
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
-import static org.fundacionjala.trello.utils.AssertGroup.getAssertGroup;
 import org.testng.asserts.Assertion;
 
 public class ListStepDef {
@@ -25,12 +25,12 @@ public class ListStepDef {
     private ListMenu listMenu;
     private Assertion assertGroup;
 
-    public ListStepDef(final SharedDriver sharedDriver) {
+    public ListStepDef(final SharedDriver sharedDriver, final AssertGroup assertGroup) {
         boardPage = new BoardPage(getDriver());
         menuBoard = new MenuBoard(getDriver());
         listPage = new ListPage(getDriver());
         listMenu = new ListMenu(getDriver());
-        assertGroup = getAssertGroup();
+        this.assertGroup = assertGroup.getAssertGroup();
     }
 
     /**

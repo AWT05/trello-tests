@@ -7,12 +7,12 @@ import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.MenuBoard;
 import org.fundacionjala.trello.pages.card.CardPage;
 import org.fundacionjala.trello.pages.list.ListPage;
+import org.fundacionjala.trello.utils.AssertGroup;
 import org.testng.asserts.Assertion;
 import java.util.List;
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
-import static org.fundacionjala.trello.utils.AssertGroup.getAssertGroup;
 
 public class CardStepDefs {
 
@@ -22,11 +22,11 @@ public class CardStepDefs {
     private CardPage cardPage;
     private Assertion assertGroup;
 
-    public CardStepDefs(final SharedDriver sharedDriver) {
+    public CardStepDefs(final SharedDriver sharedDriver, final AssertGroup assertGroup) {
         menuBoard = new MenuBoard(getDriver());
         listPage = new ListPage(getDriver());
         cardPage = new CardPage(getDriver());
-        assertGroup = getAssertGroup();
+        this.assertGroup = assertGroup.getAssertGroup();
     }
 
     /**
