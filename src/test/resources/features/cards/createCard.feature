@@ -18,3 +18,5 @@ Feature: Card
       | name | Task 1 |
     Then I should have a card on "Jacoco" list with:
       | name | Task 1 |
+    * I navigate to the "Task 1" card on list "Jacoco"
+    Then I should have "Task 1" as the card's title

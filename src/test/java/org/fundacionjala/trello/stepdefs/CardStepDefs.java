@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class CardStepDefs {
@@ -49,7 +50,28 @@ public class CardStepDefs {
      */
     @Then("I should have a card on {string} list with:")
     public void iShouldHaveACardWith(final String listName, final Map<String, String> expectedData) {
-        List<String> cardNamesList = cardPage.getAllCardNames(listName);
+        List<String> cardNamesList = cardPage.getCardNamesInList(listName);
         assertTrue(cardNamesList.contains(expectedData.get("name")));
+    }
+
+    /**
+     * Navigates to a desired card.
+     *
+     * @param cardName expected card name to find.
+     * @param listName expected list name where to find the card.
+     */
+    @When("I navigate to the {string} card on list {string}")
+    public void navigateToCard(final String cardName, final String listName) {
+        cardPage.navigateToCard(listName, cardName);
+    }
+
+    /**
+     * Validates the card creation.
+     *
+     * @param cardTitle expected data to validate the creation.
+     */
+    @Then("I should have {string} as the card's title")
+    public void iShouldHaveCardTitle(final String cardTitle) {
+        assertEquals(cardTitle,cardPage.getCardTitle());
     }
 }
