@@ -2,8 +2,6 @@ language: java
 jdk:
   - openjdk11
 
-# TO DO: addons: sonarcloud
-
 script:
   - ./gradlew check
   - ./gradlew executeBDDTests -PbrowserName=headless -PcucumberThreadCount=6
