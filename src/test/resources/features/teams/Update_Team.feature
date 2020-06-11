@@ -7,6 +7,7 @@ Feature: Team manipulation
       | displayName | Eternal Empire                                      |
       | desc        | Government based on Zakuul led by Emperor Valkorion |
 
+  @softAssert
   Scenario: User is able to update a team
     Given I log in with my Trello account as "user1"
     When I navigate to "Eternal Empire" section
@@ -17,7 +18,7 @@ Feature: Team manipulation
       | type        | Education                                     |
       | description | Military organization formed by the Outlander |
       | shortName   | eternalalliance18                             |
-    Then I should have the team with shortname "eternalalliance18"
+    Then I should have the team with shortname "eternalalliance19"
     And I should have the team updated with the following data
       | name        | Eternal Alliance                              |
       | description | Military organization formed by the Outlander |
