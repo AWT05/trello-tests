@@ -5,6 +5,7 @@ jdk:
 script:
   - ./gradlew check
   - ./gradlew executeBDDTests -PbrowserName=headless -PcucumberThreadCount=1
+# TO DO: sonar-scanner
 
 notifications:
   email: true
