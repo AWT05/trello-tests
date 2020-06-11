@@ -1,10 +1,10 @@
 package org.fundacionjala.trello.driver;
 
+import org.openqa.selenium.WebDriver;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
-
-import org.openqa.selenium.WebDriver;
 
 public final class BrowserFactory {
 
@@ -16,6 +16,7 @@ public final class BrowserFactory {
     static {
         BROWSER.put("chrome", Chrome::new);
         BROWSER.put("headless", Headless::new);
+        BROWSER.put("remoteBrowser", RemoteDriver::new);
     }
 
     public static WebDriver getBrowser(final String browser) {
