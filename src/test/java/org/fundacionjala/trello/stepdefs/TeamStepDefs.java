@@ -7,6 +7,7 @@ import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.team.TeamInviteForm;
 import org.fundacionjala.trello.pages.team.TeamPage;
+import org.fundacionjala.trello.pages.team.TeamSettings;
 
 import java.util.Map;
 
@@ -18,11 +19,13 @@ public final class TeamStepDefs {
     private Context context;
     private TeamPage teamPage;
     private TeamInviteForm teamInviteForm;
+    private TeamSettings teamSettings;
 
     public TeamStepDefs(final SharedDriver sharedDriver, final Context context) {
         this.context = context;
         this.teamPage = new TeamPage(getDriver());
         this.teamInviteForm = new TeamInviteForm(getDriver());
+        this.teamSettings = new TeamSettings(getDriver());
     }
 
     /**
@@ -52,4 +55,24 @@ public final class TeamStepDefs {
     public void openTheBoardTeam(final String boardName) {
         teamPage.openBoard(boardName);
     }
+
+    /**
+     * Opens the section selected on team page.
+     *
+     * @param sectionName The board name.
+     */
+    @When("I open {string} section")
+    public void iOpenSection(final String sectionName) {
+        teamSettings = teamPage.goToSettings();
+    }
+    /**
+     * Deletes actual team.
+     *
+     */
+    @When("I delete the team")
+    public void iDeleteTheTeam() {
+        teamSettings.deleteTeam();
+    }
+
+
 }

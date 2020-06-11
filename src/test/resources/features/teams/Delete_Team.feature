@@ -1,13 +1,15 @@
-@deleteTeam
 Feature: Team manipulation
 
   Background: Login to trello.
-    Given I log in with my Trello account as "user1"
+    Given I authenticate as "user1"
+    And I create a "team" with:
+      | displayName | Eternal Empire |
 
   Scenario: User is able to delete a team
-    Given I create a "team" from header with the following data
-      | name | My Jedi Council |
-      | type | Education       |
-    When I delete the team with
-      | name | My Jedi Council |
-    Then I should not find the team
+    Given I log in with my Trello account as "user1"
+    When I navigate to boards menu from header
+    And I open the "Eternal Empire" team
+    And I open "settings" section
+    And I delete the team
+    Then I navigate to "Eternal Empire" section
+    And I should not find the team
