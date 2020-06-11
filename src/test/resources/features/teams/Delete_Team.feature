@@ -9,7 +9,7 @@ Feature: Team manipulation
     Given I log in with my Trello account as "user1"
     When I navigate to boards menu from header
     And I open the "Eternal Empire" team
-    And I open "settings" section
+    And I open settings
     And I delete the team
     Then I navigate to "Eternal Empire" section
     And I should not find the team

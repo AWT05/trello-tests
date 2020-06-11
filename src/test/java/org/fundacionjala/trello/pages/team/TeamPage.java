@@ -22,6 +22,7 @@ public final class TeamPage extends PageObject implements IIdentifiable {
     private static final String XPATH_BOARD_TILE = "//div[contains(@title, '%s')]//ancestor::a[@class='board-tile']";
     private static final int ID_INDEX = 0;
     private static final String URL_REGEX = "/[\\w]+";
+    private static final String EDIT_TEAM_PROFILE_BUTTON = "//span[@name='edit']/ancestor::button";
 
     @FindBy(css = TEAM_NAME)
     private WebElement teamName;

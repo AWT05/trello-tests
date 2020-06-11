@@ -57,17 +57,15 @@ public final class TeamStepDefs {
     }
 
     /**
-     * Opens the section selected on team page.
-     *
-     * @param sectionName The board name.
+     * Opens the section selected on a team page.
      */
-    @When("I open {string} section")
-    public void iOpenSection(final String sectionName) {
+    @When("I open settings")
+    public void iOpenSettings() {
         teamSettings = teamPage.goToSettings();
     }
+
     /**
      * Deletes actual team.
-     *
      */
     @When("I delete the team")
     public void iDeleteTheTeam() {
