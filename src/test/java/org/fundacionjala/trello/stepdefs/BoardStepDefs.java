@@ -23,7 +23,7 @@ public class BoardStepDefs {
     private final ContextTrello context;
     private Assertion assertGroup;
 
-    public BoardStepDefs(final SharedDriver sharedDriver, final ContextTrello context, AssertGroup assertGroup) {
+    public BoardStepDefs(final SharedDriver sharedDriver, final ContextTrello context, final AssertGroup assertGroup) {
         this.context = context;
         this.board = new BoardPage(getDriver());
         this.menuBoards = new MenuBoards(getDriver());
