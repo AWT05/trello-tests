@@ -16,15 +16,15 @@ import static org.fundacionjala.core.ui.pages.forms.FormFieldsEnum.NAME;
 import static org.fundacionjala.core.ui.pages.forms.FormFieldsEnum.SHORTNAME;
 import static org.fundacionjala.core.ui.pages.forms.FormFieldsEnum.TYPE;
 
-public class TeamProfileForm extends FormPage<TeamPage> {
+public final class TeamProfileForm extends FormPage<TeamPage> {
 
     private static final String DISPLAY_NAME_INPUT = "input[id='displayName']";
     private static final String SHORT_NAME_INPUT = "input[id='name']";
     private static final String DESCRIPTION_INPUT = "textarea[id='desc']";
     private static final String SAVE_BUTTON = "button[type='submit']";
     private static final String TYPE_SELECT = "div[id='teamTypeSelect']";
-    private static final String TEAM_TYPE_LIST = "//div[contains(@id,'react-select-')]/li[contains(text()," +
-            "'%s')]";
+    private static final String TEAM_TYPE_LIST = "//div[contains(@id,'react-select-')]/li[contains(text(),"
+            + "'%s')]";
 
     @FindBy(css = DISPLAY_NAME_INPUT)
     private WebElement teamName;
