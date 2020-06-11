@@ -4,17 +4,15 @@ Feature: List
   Background: Set the authentication and crate a list
     Given I authenticate as "user1"
     And I create a "board" with:
-      | name | WorldNews |
+      | name | ImproveDesign |
     And I create a "list" with:
-      | name    | testing    |
+      | name    | newDesign  |
       | idBoard | {board.id} |
 
   @cleanData
-  Scenario: Update a list name
+  Scenario: Archive a list
     Given I log in with my Trello account as "user1"
     And I navigate to boards menu from header
-    And I open the "WorldNews" board
-    When I update the "testing" List with:
-      | name | reviewed |
-    Then I should have a list updated with:
-      | name | reviewed |
+    And I open the "ImproveDesign" board
+    When I archive the "newDesign" list
+    Then I verify that the "newDesign" list has been archived
