@@ -2,9 +2,9 @@
 Feature: Team manipulation
 
   Background: Login to trello.
-    Given I log in with my Trello account as "user2"
+    Given I log in with my Trello account as "user1"
 
-  @acceptance
+  @acceptance @softAssert
   Scenario: User is able to create a team
     When I create a "team" from header with the following data
       | name        | Sith Empire                                             |

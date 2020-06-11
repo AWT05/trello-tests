@@ -8,12 +8,12 @@ import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.fundacionjala.trello.pages.menus.MenuBoards;
+import org.fundacionjala.trello.utils.AssertGroup;
+import org.testng.asserts.Assertion;
 
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class BoardStepDefs {
 
@@ -21,12 +21,14 @@ public class BoardStepDefs {
     private MenuBoards menuBoards;
     private BoardPage board;
     private final ContextTrello context;
+    private Assertion assertGroup;
 
-    public BoardStepDefs(final SharedDriver sharedDriver, final ContextTrello context) {
+    public BoardStepDefs(final SharedDriver sharedDriver, final ContextTrello context, final AssertGroup assertGroup) {
         this.context = context;
-        board = new BoardPage(getDriver());
-        menuBoards = new MenuBoards(getDriver());
-        boardsHome = new BoardsPage(getDriver());
+        this.board = new BoardPage(getDriver());
+        this.menuBoards = new MenuBoards(getDriver());
+        this.boardsHome = new BoardsPage(getDriver());
+        this.assertGroup = assertGroup.getAssertGroup();
     }
 
     /**
@@ -65,7 +67,7 @@ public class BoardStepDefs {
      */
     @Then("I should have a board created with the following data")
     public void validateCreationWithData(final Map<String, String> actualData) {
-        assertEquals(actualData.get("title"), board.getTitle());
+        assertGroup.assertEquals(actualData.get("title"), board.getTitle());
     }
 
     /**
@@ -75,8 +77,8 @@ public class BoardStepDefs {
      */
     @Then("{string} board page should be visible")
     public void boardPageShouldBeVisible(final String title) {
-        assertTrue(board.isDisplayed());
-        assertEquals(board.getTitle(), title);
+        assertGroup.assertTrue(board.isDisplayed());
+        assertGroup.assertEquals(board.getTitle(), title);
     }
 
     /** Opens team from boards menu of header.

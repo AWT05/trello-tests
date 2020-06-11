@@ -55,6 +55,7 @@ public final class Header extends WebObject {
     }
 
     public MenuBoards getMenuBoards() {
+        action.waitForPageLoadComplete();
         action.waitForVisibility(headerMenuBoards);
         action.click(headerMenuBoards);
         return new MenuBoards(driver);
