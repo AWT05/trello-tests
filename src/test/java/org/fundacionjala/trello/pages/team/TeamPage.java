@@ -30,6 +30,9 @@ public final class TeamPage extends PageObject implements IIdentifiable {
     @FindBy(css = TEAM_SETTINGS)
     private WebElement teamSettings;
 
+    @FindBy(xpath = EDIT_TEAM_PROFILE_BUTTON)
+    private WebElement editTeamProfileButton;
+
     public TeamPage(final WebDriver driver) {
         super(driver);
     }
@@ -70,5 +73,15 @@ public final class TeamPage extends PageObject implements IIdentifiable {
         By boardTile = By.xpath(String.format(XPATH_BOARD_TILE, name));
         action.click(driver.findElement(boardTile));
         return new BoardsPage(driver);
+    }
+
+    /**
+     * Open the form to edit a team's profile.
+     *
+     * @return A team profile form object.
+     */
+    public TeamProfileForm editTeamProfile() {
+        action.click(editTeamProfileButton);
+        return new TeamProfileForm(driver);
     }
 }

@@ -2,11 +2,21 @@
 Feature: Team manipulation
 
   Background: Login to trello.
-    Given "user1" logs in with
+    Given I authenticate as "user1"
+    And I create a "team" with:
+      | displayName | Eternal Empire                                      |
+      | desc        | Government based on Zakuul led by Emperor Valkorion |
 
-  Scenario: User is able to update a team's short name
-    Given "user1" creates a team with the following data:
-      | name | My Sith Team |
-      | type | Education    |
-    When "user1" changes short name to "sithempire"
-    Then new short name should be "sithempire"
+  Scenario: User is able to update a team
+    Given I log in with my Trello account as "user1"
+    When I navigate to boards menu from header
+    And I open the "Eternal Empire" team
+    When I open edit team profile
+    And I update the team's information with:
+      | name        | Eternal Alliance                              |
+      | description | Military organization formed by the Outlander |
+      | shortName   | eternalalliance18                             |
+    Then I should have the team with shortname "eternalalliance18"
+    And I should have the team updated with:
+      | name        | Eternal Alliance                              |
+      | description | Military organization formed by the Outlander |
