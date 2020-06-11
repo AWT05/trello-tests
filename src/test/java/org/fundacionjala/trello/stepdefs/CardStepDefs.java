@@ -2,6 +2,7 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.MenuBoard;
@@ -9,6 +10,7 @@ import org.fundacionjala.trello.pages.card.CardPage;
 import org.fundacionjala.trello.pages.list.ListPage;
 import org.fundacionjala.trello.utils.AssertGroup;
 import org.testng.asserts.Assertion;
+
 import java.util.List;
 import java.util.Map;
 
@@ -23,9 +25,9 @@ public class CardStepDefs {
     private Assertion assertGroup;
 
     public CardStepDefs(final SharedDriver sharedDriver, final AssertGroup assertGroup) {
-        menuBoard = new MenuBoard(getDriver());
-        listPage = new ListPage(getDriver());
-        cardPage = new CardPage(getDriver());
+        this.menuBoard = new MenuBoard(getDriver());
+        this.listPage = new ListPage(getDriver());
+        this.cardPage = new CardPage(getDriver());
         this.assertGroup = assertGroup.getAssertGroup();
     }
 

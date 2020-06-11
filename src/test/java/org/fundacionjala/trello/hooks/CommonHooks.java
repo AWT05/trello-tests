@@ -2,14 +2,16 @@ package org.fundacionjala.trello.hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+
 import org.fundacionjala.core.api.RequestManager;
 import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.context.EndPointsEnum;
-import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.menus.Header;
 import org.fundacionjala.trello.utils.AssertGroup;
 import org.testng.asserts.SoftAssert;
+
+import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public final class CommonHooks {
 
@@ -25,7 +27,7 @@ public final class CommonHooks {
                        final RequestManager requestManager, final AssertGroup assertGroup) {
         this.context = context;
         this.requestManager = requestManager;
-        header = new Header(getDriver());
+        this.header = new Header(getDriver());
         this.assertGroup = assertGroup;
     }
 
