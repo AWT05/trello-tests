@@ -2,17 +2,19 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.MenuBoard;
 import org.fundacionjala.trello.pages.card.CardPage;
 import org.fundacionjala.trello.pages.list.ListPage;
+import org.fundacionjala.trello.utils.AssertGroup;
+import org.testng.asserts.Assertion;
 
 import java.util.List;
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
-import static org.testng.Assert.assertTrue;
 
 public class CardStepDefs {
 
@@ -20,11 +22,13 @@ public class CardStepDefs {
     private MenuBoard menuBoard;
     private ListPage listPage;
     private CardPage cardPage;
+    private Assertion assertGroup;
 
-    public CardStepDefs(final SharedDriver sharedDriver) {
-        menuBoard = new MenuBoard(getDriver());
-        listPage = new ListPage(getDriver());
-        cardPage = new CardPage(getDriver());
+    public CardStepDefs(final SharedDriver sharedDriver, final AssertGroup assertGroup) {
+        this.menuBoard = new MenuBoard(getDriver());
+        this.listPage = new ListPage(getDriver());
+        this.cardPage = new CardPage(getDriver());
+        this.assertGroup = assertGroup.getAssertGroup();
     }
 
     /**
@@ -50,6 +54,6 @@ public class CardStepDefs {
     @Then("I should have a card on {string} list with:")
     public void iShouldHaveACardWith(final String listName, final Map<String, String> expectedData) {
         List<String> cardNamesList = cardPage.getAllCardNames(listName);
-        assertTrue(cardNamesList.contains(expectedData.get("name")));
+        assertGroup.assertTrue(cardNamesList.contains(expectedData.get("name")));
     }
 }

@@ -3,35 +3,34 @@ package org.fundacionjala.trello.stepdefs;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.team.TeamInviteForm;
 import org.fundacionjala.trello.pages.team.TeamPage;
 import org.fundacionjala.trello.pages.team.TeamProfileForm;
 import org.fundacionjala.trello.pages.team.TeamSettings;
+import org.fundacionjala.trello.utils.AssertGroup;
+import org.testng.asserts.Assertion;
 
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public final class TeamStepDefs {
 
     private static final String NAME_KEY = "name";
     private static final String DESCRIPTION_KEY = "description";
-    private Context context;
     private TeamPage teamPage;
     private TeamInviteForm teamInviteForm;
     private TeamSettings teamSettings;
     private TeamProfileForm teamProfileForm;
+    private Assertion assertGroup;
 
-    public TeamStepDefs(final SharedDriver sharedDriver, final Context context) {
-        this.context = context;
+    public TeamStepDefs(final SharedDriver sharedDriver, final AssertGroup assertGroup) {
         this.teamPage = new TeamPage(getDriver());
         this.teamInviteForm = new TeamInviteForm(getDriver());
         this.teamSettings = new TeamSettings(getDriver());
         this.teamProfileForm = new TeamProfileForm(getDriver());
+        this.assertGroup = assertGroup.getAssertGroup();
     }
 
     /**
@@ -41,7 +40,7 @@ public final class TeamStepDefs {
      */
     @Then("I should have a team created with the following data")
     public void validateCreationWithData(final Map<String, String> expectedData) {
-        assertEquals(teamPage.getTeamName(), expectedData.get(NAME_KEY));
+        assertGroup.assertEquals(teamPage.getTeamName(), expectedData.get(NAME_KEY));
     }
 
     /**
@@ -104,12 +103,12 @@ public final class TeamStepDefs {
      */
     @Then("I should have the team with shortname {string}")
     public void iShouldHaveTheTeamWithShortname(final String shortName) {
-        assertTrue(getDriver().getCurrentUrl().contains(shortName));
+        assertGroup.assertTrue(getDriver().getCurrentUrl().contains(shortName));
     }
 
     @Then("I should have the team updated with the following data")
     public void iShouldHaveTheTeamUpdatedWithTheFollowingData(final Map<String, String> expectedData) {
-        assertEquals(teamPage.getTeamName(), expectedData.get(NAME_KEY));
-        assertEquals(teamPage.getTeamDescription(), expectedData.get(DESCRIPTION_KEY));
+        assertGroup.assertEquals(teamPage.getTeamName(), expectedData.get(NAME_KEY));
+        assertGroup.assertEquals(teamPage.getTeamDescription(), expectedData.get(DESCRIPTION_KEY));
     }
 }
