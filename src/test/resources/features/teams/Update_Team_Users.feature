@@ -20,7 +20,6 @@ Feature: Team interactions
       | type        | Operations                  |
       | description | Unlimited powaaaaaaahhhhhhh |
       | shortName   | dewit19                     |
-    Then I should have the team with shortname "unlimitedpower"
-    And I should have the team updated with the following data
+    Then I should have the team updated with the following data
       | name        | Galactic Empire             |
       | description | Unlimited powaaaaaaahhhhhhh |

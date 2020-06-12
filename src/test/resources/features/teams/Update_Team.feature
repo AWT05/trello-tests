@@ -18,7 +18,6 @@ Feature: Team manipulation
       | type        | Education                                     |
       | description | Military organization formed by the Outlander |
       | shortName   | eternalalliance18                             |
-    Then I should have the team with shortname "eternalalliance19"
-    And I should have the team updated with the following data
+    Then I should have the team updated with the following data
       | name        | Eternal Alliance                              |
       | description | Military organization formed by the Outlander |
