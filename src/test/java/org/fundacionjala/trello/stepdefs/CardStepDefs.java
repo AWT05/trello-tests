@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
+import static org.testng.Assert.assertEquals;
 
 public class CardStepDefs {
 
@@ -53,7 +54,43 @@ public class CardStepDefs {
      */
     @Then("I should have a card on {string} list with:")
     public void iShouldHaveACardWith(final String listName, final Map<String, String> expectedData) {
-        List<String> cardNamesList = cardPage.getAllCardNames(listName);
+        List<String> cardNamesList = cardPage.getCardNamesInList(listName);
         assertGroup.assertTrue(cardNamesList.contains(expectedData.get("name")));
+    }
+
+    /**
+     * Navigates to a desired card.
+     *
+     * @param cardName expected card name to find.
+     * @param listName expected list name where to find the card.
+     */
+    @When("I navigate to the {string} card on list {string}")
+    public void navigateToCard(final String cardName, final String listName) {
+        cardPage.navigateToCard(listName, cardName);
+    }
+
+    /**
+     * Updates a card with specific data.
+     *
+     * @param cardName expected card name to find.
+     * @param listName expected list name where to find the card.
+     * @param data     expected card data.
+     */
+    @When("I update the {string} card in the {string} list with:")
+    public void iUpdateTheCardWith(final String cardName, final String listName, final Map<String, String> data) {
+        menuBoard.closeMenuOptions();
+        form = cardPage.navigateToCard(listName, cardName);
+        form.fillForm(data);
+        form.submit();
+    }
+
+    /**
+     * Validates the card description update.
+     *
+     * @param cardDescription expected data to validate the update.
+     */
+    @Then("I should {string} as the card's description")
+    public void iShouldAsTheCardSDescription(final String cardDescription) {
+        assertEquals(cardDescription, cardPage.getCardDescription());
     }
 }

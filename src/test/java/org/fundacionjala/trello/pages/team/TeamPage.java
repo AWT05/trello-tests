@@ -84,6 +84,7 @@ public final class TeamPage extends PageObject implements IIdentifiable {
     public BoardsPage openBoard(final String name) {
         isDisplayed();
         By boardTile = By.xpath(String.format(XPATH_BOARD_TILE, name));
+        action.waitForVisibility(driver.findElement(boardTile));
         action.click(driver.findElement(boardTile));
         return new BoardsPage(driver);
     }

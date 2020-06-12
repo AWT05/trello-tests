@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.pages.menus;
 
+import org.fundacionjala.core.Environment;
 import org.fundacionjala.trello.pages.board.BoardClosed;
 import org.fundacionjala.trello.pages.board.BoardForm;
 import org.fundacionjala.trello.pages.board.BoardPage;
@@ -46,9 +47,11 @@ public final class MenuBoards extends WebObject {
     }
 
     public BoardPage openPersonalBoard(final String boardName) {
+        Environment env = Environment.getInstance();
         String personalBoard = String.format(PERSONAL_BOARD, boardName);
         WebElement boardElement = driver.findElement(By.xpath(personalBoard));
-        boardElement.click();
+        action.waitForPageLoadComplete(env.getReducedTime());
+        action.click(boardElement);
         return new BoardPage(driver);
     }
 
