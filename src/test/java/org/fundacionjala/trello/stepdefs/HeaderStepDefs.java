@@ -47,9 +47,9 @@ public final class HeaderStepDefs {
 
     @ParameterType("added|removed")
     public String type(final String value) {
-        return value.contains("ed")
-                ? value.replace("ed", "e")
-                : value.replace("ed", "");
+        return value.contains("add")
+                ? value.replace("ed", "")
+                : value.replace("ed", "e");
     }
 
     /**
