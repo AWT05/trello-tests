@@ -20,6 +20,7 @@ public class ApiRequestStepDef {
     private static final String INVITE_MEMBER_END_POINT = "/boards/{board.id}/members/";
     private static final String TYPE = "type";
     private static final String ID = "id";
+    private static final String ADD_MEMBER_TEAM_END_POINT = "organizations/{team.id}/members/";
     private final ContextTrello context;
     private final RequestManager requestManager;
     private Response response;
@@ -76,6 +77,21 @@ public class ApiRequestStepDef {
             params.put(TYPE, value);
             requestManager.init(context).queryParams(params)
                     .put(INVITE_MEMBER_END_POINT.concat(new UserTrello(key).getUsername()));
+        });
+    }
+
+    /**
+     * Sends PUT request to add members to a team.
+     *
+     * @param data request parameters with user and type.
+     */
+    @Given("I add team members with:")
+    public void iAddTeamMemberWith(final Map<String, String> data) {
+        Map<String, String> params = new HashMap<>();
+        data.forEach((key, value) -> {
+            params.put(TYPE, value);
+            requestManager.init(context).queryParams(params)
+                    .put(ADD_MEMBER_TEAM_END_POINT.concat(new UserTrello(key).getUsername()));
         });
     }
 }

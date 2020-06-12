@@ -1,7 +1,7 @@
 package org.fundacionjala.trello.pages.team;
 
 import org.fundacionjala.trello.pages.PageObject;
-import org.fundacionjala.trello.pages.home.TeamsPage;
+import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,6 +33,6 @@ public final class TeamSettings extends PageObject {
     public void deleteTeam() {
         action.click(deleteTeamButton);
         action.click(confirmDeleteButton);
-        new TeamsPage(driver);
+        new BoardsPage(driver);
     }
 }
