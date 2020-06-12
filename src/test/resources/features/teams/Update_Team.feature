@@ -1,13 +1,13 @@
 @cleanData
 Feature: Team manipulation
 
-  Background: Login to trello.
+  Background: Login to trello and team creation.
     Given I authenticate as "user1"
     And I create a "team" with:
       | displayName | Eternal Empire                                      |
       | desc        | Government based on Zakuul led by Emperor Valkorion |
 
-  @softAssert
+  @acceptance @softAssert
   Scenario: User is able to update a team
     Given I log in with my Trello account as "user1"
     When I navigate to "Eternal Empire" section
