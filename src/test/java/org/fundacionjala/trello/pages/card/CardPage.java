@@ -10,16 +10,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class CardPage extends PageObject {
-    private static final String CARD_NAMES_LIST = "//textarea[contains(text(), '%s')]/parent::div/"
+    private static final String GETS_ALL_CARDS_IN_A_LIST = "//textarea[contains(text(), '%s')]/parent::div/"
             + "parent::div//span[@class='list-card-title js-card-name']";
     private static final String ADD_NEW_CARD_BUTTON = "span.js-add-a-card";
     private static final String ALL_CARDS_LIST = "a.list-card";
+    private static final String CARD_TITLE = "//*[@id=\"chrome-container\"]/div[3]/div/div/div/div[3]/div[1]/h2";
+    private static final String CARD_DESCRIPTION = "//p/parent::div/div[@class='current markeddown hide-on-edit"
+            + " js-desc js-show-with-desc']";
+    private static final String CARD_TITLE_TEXT_AREA = ".mod-card-back-title js-card-detail-title-input";
 
     @FindBy(css = ADD_NEW_CARD_BUTTON)
     private WebElement addNewCardButton;
 
     @FindBy(css = ALL_CARDS_LIST)
     private List<WebElement> cardsList;
+
+    @FindBy(xpath = CARD_TITLE)
+    private WebElement cardTitle;
+
+    @FindBy(css = CARD_TITLE_TEXT_AREA)
+    private WebElement cardTitleTextArea;
+
+    @FindBy(xpath = CARD_DESCRIPTION)
+    private WebElement cardDescription;
 
     public CardPage(final WebDriver driver) {
         super(driver);
@@ -35,15 +48,34 @@ public final class CardPage extends PageObject {
         return true;
     }
 
-    public List<String> getAllCardNames(final String listName) {
-        String getCardsList = String.format(CARD_NAMES_LIST, listName);
-        action.waitForVisibilityOfAllElements(cardsList);
-        List<WebElement> getCards = driver.findElements(By.xpath(getCardsList));
+    public List<String> getCardNamesInList(final String listName) {
+        List<WebElement> getCards = getCardElementsInList(listName);
         List<String> list = new ArrayList<>();
         for (WebElement getCard : getCards) {
             String text = getCard.getText();
             list.add(text);
         }
         return list;
+    }
+
+    public List<WebElement> getCardElementsInList(final String listName) {
+        String cardsInListLocator = String.format(GETS_ALL_CARDS_IN_A_LIST, listName);
+        action.waitForVisibilityOfAllElements(cardsList);
+        List<WebElement> getCards = driver.findElements(By.xpath(cardsInListLocator));
+        return getCards;
+    }
+
+    public CardUpdateForm navigateToCard(final String listName, final String cardName) {
+        List<WebElement> getCards = getCardElementsInList(listName);
+        for (WebElement getCard : getCards) {
+            if (getCard.getText().equals(cardName)) {
+                getCard.click();
+            }
+        }
+        return new CardUpdateForm(driver);
+    }
+
+    public String getCardDescription() {
+        return cardDescription.getText();
     }
 }
