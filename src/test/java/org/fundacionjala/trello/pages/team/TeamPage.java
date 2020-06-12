@@ -17,17 +17,25 @@ import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 
 public final class TeamPage extends PageObject implements IIdentifiable {
 
-    private static final String TEAM_NAME = "div.tabbed-pane-header-details > div > div > div > h1";
+    private static final String TEAM_NAME = "//div[@class='js-current-details']/descendant::h1";
     private static final String TEAM_SETTINGS = "a[data-tab=\"settings\"]";
     private static final String XPATH_BOARD_TILE = "//div[contains(@title, '%s')]//ancestor::a[@class='board-tile']";
     private static final int ID_INDEX = 0;
     private static final String URL_REGEX = "/[\\w]+";
+    private static final String EDIT_TEAM_PROFILE_BUTTON = "//span[@name='edit']/ancestor::button";
+    private static final String TEAM_DESCRIPTION = "//div[@class='js-current-details']/descendant::p";
 
-    @FindBy(css = TEAM_NAME)
+    @FindBy(xpath = TEAM_NAME)
     private WebElement teamName;
 
     @FindBy(css = TEAM_SETTINGS)
     private WebElement teamSettings;
+
+    @FindBy(xpath = EDIT_TEAM_PROFILE_BUTTON)
+    private WebElement editTeamProfileButton;
+
+    @FindBy(xpath = TEAM_DESCRIPTION)
+    private WebElement teamDescription;
 
     public TeamPage(final WebDriver driver) {
         super(driver);
@@ -54,6 +62,15 @@ public final class TeamPage extends PageObject implements IIdentifiable {
         }
     }
 
+    public String getTeamDescription() {
+        action.waitForVisibility(teamDescription);
+        if (teamDescription.isDisplayed()) {
+            return action.getElementText(teamDescription);
+        } else {
+            return "Error: Team does not have description.";
+        }
+    }
+
     /**
      * Navigates to settings tab and opens the new page.
      *
@@ -69,5 +86,15 @@ public final class TeamPage extends PageObject implements IIdentifiable {
         By boardTile = By.xpath(String.format(XPATH_BOARD_TILE, name));
         action.click(driver.findElement(boardTile));
         return new BoardsPage(driver);
+    }
+
+    /**
+     * Open the form to edit a team's profile.
+     *
+     * @return A team profile form object.
+     */
+    public TeamProfileForm editTeamProfile() {
+        action.click(editTeamProfileButton);
+        return new TeamProfileForm(driver);
     }
 }
