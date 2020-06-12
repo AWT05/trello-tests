@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public final class MenuBoards extends WebObject {
-    
+
     private static final String FIND_BOARDS = "input[data-test-id='header-boards-menu-search']";
     private static final String CREATE_BOARD = "button[data-test-id='header-boards-menu-create-board']";
     private static final String CLOSED_BOARDS = "button[data-test-id='header-boards-menu-open-closed']";
