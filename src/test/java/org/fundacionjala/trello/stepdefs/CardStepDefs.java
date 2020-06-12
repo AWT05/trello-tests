@@ -16,7 +16,6 @@ import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class CardStepDefs {
 
