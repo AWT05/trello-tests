@@ -86,7 +86,7 @@ public final class Header extends WebObject {
         By notifyLocator = By.xpath(notificationPath);
         action.waitForElementLocated(notifyLocator);
         WebElement notification = driver.findElement(notifyLocator);
-        notification.click();
+        action.click(notification);
         return new BoardPage(driver);
     }
 }
