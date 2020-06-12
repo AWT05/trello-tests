@@ -17,7 +17,7 @@ public final class CardPage extends PageObject {
     private static final String CARD_TITLE = "//*[@id=\"chrome-container\"]/div[3]/div/div/div/div[3]/div[1]/h2";
     private static final String CARD_DESCRIPTION = "//p/parent::div/div[@class='current markeddown hide-on-edit"
             + " js-desc js-show-with-desc']";
-    private static final String CARD_TITLE_TEXT_AREA = "mod-card-back-title js-card-detail-title-input";
+    private static final String CARD_TITLE_TEXT_AREA = ".mod-card-back-title js-card-detail-title-input";
 
     @FindBy(css = ADD_NEW_CARD_BUTTON)
     private WebElement addNewCardButton;
@@ -70,16 +70,9 @@ public final class CardPage extends PageObject {
         for (WebElement getCard : getCards) {
             if (getCard.getText().equals(cardName)) {
                 getCard.click();
-                return new CardUpdateForm(driver);
             }
         }
-        return null;
-    }
-
-    public String getCardTitle() {
-        String locator = String.format("//h2[contains(text(), '%s')]", "Task 1");
-        WebElement test = driver.findElement(By.xpath(locator));
-        return test.getText();
+        return new CardUpdateForm(driver);
     }
 
     public String getCardDescription() {

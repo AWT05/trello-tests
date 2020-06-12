@@ -70,16 +70,6 @@ public class CardStepDefs {
     }
 
     /**
-     * Validates the card creation.
-     *
-     * @param cardTitle expected data to validate the creation.
-     */
-    @Then("I should have {string} as the card's title")
-    public void iShouldHaveCardTitle(final String cardTitle) {
-        assertEquals(cardTitle, cardPage.getCardTitle());
-    }
-
-    /**
      * Updates a card with specific data.
      *
      * @param cardName expected card name to find.

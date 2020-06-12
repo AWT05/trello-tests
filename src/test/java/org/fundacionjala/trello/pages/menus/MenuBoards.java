@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.pages.menus;
 
+import org.fundacionjala.core.Environment;
 import org.fundacionjala.trello.pages.board.BoardClosed;
 import org.fundacionjala.trello.pages.board.BoardForm;
 import org.fundacionjala.trello.pages.board.BoardPage;
@@ -12,8 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public final class MenuBoards extends WebObject {
-
-    private static final int DELAY = 4;
+    
     private static final String FIND_BOARDS = "input[data-test-id='header-boards-menu-search']";
     private static final String CREATE_BOARD = "button[data-test-id='header-boards-menu-create-board']";
     private static final String CLOSED_BOARDS = "button[data-test-id='header-boards-menu-open-closed']";
@@ -47,9 +47,10 @@ public final class MenuBoards extends WebObject {
     }
 
     public BoardPage openPersonalBoard(final String boardName) {
+        Environment env = Environment.getInstance();
         String personalBoard = String.format(PERSONAL_BOARD, boardName);
         WebElement boardElement = driver.findElement(By.xpath(personalBoard));
-        action.waitForPageLoadComplete(DELAY);
+        action.waitForPageLoadComplete(env.getReducedTime());
         action.click(boardElement);
         return new BoardPage(driver);
     }
