@@ -50,7 +50,7 @@ public final class MenuBoards extends WebObject {
         String personalBoard = String.format(PERSONAL_BOARD, boardName);
         WebElement boardElement = driver.findElement(By.xpath(personalBoard));
         action.waitForPageLoadComplete(DELAY);
-        boardElement.click();
+        action.click(boardElement);
         return new BoardPage(driver);
     }
 

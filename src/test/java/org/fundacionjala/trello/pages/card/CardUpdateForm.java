@@ -49,7 +49,7 @@ public final class CardUpdateForm extends FormPage<CardPage> {
 
     @Override
     public CardPage submit() {
-        saveButton.click();
+        action.click(saveButton);
         return new CardPage(driver);
     }
 }

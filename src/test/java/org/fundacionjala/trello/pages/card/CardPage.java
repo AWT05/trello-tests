@@ -1,6 +1,5 @@
 package org.fundacionjala.trello.pages.card;
 
-import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.trello.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -66,7 +65,7 @@ public final class CardPage extends PageObject {
         return getCards;
     }
 
-    public FormPage<?> navigateToCard(final String listName, final String cardName) {
+    public CardUpdateForm navigateToCard(final String listName, final String cardName) {
         List<WebElement> getCards = getCardElementsInList(listName);
         for (WebElement getCard : getCards) {
             if (getCard.getText().equals(cardName)) {
