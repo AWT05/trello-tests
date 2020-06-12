@@ -56,6 +56,9 @@ task unitTests(type: Test) {
 
 task executeBDDTests(type: Test) {
     useTestNG()
+    filter{
+        includeTestsMatching "org.fundacionjala.trello.*"
+    }
     options {
         jvmArgs = ['-Dcucumber.execution.strict=' + true]
         jvmArgs = ['-DbrowserName=' + browserName]
