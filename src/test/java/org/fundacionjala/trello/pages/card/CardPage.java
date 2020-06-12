@@ -16,7 +16,8 @@ public final class CardPage extends PageObject {
     private static final String ADD_NEW_CARD_BUTTON = "span.js-add-a-card";
     private static final String ALL_CARDS_LIST = "a.list-card";
     private static final String CARD_TITLE = "//*[@id=\"chrome-container\"]/div[3]/div/div/div/div[3]/div[1]/h2";
-    private static final String CARD_DESCRIPTION = "//p/parent::div/div[@class='current markeddown hide-on-edit js-desc js-show-with-desc']";
+    private static final String CARD_DESCRIPTION = "//p/parent::div/div[@class='current markeddown hide-on-edit"
+            + " js-desc js-show-with-desc']";
     private static final String CARD_TITLE_TEXT_AREA = "mod-card-back-title js-card-detail-title-input";
 
     @FindBy(css = ADD_NEW_CARD_BUTTON)

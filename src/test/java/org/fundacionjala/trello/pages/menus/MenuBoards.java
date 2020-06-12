@@ -10,10 +10,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public final class MenuBoards extends WebObject {
 
+    private static final int DELAY = 4;
     private static final String FIND_BOARDS = "input[data-test-id='header-boards-menu-search']";
     private static final String CREATE_BOARD = "button[data-test-id='header-boards-menu-create-board']";
     private static final String CLOSED_BOARDS = "button[data-test-id='header-boards-menu-open-closed']";
@@ -49,7 +49,7 @@ public final class MenuBoards extends WebObject {
     public BoardPage openPersonalBoard(final String boardName) {
         String personalBoard = String.format(PERSONAL_BOARD, boardName);
         WebElement boardElement = driver.findElement(By.xpath(personalBoard));
-        action.waitForPageLoadComplete(4);
+        action.waitForPageLoadComplete(DELAY);
         boardElement.click();
         return new BoardPage(driver);
     }

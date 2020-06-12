@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static org.fundacionjala.core.ui.pages.forms.FormFieldsEnum.DESCRIPTION;
 
-public class CardUpdateForm extends FormPage<CardPage> {
+public final class CardUpdateForm extends FormPage<CardPage> {
     private static final String UPDATE_CARD_DESC = "textarea.js-description-draft";
     private static final String UPDATE_CARD_SAVE_BUTTON = "window-module-title-icon";
 
@@ -24,7 +24,7 @@ public class CardUpdateForm extends FormPage<CardPage> {
     @FindBy(className = UPDATE_CARD_SAVE_BUTTON)
     private WebElement saveButton;
 
-    public CardUpdateForm(WebDriver driver) {
+    public CardUpdateForm(final WebDriver driver) {
         super(driver);
     }
 

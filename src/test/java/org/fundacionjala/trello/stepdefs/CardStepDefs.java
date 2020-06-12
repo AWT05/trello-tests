@@ -1,6 +1,5 @@
 package org.fundacionjala.trello.stepdefs;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
@@ -97,7 +96,7 @@ public class CardStepDefs {
      * @param cardDescription expected data to validate the update.
      */
     @Then("I should {string} as the card's description")
-    public void iShouldAsTheCardSDescription(String cardDescription) {
+    public void iShouldAsTheCardSDescription(final String cardDescription) {
         assertEquals(cardDescription, cardPage.getCardDescription());
     }
 }
