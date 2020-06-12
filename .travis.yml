@@ -3,9 +3,9 @@ jdk:
   - openjdk11
 
 script:
-  - ./gradlew check
-  - ./gradlew executeBDDTests -PbrowserName=headless -PcucumberThreadCount=1
-# TO DO: sonar-scanner
+  - ./gradlew clean check
+  - ./gradlew clean unitTests
+  - ./gradlew clean executeBDDTests -PbrowserName=headless -PcucumberThreadCount=1
 
 notifications:
   email: true

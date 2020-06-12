@@ -47,6 +47,13 @@ tasks.withType(Pmd) {
     }
 }
 
+task unitTests(type: Test) {
+    useTestNG()
+    filter{
+        includeTestsMatching "org.fundacionjala.core.*"
+    }
+}
+
 task executeBDDTests(type: Test) {
     useTestNG()
     options {
