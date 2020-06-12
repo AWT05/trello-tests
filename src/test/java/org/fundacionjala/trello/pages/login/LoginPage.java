@@ -1,7 +1,5 @@
 package org.fundacionjala.trello.pages.login;
 
-import java.util.concurrent.TimeUnit;
-
 import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.pages.WebObject;
 import org.fundacionjala.trello.pages.home.BoardsPage;
@@ -11,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.concurrent.TimeUnit;
 
 public final class LoginPage extends WebObject {
 
@@ -34,8 +34,6 @@ public final class LoginPage extends WebObject {
 
     public LoginPage(final WebDriver driver) {
         super(driver);
-        String url = Environment.getInstance().getUiBaseUrl();
-        driver.get(url.concat(URI));
     }
 
     @Override
@@ -44,6 +42,8 @@ public final class LoginPage extends WebObject {
     }
 
     public LoginPage setCredentials(final String username, final String password) {
+        String url = Environment.getInstance().getUiBaseUrl();
+        driver.get(url.concat(URI));
         action.setInputField(this.username, username);
         waitIfLoginWithAtlassian();
         action.setInputField(this.password, password);
