@@ -1,11 +1,11 @@
 package org.fundacionjala.trello.pages.card;
 
+import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.trello.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +15,9 @@ public final class CardPage extends PageObject {
             + "parent::div//span[@class='list-card-title js-card-name']";
     private static final String ADD_NEW_CARD_BUTTON = "span.js-add-a-card";
     private static final String ALL_CARDS_LIST = "a.list-card";
-    private static final String CARD_TITLE = "card-detail-title-assist js-title-helper";
-
-
+    private static final String CARD_TITLE = "//*[@id=\"chrome-container\"]/div[3]/div/div/div/div[3]/div[1]/h2";
+    private static final String CARD_DESCRIPTION = "//p/parent::div/div[@class='current markeddown hide-on-edit js-desc js-show-with-desc']";
+    private static final String CARD_TITLE_TEXT_AREA = "mod-card-back-title js-card-detail-title-input";
 
     @FindBy(css = ADD_NEW_CARD_BUTTON)
     private WebElement addNewCardButton;
@@ -25,8 +25,14 @@ public final class CardPage extends PageObject {
     @FindBy(css = ALL_CARDS_LIST)
     private List<WebElement> cardsList;
 
-    @FindBy(css = CARD_TITLE)
+    @FindBy(xpath = CARD_TITLE)
     private WebElement cardTitle;
+
+    @FindBy(css = CARD_TITLE_TEXT_AREA)
+    private WebElement cardTitleTextArea;
+
+    @FindBy(xpath = CARD_DESCRIPTION)
+    private WebElement cardDescription;
 
     public CardPage(final WebDriver driver) {
         super(driver);
@@ -59,17 +65,24 @@ public final class CardPage extends PageObject {
         return getCards;
     }
 
-    public void navigateToCard(final String listName, final String cardName) {
+    public FormPage<?> navigateToCard(final String listName, final String cardName) {
         List<WebElement> getCards = getCardElementsInList(listName);
         for (WebElement getCard : getCards) {
-            if(getCard.getText().equals(cardName)){
+            if (getCard.getText().equals(cardName)) {
                 getCard.click();
+                return new CardUpdateForm(driver);
             }
         }
+        return null;
     }
 
     public String getCardTitle() {
-        wait.until(ExpectedConditions.visibilityOf(cardTitle));
-        return cardTitle.getText();
+        String locator = String.format("//h2[contains(text(), '%s')]", "Task 1");
+        WebElement test = driver.findElement(By.xpath(locator));
+        return test.getText();
+    }
+
+    public String getCardDescription() {
+        return cardDescription.getText();
     }
 }

@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public final class MenuBoards extends WebObject {
 
@@ -48,6 +49,7 @@ public final class MenuBoards extends WebObject {
     public BoardPage openPersonalBoard(final String boardName) {
         String personalBoard = String.format(PERSONAL_BOARD, boardName);
         WebElement boardElement = driver.findElement(By.xpath(personalBoard));
+        action.waitForPageLoadComplete(4);
         boardElement.click();
         return new BoardPage(driver);
     }

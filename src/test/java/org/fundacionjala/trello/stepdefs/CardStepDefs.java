@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.stepdefs;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
@@ -72,6 +73,31 @@ public class CardStepDefs {
      */
     @Then("I should have {string} as the card's title")
     public void iShouldHaveCardTitle(final String cardTitle) {
-        assertEquals(cardTitle,cardPage.getCardTitle());
+        assertEquals(cardTitle, cardPage.getCardTitle());
+    }
+
+    /**
+     * Updates a card with specific data.
+     *
+     * @param cardName expected card name to find.
+     * @param listName expected list name where to find the card.
+     * @param data     expected card data.
+     */
+    @When("I update the {string} card in the {string} list with:")
+    public void iUpdateTheCardWith(final String cardName, final String listName, final Map<String, String> data) {
+        menuBoard.closeMenuOptions();
+        form = cardPage.navigateToCard(listName, cardName);
+        form.fillForm(data);
+        form.submit();
+    }
+
+    /**
+     * Validates the card description update.
+     *
+     * @param cardDescription expected data to validate the update.
+     */
+    @Then("I should {string} as the card's description")
+    public void iShouldAsTheCardSDescription(String cardDescription) {
+        assertEquals(cardDescription, cardPage.getCardDescription());
     }
 }
