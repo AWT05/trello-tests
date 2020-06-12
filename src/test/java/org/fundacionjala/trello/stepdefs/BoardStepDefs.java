@@ -1,14 +1,17 @@
 package org.fundacionjala.trello.stepdefs;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.board.BoardPage;
+import org.fundacionjala.trello.pages.board.MenuBoard;
 import org.fundacionjala.trello.pages.home.BoardsPage;
 import org.fundacionjala.trello.pages.menus.MenuBoards;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
@@ -18,6 +21,7 @@ import static org.testng.Assert.assertTrue;
 public class BoardStepDefs {
 
     private final BoardsPage boardsHome;
+    private final MenuBoard menuIntoBoard;
     private MenuBoards menuBoards;
     private BoardPage board;
     private final ContextTrello context;
@@ -26,6 +30,7 @@ public class BoardStepDefs {
         this.context = context;
         board = new BoardPage(getDriver());
         menuBoards = new MenuBoards(getDriver());
+        menuIntoBoard = new MenuBoard(getDriver());
         boardsHome = new BoardsPage(getDriver());
     }
 
@@ -79,12 +84,32 @@ public class BoardStepDefs {
         assertEquals(board.getTitle(), title);
     }
 
-    /** Opens team from boards menu of header.
+    /**
+     * Opens team from boards menu of header.
      *
      * @param teamName name of the team to open.
      */
     @When("I open the {string} team")
     public void selectTeam(final String teamName) {
         menuBoards.goToTeamPage(teamName);
+    }
+
+    /**
+     * Step to close the Board menu.
+     */
+    @Given("I close the board menu")
+    public void iCloseTheBoardMenu() {
+        menuIntoBoard.closeMenuOptions();
+    }
+
+    /**
+     * Adds members to the board created.
+     *
+     * @param members List of member to be added.
+     */
+    @When("I invite the following member(s)")
+    public void iInviteTheFollowingMembers(final List<String> members) {
+        board.addMembersToInvite(members)
+                .sendInvitation();
     }
 }

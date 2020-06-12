@@ -1,11 +1,14 @@
 package org.fundacionjala.trello.pages.board;
 
+import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
+import org.fundacionjala.trello.context.UserTrello;
 import org.fundacionjala.trello.pages.IIdentifiable;
 import org.fundacionjala.trello.pages.list.ListForm;
 import org.fundacionjala.trello.pages.list.ListUpdateForm;
 import org.fundacionjala.trello.pages.PageObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +17,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public final class BoardPage extends PageObject implements IIdentifiable {
 
@@ -29,6 +36,28 @@ public final class BoardPage extends PageObject implements IIdentifiable {
             + "div[contains(@class,'list-header')]";
     private static final int ID_INDEX = 1;
     private static final String URL_REGEX = "/b/[\\w]+/";
+    private static final String BTN_INVITE = "a.board-header-btn-invite";
+    private static final String MEMBERS_INPUT = "input[data-test-id='add-members-input']";
+    private static final String NEW_MEMBER =
+            ".autocomplete-search-results div[data-test-id='team-invitee-option'] div.member-container";
+    private static final String EMPTY = " ";
+    private static final String SEND_INVITE_BUTTON = "button[data-test-id='team-invite-submit-button']";
+    private static final String TEAM_POPOVER_CLOSE = "button[data-test-id='popover-close']";
+
+    @FindBy(css = BTN_INVITE)
+    private WebElement openInviteBtn;
+
+    @FindBy(css = MEMBERS_INPUT)
+    private WebElement membersInput;
+
+    @FindBy(css = NEW_MEMBER)
+    private WebElement newMember;
+
+    @FindBy(css = SEND_INVITE_BUTTON)
+    private WebElement sendInviteBtn;
+
+    @FindBy(css = TEAM_POPOVER_CLOSE)
+    private WebElement skipTeamCreation;
 
     @FindBy(css = BOARD_HEADER)
     private WebElement boardHeader;
@@ -96,5 +125,51 @@ public final class BoardPage extends PageObject implements IIdentifiable {
         WebElement actualList = driver.findElement(By.xpath(getList));
         action.click(actualList);
         return new ListUpdateForm(driver);
+    }
+
+    public BoardPage addMembersToInvite(final List<String> usersKeys) {
+        action.click(openInviteBtn);
+        action.waitForVisibility(membersInput);
+        List<String> newMembers = getMembersKeywords(usersKeys);
+
+        for (String member : newMembers) {
+            if (EMPTY.equals(member)) {
+                continue;
+            }
+            action.setInputField(membersInput, member);
+            action.click(newMember);
+        }
+        return this;
+    }
+
+    public BoardPage sendInvitation() {
+        action.click(sendInviteBtn);
+        skipTeamCreation();
+        return this;
+    }
+
+    private void skipTeamCreation() {
+        Environment env = Environment.getInstance();
+        try {
+            wait.withTimeout(env.getReducedTime(), TimeUnit.SECONDS);
+            action.waitForVisibility(skipTeamCreation);
+            action.click(skipTeamCreation);
+        } catch (TimeoutException ignored) {
+        } finally {
+            wait.withTimeout(env.getExplicitTimeWait(), TimeUnit.SECONDS);
+        }
+    }
+
+    private List<String> getMembersKeywords(final List<String> usersKeys) {
+        Stream<String> usersStream = usersKeys.stream()
+                .map(user -> {
+                    try {
+                        return (new UserTrello(user)).getUsername();
+                    } catch (Exception e) {
+                        // Log -> user not valid
+                        return EMPTY;
+                    }
+                });
+        return usersStream.collect(Collectors.toList());
     }
 }

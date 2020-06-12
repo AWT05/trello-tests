@@ -3,7 +3,9 @@ package org.fundacionjala.trello.pages.menus;
 import org.fundacionjala.core.ui.pages.WebObject;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
 import org.fundacionjala.trello.pages.board.BoardForm;
+import org.fundacionjala.trello.pages.board.BoardPage;
 import org.fundacionjala.trello.pages.team.TeamForm;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +17,12 @@ public final class Header extends WebObject {
     private static final String CREATE_TEAM_BUTTON = "button[data-test-id=\"header-create-team-button\"]";
     private static final String BOARDS_MENU_BUTTON = "button[data-test-id=\"header-boards-menu-button\"]";
     private static final String PROFILE_BUTTON = "button[data-test-id= 'header-member-menu-button']";
+    private static final String NOTIFICATIONS_BUTTON = "button[data-test-id='header-notifications-button']";
+    private static final String NOTIFICATION_PATH =
+            "//*[@name='%s-member']/parent::*[@role='button']/following-sibling::div//a[text()='%s']";
+
+    @FindBy(css = NOTIFICATIONS_BUTTON)
+    private WebElement notificationBtn;
 
     @FindBy(css = CREATE_MENU_BUTTON)
     private WebElement creationButton;
@@ -64,5 +72,20 @@ public final class Header extends WebObject {
         action.waitForVisibility(profileButton);
         action.click(profileButton);
         return new MenuProfile(driver);
+    }
+
+    public Header openNotifications() {
+        action.waitForVisibility(notificationBtn);
+        action.click(notificationBtn);
+        return this;
+    }
+
+    public BoardPage selectBoardNotification(final String type, final String boardName) {
+        String notificationPath = String.format(NOTIFICATION_PATH, type, boardName);
+        By notifyLocator = By.xpath(notificationPath);
+        action.waitForElementLocated(notifyLocator);
+        WebElement notification = driver.findElement(notifyLocator);
+        notification.click();
+        return new BoardPage(driver);
     }
 }

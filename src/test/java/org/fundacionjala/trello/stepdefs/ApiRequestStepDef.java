@@ -6,6 +6,7 @@ import org.fundacionjala.core.api.RequestManager;
 import org.fundacionjala.trello.context.ContextTrello;
 import org.fundacionjala.trello.context.EndPointsEnum;
 import org.fundacionjala.trello.context.UserTrello;
+import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.utils.CommonValidations;
 
 import java.util.HashMap;
@@ -26,10 +27,14 @@ public class ApiRequestStepDef {
     /**
      * Initializes an instance of RequestSteps class.
      *
+     * @param sharedDriver   init driver.
      * @param context        scenario context.
      * @param requestManager helper to sending requests.
      */
-    public ApiRequestStepDef(final ContextTrello context, final RequestManager requestManager) {
+    public ApiRequestStepDef(
+            final SharedDriver sharedDriver,
+            final ContextTrello context,
+            final RequestManager requestManager) {
         this.context = context;
         this.requestManager = requestManager;
     }

@@ -1,9 +1,10 @@
 package org.fundacionjala.trello.stepdefs;
 
+import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.When;
 import org.fundacionjala.core.ui.pages.forms.FormPage;
-import org.fundacionjala.trello.pages.menus.Header;
 import org.fundacionjala.trello.driver.SharedDriver;
+import org.fundacionjala.trello.pages.menus.Header;
 
 import java.util.Map;
 
@@ -37,5 +38,28 @@ public final class HeaderStepDefs {
     @When("I navigate to boards menu from header")
     public void iNavigateToBoardsPage() {
         header.getMenuBoards();
+    }
+
+    @When("I navigate to notifications")
+    public void iNavigateToNotifications() {
+        header.openNotifications();
+    }
+
+    @ParameterType("added|removed")
+    public String type(final String value) {
+        return value.contains("ed")
+                ? value.replace("ed", "e")
+                : value.replace("ed", "");
+    }
+
+    /**
+     * Selects a notification.
+     *
+     * @param type      notification type.
+     * @param boardName name of the board.
+     */
+    @When("I open notification: {type} to {string} board")
+    public void selectBoardNotification(final String type, final String boardName) {
+        header.selectBoardNotification(type, boardName);
     }
 }

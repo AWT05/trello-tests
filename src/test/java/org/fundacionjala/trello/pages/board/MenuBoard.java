@@ -1,9 +1,14 @@
 package org.fundacionjala.trello.pages.board;
 
+import org.fundacionjala.core.Environment;
 import org.fundacionjala.core.ui.pages.WebObject;
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.concurrent.TimeUnit;
 
 public final class MenuBoard extends WebObject {
 
@@ -32,10 +37,16 @@ public final class MenuBoard extends WebObject {
     }
 
     public BoardPage closeMenuOptions() {
-        action.waitForPageLoadComplete();
-        action.waitForVisibility(closeMenuButton);
-        if (isDisplayed()) {
+        Environment env = Environment.getInstance();
+        try {
+            wait.withTimeout(env.getReducedTime(), TimeUnit.SECONDS);
+            action.waitForPageLoadComplete();
+            action.waitForVisibility(closeMenuButton);
+            isDisplayed();
             action.click(closeMenuButton);
+        } catch (ElementNotInteractableException | TimeoutException ignored) {
+        } finally {
+            wait.withTimeout(env.getExplicitTimeWait(), TimeUnit.SECONDS);
         }
         return new BoardPage(driver);
     }
