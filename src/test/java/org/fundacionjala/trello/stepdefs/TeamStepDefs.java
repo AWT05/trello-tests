@@ -3,26 +3,26 @@ package org.fundacionjala.trello.stepdefs;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import org.fundacionjala.core.context.Context;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.team.TeamInviteForm;
 import org.fundacionjala.trello.pages.team.TeamPage;
+import org.fundacionjala.trello.utils.AssertGroup;
+import org.testng.asserts.Assertion;
 
 import java.util.Map;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
-import static org.testng.Assert.assertEquals;
 
 public final class TeamStepDefs {
 
-    private Context context;
     private TeamPage teamPage;
     private TeamInviteForm teamInviteForm;
+    private Assertion assertGroup;
 
-    public TeamStepDefs(final SharedDriver sharedDriver, final Context context) {
-        this.context = context;
+    public TeamStepDefs(final SharedDriver sharedDriver, final AssertGroup assertGroup) {
         this.teamPage = new TeamPage(getDriver());
         this.teamInviteForm = new TeamInviteForm(getDriver());
+        this.assertGroup = assertGroup.getAssertGroup();
     }
 
     /**
@@ -32,7 +32,7 @@ public final class TeamStepDefs {
      */
     @Then("I should have a team created with the following data")
     public void validateCreationWithData(final Map<String, String> expectedData) {
-        assertEquals(teamPage.getTeamName(), expectedData.get("name"));
+        assertGroup.assertEquals(teamPage.getTeamName(), expectedData.get("name"));
     }
 
     /**
