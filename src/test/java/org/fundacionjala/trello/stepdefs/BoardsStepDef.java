@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.stepdefs;
 
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.fundacionjala.trello.driver.SharedDriver;
 import org.fundacionjala.trello.pages.home.BoardsPage;
@@ -7,6 +8,7 @@ import org.fundacionjala.trello.pages.home.sections.Section;
 import org.fundacionjala.trello.pages.home.sections.TeamSection;
 
 import static org.fundacionjala.trello.driver.DriverFactory.getDriver;
+import static org.testng.Assert.assertTrue;
 
 public class BoardsStepDef {
 
@@ -44,5 +46,14 @@ public class BoardsStepDef {
     public void openBoardsTeamPage() {
         TeamSection teamSection = (TeamSection) section;
         teamSection.openTeamBoards();
+    }
+
+    /**
+     * Verifies a team is not present.
+     */
+    @Then("I should not find the team")
+    public void iShouldNotFindTheTeam() {
+        TeamSection teamSection = (TeamSection) section;
+        assertTrue(teamSection.teamNotExists());
     }
 }

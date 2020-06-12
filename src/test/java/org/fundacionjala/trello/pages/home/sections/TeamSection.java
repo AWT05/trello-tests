@@ -36,4 +36,8 @@ public final class TeamSection extends BodySection {
         action.click(driver.findElement(boards));
         return new TeamPage(driver);
     }
+
+    public boolean teamNotExists() {
+        return driver.findElements(By.xpath(baseSelector)).isEmpty();
+    }
 }
